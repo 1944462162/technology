@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.imustacm.dao.SmeltingRecordDao">
+
+	<!-- smelting_record 所有查询列 -->
+	<sql id="QUERY_COLUMN_LIST">
+		<![CDATA[
+            id,
+            number,
+            create_time AS createTime,
+            operator,
+            raw_material_all_up AS rawMaterialAllUp,
+            tundish_material AS tundishMaterial,
+            crucible_count AS crucibleCount,
+            operation_steps AS operationSteps,
+            operation_time AS operationTime,
+            vacuum,
+            heat_power AS heatPower,
+            temperature,
+            discharge,
+            water_temperature AS waterTemperature,
+            remarks 
+		]]>
+	</sql>
+
+	<!-- smelting_record 查询列来源表-->
+	<sql id="QUERY_FROM_TABLE"><![CDATA[FROM smelting_record]]></sql>
+	
+	<!-- 全部条件(更多功能可以通过queryData扩展实现)  -->
+	<sql id="QUERY_WHERE_CLAUSE">
+		<where>
+            <if test="id != null and id != ''"><![CDATA[AND id = #{id}]]></if>
+            <if test="number != null and number != ''"><![CDATA[AND number = #{number}]]></if>
+            <if test="createTime != null and createTime != ''"><![CDATA[AND create_time = #{createTime}]]></if>
+            <if test="operator != null and operator != ''"><![CDATA[AND operator = #{operator}]]></if>
+            <if test="rawMaterialAllUp != null and rawMaterialAllUp != ''"><![CDATA[AND raw_material_all_up = #{rawMaterialAllUp}]]></if>
+            <if test="tundishMaterial != null and tundishMaterial != ''"><![CDATA[AND tundish_material = #{tundishMaterial}]]></if>
+            <if test="crucibleCount != null and crucibleCount != ''"><![CDATA[AND crucible_count = #{crucibleCount}]]></if>
+            <if test="operationSteps != null and operationSteps != ''"><![CDATA[AND operation_steps = #{operationSteps}]]></if>
+            <if test="operationTime != null and operationTime != ''"><![CDATA[AND operation_time = #{operationTime}]]></if>
+            <if test="vacuum != null and vacuum != ''"><![CDATA[AND vacuum = #{vacuum}]]></if>
+            <if test="heatPower != null and heatPower != ''"><![CDATA[AND heat_power = #{heatPower}]]></if>
+            <if test="temperature != null and temperature != ''"><![CDATA[AND temperature = #{temperature}]]></if>
+            <if test="discharge != null and discharge != ''"><![CDATA[AND discharge = #{discharge}]]></if>
+            <if test="waterTemperature != null and waterTemperature != ''"><![CDATA[AND water_temperature = #{waterTemperature}]]></if>
+            <if test="remarks != null and remarks != ''"><![CDATA[AND remarks = #{remarks}]]></if> 
+		</where>
+	</sql>
+	
+	<!-- 智能排序与分页 -->
+	<sql id="QUERY_ORDER_LIMIT_CONDTION">
+		<if test="orderField != null and orderField != '' and orderFieldType != null and orderFieldType != ''"><![CDATA[ORDER BY ${orderField} ${orderFieldType}]]></if>
+		<if test="startIndex != null and startIndex &gt;= 0 and pageSize != null and pageSize &gt; 0"><![CDATA[LIMIT #{startIndex},#{pageSize}]]></if>
+	</sql>
+
+	<!-- 更新列字段,只要不为NULL则更新,除开主键列 -->
+	<sql id="UPDATE_COLUMN_SET">
+		<set>
+			<if test="number != null"><![CDATA[number = #{number},]]></if>
+			<if test="createTime != null"><![CDATA[create_time = #{createTime},]]></if>
+			<if test="operator != null"><![CDATA[operator = #{operator},]]></if>
+			<if test="rawMaterialAllUp != null"><![CDATA[raw_material_all_up = #{rawMaterialAllUp},]]></if>
+			<if test="tundishMaterial != null"><![CDATA[tundish_material = #{tundishMaterial},]]></if>
+			<if test="crucibleCount != null"><![CDATA[crucible_count = #{crucibleCount},]]></if>
+			<if test="operationSteps != null"><![CDATA[operation_steps = #{operationSteps},]]></if>
+			<if test="operationTime != null"><![CDATA[operation_time = #{operationTime},]]></if>
+			<if test="vacuum != null"><![CDATA[vacuum = #{vacuum},]]></if>
+			<if test="heatPower != null"><![CDATA[heat_power = #{heatPower},]]></if>
+			<if test="temperature != null"><![CDATA[temperature = #{temperature},]]></if>
+			<if test="discharge != null"><![CDATA[discharge = #{discharge},]]></if>
+			<if test="waterTemperature != null"><![CDATA[water_temperature = #{waterTemperature},]]></if>
+			<if test="remarks != null"><![CDATA[remarks = #{remarks},]]></if>
+		</set>
+	</sql>
+
+	<!-- 插入app记录 -->
+	<insert id="insertEntry" parameterType="smeltingrecord" >
+		<![CDATA[
+			INSERT INTO smelting_record
+				(
+                id, 
+                number, 
+                create_time, 
+                operator, 
+                raw_material_all_up, 
+                tundish_material, 
+                crucible_count, 
+                operation_steps, 
+                operation_time, 
+                vacuum, 
+                heat_power, 
+                temperature, 
+                discharge, 
+                water_temperature, 
+                remarks 
+				)
+			VALUES
+				(
+                #{id}, 
+                #{number}, 
+                #{createTime}, 
+                #{operator}, 
+                #{rawMaterialAllUp}, 
+                #{tundishMaterial}, 
+                #{crucibleCount}, 
+                #{operationSteps}, 
+                #{operationTime}, 
+                #{vacuum}, 
+                #{heatPower}, 
+                #{temperature}, 
+                #{discharge}, 
+                #{waterTemperature}, 
+                #{remarks} 
+				)
+		]]>
+	</insert>
+	
+	<!-- 返回插入的编号,在事务开启状态下有效 -->
+	<select id="lastSequence" resultType="long"><![CDATA[SELECT LAST_INSERT_ID() AS id]]></select>
+
+	<!-- 删除记录,主键IN(array) -->
+	<delete id="deleteByArrayKey" parameterType="java.lang.reflect.Array" >
+		<![CDATA[DELETE FROM smelting_record WHERE id IN]]>
+		<foreach collection="array" item="id" open="(" separator="," close=")">
+			<![CDATA[#{id}]]>
+		</foreach>
+	</delete>
+
+	<!-- 删除,通过条件 -->
+	<delete id="deleteByCondtion" parameterType="smeltingrecord" >
+		<![CDATA[DELETE FROM smelting_record]]>
+		<include refid="QUERY_WHERE_CLAUSE"/>
+	</delete>
+
+	<!-- 修改记录通过主键 -->
+	<update id="updateByKey" parameterType="smeltingrecord" >
+		<![CDATA[UPDATE smelting_record]]>
+		<include refid="UPDATE_COLUMN_SET"/>
+		<![CDATA[WHERE id = #{id}]]>
+	</update>
+
+	<!-- 查询,通过主键IN(array) -->
+	<select id="selectEntryArray" parameterType="java.lang.reflect.Array" resultType="smeltingrecord">
+		<![CDATA[SELECT]]>
+		<include refid="QUERY_COLUMN_LIST"/>
+		<include refid="QUERY_FROM_TABLE"/>
+		<![CDATA[WHERE id IN]]>
+		<foreach collection="array" item="id" open="(" separator="," close=")">
+			<![CDATA[#{id}]]>
+		</foreach>
+	</select>
+
+	<!-- 查询,通过条件 -->
+	<select id="selectEntryList" parameterType="smeltingrecord" resultType="smeltingrecord">
+		<![CDATA[SELECT]]>
+		<include refid="QUERY_COLUMN_LIST"/>
+		<include refid="QUERY_FROM_TABLE"/>
+		<include refid="QUERY_WHERE_CLAUSE"/>
+		<include refid="QUERY_ORDER_LIMIT_CONDTION"/>
+	</select>
+
+	<!-- 总数查询,通过条件 -->
+	<select id="selectEntryListCount" parameterType="smeltingrecord" resultType="int">
+		<![CDATA[SELECT COUNT(id) AS dataCount]]>
+		<include refid="QUERY_FROM_TABLE"/>
+		<include refid="QUERY_WHERE_CLAUSE"/>
+	</select>
+	
+	<!-- 其它SQL语句 -->
+	
+</mapper>

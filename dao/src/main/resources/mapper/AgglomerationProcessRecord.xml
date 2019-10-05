@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.imustacm.dao.AgglomerationProcessRecordDao">
+
+	<!-- agglomeration_process_record 所有查询列 -->
+	<sql id="QUERY_COLUMN_LIST">
+		<![CDATA[
+            id,
+            create_time AS createTime,
+            number,
+            block_number AS blockNumber,
+            furnace_weight AS furnaceWeight,
+            single_room_weight AS singleRoomWeight,
+            mononuclear_weight AS mononuclearWeight,
+            start_power AS startPower,
+            end_power AS endPower,
+            share_power AS sharePower,
+            frist_operator_day AS fristOperatorDay,
+            frist_operator_night AS fristOperatorNight,
+            second_operator_day AS secondOperatorDay,
+            second_operator_night AS secondOperatorNight 
+		]]>
+	</sql>
+
+	<!-- agglomeration_process_record 查询列来源表-->
+	<sql id="QUERY_FROM_TABLE"><![CDATA[FROM agglomeration_process_record]]></sql>
+	
+	<!-- 全部条件(更多功能可以通过queryData扩展实现)  -->
+	<sql id="QUERY_WHERE_CLAUSE">
+		<where>
+            <if test="id != null and id != ''"><![CDATA[AND id = #{id}]]></if>
+            <if test="createTime != null and createTime != ''"><![CDATA[AND create_time = #{createTime}]]></if>
+            <if test="number != null and number != ''"><![CDATA[AND number = #{number}]]></if>
+            <if test="blockNumber != null and blockNumber != ''"><![CDATA[AND block_number = #{blockNumber}]]></if>
+            <if test="furnaceWeight != null and furnaceWeight != ''"><![CDATA[AND furnace_weight = #{furnaceWeight}]]></if>
+            <if test="singleRoomWeight != null and singleRoomWeight != ''"><![CDATA[AND single_room_weight = #{singleRoomWeight}]]></if>
+            <if test="mononuclearWeight != null and mononuclearWeight != ''"><![CDATA[AND mononuclear_weight = #{mononuclearWeight}]]></if>
+            <if test="startPower != null and startPower != ''"><![CDATA[AND start_power = #{startPower}]]></if>
+            <if test="endPower != null and endPower != ''"><![CDATA[AND end_power = #{endPower}]]></if>
+            <if test="sharePower != null and sharePower != ''"><![CDATA[AND share_power = #{sharePower}]]></if>
+            <if test="fristOperatorDay != null and fristOperatorDay != ''"><![CDATA[AND frist_operator_day = #{fristOperatorDay}]]></if>
+            <if test="fristOperatorNight != null and fristOperatorNight != ''"><![CDATA[AND frist_operator_night = #{fristOperatorNight}]]></if>
+            <if test="secondOperatorDay != null and secondOperatorDay != ''"><![CDATA[AND second_operator_day = #{secondOperatorDay}]]></if>
+            <if test="secondOperatorNight != null and secondOperatorNight != ''"><![CDATA[AND second_operator_night = #{secondOperatorNight}]]></if> 
+		</where>
+	</sql>
+	
+	<!-- 智能排序与分页 -->
+	<sql id="QUERY_ORDER_LIMIT_CONDTION">
+		<if test="orderField != null and orderField != '' and orderFieldType != null and orderFieldType != ''"><![CDATA[ORDER BY ${orderField} ${orderFieldType}]]></if>
+		<if test="startIndex != null and startIndex &gt;= 0 and pageSize != null and pageSize &gt; 0"><![CDATA[LIMIT #{startIndex},#{pageSize}]]></if>
+	</sql>
+
+	<!-- 更新列字段,只要不为NULL则更新,除开主键列 -->
+	<sql id="UPDATE_COLUMN_SET">
+		<set>
+			<if test="createTime != null"><![CDATA[create_time = #{createTime},]]></if>
+			<if test="number != null"><![CDATA[number = #{number},]]></if>
+			<if test="blockNumber != null"><![CDATA[block_number = #{blockNumber},]]></if>
+			<if test="furnaceWeight != null"><![CDATA[furnace_weight = #{furnaceWeight},]]></if>
+			<if test="singleRoomWeight != null"><![CDATA[single_room_weight = #{singleRoomWeight},]]></if>
+			<if test="mononuclearWeight != null"><![CDATA[mononuclear_weight = #{mononuclearWeight},]]></if>
+			<if test="startPower != null"><![CDATA[start_power = #{startPower},]]></if>
+			<if test="endPower != null"><![CDATA[end_power = #{endPower},]]></if>
+			<if test="sharePower != null"><![CDATA[share_power = #{sharePower},]]></if>
+			<if test="fristOperatorDay != null"><![CDATA[frist_operator_day = #{fristOperatorDay},]]></if>
+			<if test="fristOperatorNight != null"><![CDATA[frist_operator_night = #{fristOperatorNight},]]></if>
+			<if test="secondOperatorDay != null"><![CDATA[second_operator_day = #{secondOperatorDay},]]></if>
+			<if test="secondOperatorNight != null"><![CDATA[second_operator_night = #{secondOperatorNight},]]></if>
+		</set>
+	</sql>
+
+	<!-- 插入app记录 -->
+	<insert id="insertEntry" parameterType="agglomerationProcessRecord" >
+		<![CDATA[
+			INSERT INTO agglomeration_process_record
+				(
+                id, 
+                create_time, 
+                number, 
+                block_number, 
+                furnace_weight, 
+                single_room_weight, 
+                mononuclear_weight, 
+                start_power, 
+                end_power, 
+                share_power, 
+                frist_operator_day, 
+                frist_operator_night, 
+                second_operator_day, 
+                second_operator_night 
+				)
+			VALUES
+				(
+                #{id}, 
+                #{createTime}, 
+                #{number}, 
+                #{blockNumber}, 
+                #{furnaceWeight}, 
+                #{singleRoomWeight}, 
+                #{mononuclearWeight}, 
+                #{startPower}, 
+                #{endPower}, 
+                #{sharePower}, 
+                #{fristOperatorDay}, 
+                #{fristOperatorNight}, 
+                #{secondOperatorDay}, 
+                #{secondOperatorNight} 
+				)
+		]]>
+	</insert>
+	
+	<!-- 返回插入的编号,在事务开启状态下有效 -->
+	<select id="lastSequence" resultType="long"><![CDATA[SELECT LAST_INSERT_ID() AS id]]></select>
+
+	<!-- 删除记录,主键IN(array) -->
+	<delete id="deleteByArrayKey" parameterType="java.lang.reflect.Array" >
+		<![CDATA[DELETE FROM agglomeration_process_record WHERE id IN]]>
+		<foreach collection="array" item="id" open="(" separator="," close=")">
+			<![CDATA[#{id}]]>
+		</foreach>
+	</delete>
+
+	<!-- 删除,通过条件 -->
+	<delete id="deleteByCondtion" parameterType="agglomerationProcessRecord" >
+		<![CDATA[DELETE FROM agglomeration_process_record]]>
+		<include refid="QUERY_WHERE_CLAUSE"/>
+	</delete>
+
+	<!-- 修改记录通过主键 -->
+	<update id="updateByKey" parameterType="agglomerationProcessRecord" >
+		<![CDATA[UPDATE agglomeration_process_record]]>
+		<include refid="UPDATE_COLUMN_SET"/>
+		<![CDATA[WHERE id = #{id}]]>
+	</update>
+
+	<!-- 查询,通过主键IN(array) -->
+	<select id="selectEntryArray" parameterType="java.lang.reflect.Array" resultType="agglomerationProcessRecord">
+		<![CDATA[SELECT]]>
+		<include refid="QUERY_COLUMN_LIST"/>
+		<include refid="QUERY_FROM_TABLE"/>
+		<![CDATA[WHERE id IN]]>
+		<foreach collection="array" item="id" open="(" separator="," close=")">
+			<![CDATA[#{id}]]>
+		</foreach>
+	</select>
+
+	<!-- 查询,通过条件 -->
+	<select id="selectEntryList" parameterType="agglomerationProcessRecord" resultType="agglomerationProcessRecord">
+		<![CDATA[SELECT]]>
+		<include refid="QUERY_COLUMN_LIST"/>
+		<include refid="QUERY_FROM_TABLE"/>
+		<include refid="QUERY_WHERE_CLAUSE"/>
+		<include refid="QUERY_ORDER_LIMIT_CONDTION"/>
+	</select>
+
+	<!-- 总数查询,通过条件 -->
+	<select id="selectEntryListCount" parameterType="agglomerationProcessRecord" resultType="int">
+		<![CDATA[SELECT COUNT(id) AS dataCount]]>
+		<include refid="QUERY_FROM_TABLE"/>
+		<include refid="QUERY_WHERE_CLAUSE"/>
+	</select>
+	
+	<!-- 其它SQL语句 -->
+	
+</mapper>

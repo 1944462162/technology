@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.imustacm.dao.RolesDao">
+
+	<!-- roles 所有查询列 -->
+	<sql id="QUERY_COLUMN_LIST">
+		<![CDATA[
+            user_name AS userName,
+            role_name AS roleName 
+		]]>
+	</sql>
+
+	<!-- roles 查询列来源表-->
+	<sql id="QUERY_FROM_TABLE"><![CDATA[FROM roles]]></sql>
+	
+	<!-- 全部条件(更多功能可以通过queryData扩展实现)  -->
+	<sql id="QUERY_WHERE_CLAUSE">
+		<where>
+            <if test="userName != null and userName != ''"><![CDATA[AND user_name = #{userName}]]></if>
+            <if test="roleName != null and roleName != ''"><![CDATA[AND role_name = #{roleName}]]></if> 
+		</where>
+	</sql>
+	
+	<!-- 智能排序与分页 -->
+	<sql id="QUERY_ORDER_LIMIT_CONDTION">
+		<if test="orderField != null and orderField != '' and orderFieldType != null and orderFieldType != ''"><![CDATA[ORDER BY ${orderField} ${orderFieldType}]]></if>
+		<if test="startIndex != null and startIndex &gt;= 0 and pageSize != null and pageSize &gt; 0"><![CDATA[LIMIT #{startIndex},#{pageSize}]]></if>
+	</sql>
+
+	<!-- 更新列字段,只要不为NULL则更新,除开主键列 -->
+	<sql id="UPDATE_COLUMN_SET">
+		<set>
+			<if test="userName != null"><![CDATA[user_name = #{userName},]]></if>
+			<if test="roleName != null"><![CDATA[role_name = #{roleName},]]></if>
+		</set>
+	</sql>
+
+	<!-- 插入app记录 -->
+	<insert id="insertEntry" parameterType="roles" >
+		<![CDATA[
+			INSERT INTO roles
+				(
+                user_name, 
+                role_name 
+				)
+			VALUES
+				(
+                #{userName}, 
+                #{roleName} 
+				)
+		]]>
+	</insert>
+	
+	<!-- 返回插入的编号,在事务开启状态下有效 -->
+	<select id="lastSequence" resultType="long"><![CDATA[SELECT LAST_INSERT_ID() AS id]]></select>
+
+	<!-- 删除记录,主键IN(array) -->
+	<delete id="deleteByArrayKey" parameterType="java.lang.reflect.Array" >
+		<![CDATA[DELETE FROM roles WHERE id IN]]>
+		<foreach collection="array" item="id" open="(" separator="," close=")">
+			<![CDATA[#{id}]]>
+		</foreach>
+	</delete>
+
+	<!-- 删除,通过条件 -->
+	<delete id="deleteByCondtion" parameterType="roles" >
+		<![CDATA[DELETE FROM roles]]>
+		<include refid="QUERY_WHERE_CLAUSE"/>
+	</delete>
+
+	<!-- 修改记录通过主键 -->
+	<update id="updateByKey" parameterType="roles" >
+		<![CDATA[UPDATE roles]]>
+		<include refid="UPDATE_COLUMN_SET"/>
+		<![CDATA[WHERE id = #{id}]]>
+	</update>
+
+	<!-- 查询,通过主键IN(array) -->
+	<select id="selectEntryArray" parameterType="java.lang.reflect.Array" resultType="roles">
+		<![CDATA[SELECT]]>
+		<include refid="QUERY_COLUMN_LIST"/>
+		<include refid="QUERY_FROM_TABLE"/>
+		<![CDATA[WHERE id IN]]>
+		<foreach collection="array" item="id" open="(" separator="," close=")">
+			<![CDATA[#{id}]]>
+		</foreach>
+	</select>
+
+	<!-- 查询,通过条件 -->
+	<select id="selectEntryList" parameterType="roles" resultType="roles">
+		<![CDATA[SELECT]]>
+		<include refid="QUERY_COLUMN_LIST"/>
+		<include refid="QUERY_FROM_TABLE"/>
+		<include refid="QUERY_WHERE_CLAUSE"/>
+		<include refid="QUERY_ORDER_LIMIT_CONDTION"/>
+	</select>
+
+	<!-- 总数查询,通过条件 -->
+	<select id="selectEntryListCount" parameterType="roles" resultType="int">
+		<![CDATA[SELECT COUNT(id) AS dataCount]]>
+		<include refid="QUERY_FROM_TABLE"/>
+		<include refid="QUERY_WHERE_CLAUSE"/>
+	</select>
+	
+	<!-- 其它SQL语句 -->
+	
+</mapper>
