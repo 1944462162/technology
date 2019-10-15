@@ -6,7 +6,7 @@
 
 
 
-    <import resource="classpath*:spring/spring-MVC.xml"/>
+    <!--<import resource="classpath*:spring/spring-MVC.xml"/>-->
     <import resource="classpath*:spring-service.xml"/>
 
     <!--开启注解扫描-->
