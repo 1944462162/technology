@@ -6,6 +6,7 @@ import com.imustacm.service.AgglomerationProcessService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service("agglomerationProcessService")
@@ -15,15 +16,15 @@ public class AgglomerationProcessServiceImpl implements AgglomerationProcessServ
     private AgglomerationProcessDao dao;
     @Override
     public List<AgglomerationProcess> getAllAgglomerationProcess() throws Exception {
-        List<AgglomerationProcess> result=null;
+        List<AgglomerationProcess> result= new ArrayList<>();
 
         List<AgglomerationProcess> agglomerationProcesses = dao.selectEntryList(null);
         if(agglomerationProcesses!=null && agglomerationProcesses.size()!=0  )
         {
-            for ( AgglomerationProcess agglomerationProcess :agglomerationProcesses)
+            for (AgglomerationProcess agglomerationProcess : agglomerationProcesses) {
                 result.add(agglomerationProcess);
+            }
         }
-
         return result;
     }
 

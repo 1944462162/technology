@@ -16,9 +16,6 @@ public class testService {
         StockService service = (StockService) ap.getBean("stockService");
         List<Stock> allStoch = service.getAllStoch();
         System.out.println(allStoch);
-
-
-
     }
 
     @Test
@@ -29,8 +26,6 @@ public class testService {
         List<SpareParts> allSpareParts = service.getAllSpareParts();
         System.out.println(allSpareParts);
 
-
-
     }
 
     @Test
@@ -40,9 +35,6 @@ public class testService {
         System.out.println(service);
         List<Smelt> allSmelt = service.getAllSmelt();
         System.out.println(allSmelt);
-
-
-
     }
 
     @Test
@@ -52,8 +44,6 @@ public class testService {
         System.out.println(service);
         List<SmeltingRecord> allSmeltingRecord = service.getAllSmeltingRecord();
         System.out.println(allSmeltingRecord);
-
-
 
     }
 
@@ -74,9 +64,6 @@ public class testService {
         System.out.println(service);
         List<FlourMillingProcessRecord> allFlourMillingProcessRecord = service.getAllFlourMillingProcessRecord();
         System.out.println(allFlourMillingProcessRecord);
-
-
-
     }
 
     @Test
@@ -86,8 +73,6 @@ public class testService {
         System.out.println(service);
         service.getAllBlankSize();
 
-
-
     }
 
     @Test
@@ -96,8 +81,6 @@ public class testService {
         AgglomerationProcessService service= (AgglomerationProcessService) ap.getBean("agglomerationProcessService");
         System.out.println(service);
         System.out.println(service.getAllAgglomerationProcess());
-
-
     }
 
     @Test
@@ -106,12 +89,5 @@ public class testService {
         AgglomerationProcessRecordService service= (AgglomerationProcessRecordService) ap.getBean("agglomerationProcessRecordService");
         System.out.println(service);
         System.out.println(service.getAllAgglomerationProcessRecord());
-
-
     }
-
-
-
-
-
 }

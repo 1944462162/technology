@@ -5,9 +5,6 @@
 <web-app>
   <display-name>Archetype Created Web Application</display-name>
 
-
-
-
   <!--前端控制器-->
   <servlet>
     <servlet-name>dispatcherServlet</servlet-name>
@@ -16,6 +13,7 @@
       <param-name>contextConfigLocation</param-name>
       <param-value>classpath:spring/spring-MVC.xml</param-value>
     </init-param>
+    <load-on-startup>1</load-on-startup>
   </servlet>
   <servlet-mapping>
     <servlet-name>dispatcherServlet</servlet-name>
@@ -31,4 +29,5 @@
     <param-name>contextConfigLocation</param-name>
     <param-value>classpath:spring.xml</param-value>
   </context-param>
+
 </web-app>
