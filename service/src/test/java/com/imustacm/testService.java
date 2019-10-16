@@ -1,6 +1,7 @@
 package com.imustacm;
 
 import com.imustacm.domain.Po.*;
+import com.imustacm.domain.Vo.SparePartsVo;
 import com.imustacm.domain.Vo.StockVo;
 import com.imustacm.service.*;
 import org.junit.Test;
@@ -24,7 +25,7 @@ public class testService {
         ApplicationContext ap=new ClassPathXmlApplicationContext("spring-service.xml");
         SparePartsService service = (SparePartsService) ap.getBean("sparePartsService");
         System.out.println(service);
-        List<SpareParts> allSpareParts = service.getAllSpareParts();
+        List<SparePartsVo> allSpareParts = service.getAllSpareParts();
         System.out.println(allSpareParts);
 
     }

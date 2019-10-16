@@ -2,6 +2,7 @@ package com.imustacm.controller;
 
 import com.imustacm.domain.Po.SpareParts;
 import com.imustacm.domain.RelationVo.DefaultResponseVo;
+import com.imustacm.domain.Vo.SparePartsVo;
 import com.imustacm.service.SparePartsService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -10,6 +11,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.HashMap;
 import java.util.List;
+import java.util.Objects;
 
 /**
  * Author: wangJianBo
@@ -29,16 +31,17 @@ public class SparePartsController {
     @GetMapping("/getAllSpareParts")
     public DefaultResponseVo getAllSpareParts(){
 
-        List<SpareParts> spareParts = null;
+        List<SparePartsVo> sparePartsVos = null;
         try {
-            spareParts = sparePartsService.getAllSpareParts();
+            sparePartsVos = sparePartsService.getAllSpareParts();
         } catch (Exception e) {
             e.printStackTrace();
         }
 
         DefaultResponseVo defaultResponseVo = new DefaultResponseVo();
-        if(spareParts != null && spareParts.size() != 0){
-            HashMap<String, Object> data = new HashMap<String, Object>();
+        if(sparePartsVos != null && sparePartsVos.size() != 0){
+            HashMap<String, Object> data = new HashMap<>();
+            data.put("spareParts",sparePartsVos);
             defaultResponseVo.setData(data);
             defaultResponseVo.setCode(200);
             defaultResponseVo.setMsg("ok");
@@ -52,10 +55,10 @@ public class SparePartsController {
 
     @ApiOperation(value = "增加备料库存")
     @GetMapping("/insertSpareParts")
-    public DefaultResponseVo insertSpareParts(@RequestBody SpareParts spareParts) {
+    public DefaultResponseVo insertSpareParts(@RequestBody SparePartsVo sparePartsVo) {
         DefaultResponseVo defaultResponseVo = null;
         try {
-            int code = sparePartsService.insertSpareParts(spareParts);
+            int code = sparePartsService.insertSpareParts(sparePartsVo);
 
             if (code == 1){
                 defaultResponseVo = new DefaultResponseVo(200,"ok");
@@ -89,10 +92,10 @@ public class SparePartsController {
 
     @ApiOperation(value = "更改原料库存", notes = "根据id更改")
     @GetMapping("/updateSpareParts")
-    public DefaultResponseVo updateSpareParts(@RequestBody SpareParts spareParts){
+    public DefaultResponseVo updateSpareParts(@RequestBody SparePartsVo sparePartsVo){
         DefaultResponseVo defaultResponseVo = null;
         try {
-            int code = sparePartsService.updateSpareParts(spareParts);
+            int code = sparePartsService.updateSpareParts(sparePartsVo);
             if(code == 1){
                 defaultResponseVo = new DefaultResponseVo(200,"ok");
             }
@@ -107,18 +110,14 @@ public class SparePartsController {
 
     @ApiOperation(value = "获取单备料",notes = "根据id查找")
     @GetMapping("/getSparePartsById/{index}")
-    public DefaultResponseVo getSparePartsById(@PathVariable("index") int index){
-        DefaultResponseVo defaultResponseVo = null;
-        try {
-            SpareParts spareParts = sparePartsService.getOneSpareParts(index);
-            defaultResponseVo.setCode(200);
-            defaultResponseVo.setMsg("ok");
-            HashMap<String,Object> map = new HashMap<String, Object>();
-            map.put("spareParts",spareParts);
-            defaultResponseVo.setData(map);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+    public DefaultResponseVo getSparePartsById(@PathVariable("index") int index) throws Exception {
+       SparePartsVo sparePartsVo = sparePartsService.getOneSpareParts(index);
+       DefaultResponseVo defaultResponseVo = new DefaultResponseVo();
+       defaultResponseVo.setCode(200);
+       defaultResponseVo.setMsg("ok");
+       HashMap<String,Object> map = new HashMap<>();
+       map.put("spareParts",sparePartsVo);
+       defaultResponseVo.setData(map);
         return defaultResponseVo;
     }
 }
