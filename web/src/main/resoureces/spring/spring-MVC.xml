@@ -8,6 +8,9 @@
         http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd
         http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
 
+    <!--添加swagger配置-->
+    <bean class="springfox.documentation.swagger2.configuration.Swagger2DocumentationConfiguration" id="swagger2Config"/>
+
 
 
     <!--配置视图解析器-->
@@ -16,10 +19,13 @@
         <property name="suffix" value=".jsp"/>
     </bean>
 
+
     <!--开启注解扫描-->
     <context:component-scan base-package="com.imustacm">
         <context:include-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
     </context:component-scan>
+
+    <!--开启swagger-->
 
     <!--过滤静态资源-->
 
