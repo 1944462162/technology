@@ -1,6 +1,7 @@
 package com.imustacm;
 
 import com.imustacm.domain.Po.*;
+import com.imustacm.domain.Vo.StockVo;
 import com.imustacm.service.*;
 import org.junit.Test;
 import org.springframework.context.ApplicationContext;
@@ -14,7 +15,7 @@ public class testService {
     public void Stock_Test() throws Exception {
         ApplicationContext ap=new ClassPathXmlApplicationContext("spring-service.xml");
         StockService service = (StockService) ap.getBean("stockService");
-        List<Stock> allStoch = service.getAllStoch();
+        List<StockVo> allStoch = service.getAllStoch();
         System.out.println(allStoch);
     }
 

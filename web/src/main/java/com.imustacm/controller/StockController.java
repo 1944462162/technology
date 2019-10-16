@@ -3,6 +3,7 @@ package com.imustacm.controller;
 import com.imustacm.domain.Po.Stock;
 import com.imustacm.domain.RelationVo.DefaultResponseVo;
 
+import com.imustacm.domain.Vo.StockVo;
 import com.imustacm.service.StockService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -29,7 +30,7 @@ public class StockController {
     @GetMapping("/getAllStock")
     public DefaultResponseVo getAllStock(){
         System.out.println("hello world");
-        List<Stock> allStock = null;
+        List<StockVo> allStock = null;
         try {
             allStock = stockService.getAllStoch();
         } catch (Exception e) {
@@ -55,10 +56,10 @@ public class StockController {
 
     @ApiOperation(value = "增加原料库存")
     @GetMapping("/insertStock")
-    public DefaultResponseVo insertStock(@RequestBody Stock stock) {
+    public DefaultResponseVo insertStock(@RequestBody StockVo stockVo) {
         DefaultResponseVo defaultResponseVo = null;
         try {
-            int code = stockService.insertStoch(stock);
+            int code = stockService.insertStoch(stockVo);
 
             if (code == 1){
                 defaultResponseVo = new DefaultResponseVo(200,"ok");
@@ -92,10 +93,10 @@ public class StockController {
 
     @ApiOperation(value = "更改原料库存", notes = "根据id更改")
     @GetMapping("/updateStock")
-    public DefaultResponseVo updateStock(@RequestBody Stock stock){
+    public DefaultResponseVo updateStock(@RequestBody StockVo stockVo){
         DefaultResponseVo defaultResponseVo = null;
         try {
-            int code = stockService.updateStock(stock);
+            int code = stockService.updateStock(stockVo);
             if(code == 1){
                 defaultResponseVo = new DefaultResponseVo(200,"ok");
             }
@@ -110,18 +111,14 @@ public class StockController {
 
     @ApiOperation(value = "获取单个原料",notes = "根据id查找")
     @GetMapping("/getStockById/{index}")
-    public DefaultResponseVo getStockById(@PathVariable("index") int index){
-        DefaultResponseVo defaultResponseVo = null;
-        try {
-            Stock stock = stockService.getOneStock(index);
-            defaultResponseVo.setCode(200);
-            defaultResponseVo.setMsg("ok");
-            HashMap<String,Object> map = new HashMap<String, Object>();
-            map.put("Stock",stock);
-            defaultResponseVo.setData(map);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+    public DefaultResponseVo getStockById(@PathVariable("index") int index) throws Exception {
+        StockVo stockVo = stockService.getOneStock(index);
+        DefaultResponseVo defaultResponseVo = new DefaultResponseVo();
+        defaultResponseVo.setCode(200);
+        defaultResponseVo.setMsg("ok");
+        HashMap<String,Object> map = new HashMap<>();
+        map.put("stock",stockVo);
+        defaultResponseVo.setData(map);
         return defaultResponseVo;
     }
 }

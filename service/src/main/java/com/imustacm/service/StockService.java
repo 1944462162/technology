@@ -1,6 +1,7 @@
 package com.imustacm.service;
 
 import com.imustacm.domain.Po.Stock;
+import com.imustacm.domain.Vo.StockVo;
 
 import java.util.List;
 
@@ -12,17 +13,17 @@ import java.util.List;
 public interface StockService {
 
     //获取所有的原料库存
-    List<Stock> getAllStoch() throws Exception;
+    List<StockVo> getAllStoch() throws Exception;
 
     //增加原料库存
-    int insertStoch(Stock stock) throws Exception;
+    int insertStoch(StockVo stockVo) throws Exception;
 
     //根据ID删除原料库存
     int deleteStochById(int index) throws Exception;
 
     //更新原料库存
-    int updateStock(Stock stock) throws Exception;
+    int updateStock(StockVo stockVo) throws Exception;
 
     //根据ID获取原料库存
-    Stock getOneStock(int index) throws Exception;
+    StockVo getOneStock(int index) throws Exception;
 }

@@ -2,7 +2,9 @@ package com.imustacm.service.Impl;
 
 import com.imustacm.dao.StockDao;
 import com.imustacm.domain.Po.Stock;
+import com.imustacm.domain.Vo.StockVo;
 import com.imustacm.service.StockService;
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -22,22 +24,26 @@ public class StockServiceImpl implements StockService {
     StockDao stockDao;
 
     //获取所有的原料库存
-    public List<Stock> getAllStoch() throws Exception {
-        List<Stock> result = new ArrayList<Stock>();
+    public List<StockVo> getAllStoch() throws Exception {
+        List<StockVo> result = new ArrayList<>();
 
         //填入null表示查询所有
         List<Stock> stocks = stockDao.selectEntryList(null);
         if(stocks != null && stocks.size() != 0){
             for (Stock stock : stocks) {
-                result.add(stock);
+                StockVo stockVo = new StockVo();
+                BeanUtils.copyProperties(stock,stockVo);
+                result.add(stockVo);
             }
         }
         return result;
     }
 
     //插入原料库存
-    public int insertStoch(Stock stock) throws Exception {
+    public int insertStoch(StockVo stockVo) throws Exception {
 
+        Stock stock = new Stock();
+        BeanUtils.copyProperties(stockVo,stock);
         //返回值是1，表示查到有
         int isExist = stockDao.selectEntryListCount(stock);
         if (isExist == 1){
@@ -60,15 +66,16 @@ public class StockServiceImpl implements StockService {
     }
 
     //更新原料库存
-    public int updateStock(Stock stock) throws Exception {
-        Stock stock1 = new Stock();
-        stock1.setId(stock.getId());
-        Integer isExist = stockDao.selectEntryListCount(stock1);
+    public int updateStock(StockVo stockVo) throws Exception {
+        Stock stock = new Stock();
+        stock.setId(stockVo.getId());
+        Integer isExist = stockDao.selectEntryListCount(stock);
         //如果不存在返回0
         if(isExist == 0)
         {
             return 0;
         }
+        BeanUtils.copyProperties(stockVo,stock);
         // 如果存在就进行跟新
         stockDao.updateByKey(stock);
         return 1;
@@ -76,13 +83,15 @@ public class StockServiceImpl implements StockService {
 
 
     //根据Id值获取原料库存
-    public Stock getOneStock(int index) throws Exception {
+    public StockVo getOneStock(int index) throws Exception {
         Stock stock = new Stock();
         stock.setId(index);
         List<Stock> stockList = stockDao.selectEntryList(stock);
+        StockVo stockVo = new StockVo();
         if (stockList.size() != 0){
             stock = stockList.get(0);
+            BeanUtils.copyProperties(stock,stockVo);
         }
-        return stock;
+        return stockVo;
     }
 }
