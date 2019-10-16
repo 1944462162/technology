@@ -17,12 +17,12 @@ public class SparePartsServiceImpl implements SparePartsService {
 
 
     @Autowired
-    private SparePartsDao dao=null;
+    private SparePartsDao sparePartsDao=null;
 
     public List<SparePartsVo> getAllSpareParts() throws Exception {
 
         List<SparePartsVo> result= new ArrayList<>();
-        List<SpareParts> spareParts = dao.selectEntryList(null);
+        List<SpareParts> spareParts = sparePartsDao.selectEntryList(null);
         if( spareParts!=null && spareParts.size()!=0 )
         {
             for (SpareParts spareParts1:spareParts){
@@ -39,20 +39,20 @@ public class SparePartsServiceImpl implements SparePartsService {
         SpareParts spareParts = new SpareParts();
         BeanUtils.copyProperties(sparePartsVo,spareParts);
         //返回值是1，表示查到有
-        int isExist = dao.selectEntryListCount(spareParts);
+        int isExist = sparePartsDao.selectEntryListCount(spareParts);
         if (isExist == 1){
             return 0;
         }
-        dao.insertEntry(spareParts);
+        sparePartsDao.insertEntry(spareParts);
         return 1;
     }
 
     public int deleteSparePartsById(int index) throws Exception {
         SpareParts stock = new SpareParts();
         stock.setId(index);
-        Integer isExist = dao.selectEntryListCount(stock);
+        Integer isExist = sparePartsDao.selectEntryListCount(stock);
         if(isExist == 1){
-            dao.deleteByKey(stock);
+            sparePartsDao.deleteByKey(stock);
             return 1;
         }
         return 0;
@@ -61,21 +61,21 @@ public class SparePartsServiceImpl implements SparePartsService {
     public int updateSpareParts(SparePartsVo sparePartsVo) throws Exception {
         SpareParts spareParts1 = new SpareParts();
         spareParts1.setId(sparePartsVo.getId());
-        Integer isExist = dao.selectEntryListCount(spareParts1);
+        Integer isExist = sparePartsDao.selectEntryListCount(spareParts1);
         //如果不存在返回0
         if(isExist == 0)
         {
             return 0;
         }
         // 如果存在就进行跟新
-        dao.updateByKey(spareParts1);
+        sparePartsDao.updateByKey(spareParts1);
         return 1;
     }
 
     public SparePartsVo getOneSpareParts(int index) throws Exception {
         SpareParts spareParts = new SpareParts();
         spareParts.setId(index);
-        List<SpareParts> sparePartsList = dao.selectEntryList(spareParts);
+        List<SpareParts> sparePartsList = sparePartsDao.selectEntryList(spareParts);
         SparePartsVo sparePartsVo = new SparePartsVo();
         if (sparePartsList.size() != 0){
             spareParts = sparePartsList.get(0);
