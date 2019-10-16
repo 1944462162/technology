@@ -1,7 +1,7 @@
 package com.imustacm.service.Impl;
 
 import com.imustacm.dao.SmeltingRecordDao;
-import com.imustacm.domain.SmeltingRecord;
+import com.imustacm.domain.Po.SmeltingRecord;
 import com.imustacm.service.SmeltingRecordService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

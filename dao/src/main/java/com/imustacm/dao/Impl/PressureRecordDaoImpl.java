@@ -6,7 +6,7 @@ package com.imustacm.dao.Impl;
 
 import com.imustacm.dao.PressureRecordDao;
 import com.imustacm.dao.base.BaseDaoImpl;
-import com.imustacm.domain.PressureRecord;
+import com.imustacm.domain.Po.PressureRecord;
 import org.springframework.stereotype.Repository;
 
 

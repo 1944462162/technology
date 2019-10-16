@@ -6,7 +6,7 @@ package com.imustacm.dao.Impl;
 
 import com.imustacm.dao.FlourMillingProcessRecordDao;
 import com.imustacm.dao.base.BaseDaoImpl;
-import com.imustacm.domain.FlourMillingProcessRecord;
+import com.imustacm.domain.Po.FlourMillingProcessRecord;
 import org.springframework.stereotype.Repository;
 
 

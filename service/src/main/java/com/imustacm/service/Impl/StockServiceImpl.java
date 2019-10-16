@@ -1,7 +1,7 @@
 package com.imustacm.service.Impl;
 
 import com.imustacm.dao.StockDao;
-import com.imustacm.domain.Stock;
+import com.imustacm.domain.Po.Stock;
 import com.imustacm.service.StockService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

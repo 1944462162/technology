@@ -1,7 +1,7 @@
 package com.imustacm.service.Impl;
 
 import com.imustacm.dao.FlourMillingProcessRecordDao;
-import com.imustacm.domain.FlourMillingProcessRecord;
+import com.imustacm.domain.Po.FlourMillingProcessRecord;
 import com.imustacm.service.FlourMillingProcessRecordService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

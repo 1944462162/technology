@@ -1,13 +1,12 @@
 package com.imustacm.controller;
 
-import com.imustacm.domain.AgglomerationProcess;
-import com.imustacm.domain.Vo.DefaultResponseVo;
+import com.imustacm.domain.Po.AgglomerationProcess;
+import com.imustacm.domain.RelationVo.DefaultResponseVo;
 import com.imustacm.service.AgglomerationProcessService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
 import java.util.HashMap;
 import java.util.List;

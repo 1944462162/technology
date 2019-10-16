@@ -1,4 +1,4 @@
-package com.imustacm.domain.Vo;
+package com.imustacm.domain.RelationVo;
 
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;

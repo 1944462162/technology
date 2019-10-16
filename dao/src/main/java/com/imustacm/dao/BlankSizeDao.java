@@ -5,7 +5,7 @@
 package com.imustacm.dao;
 
 import com.imustacm.dao.base.BaseDao;
-import com.imustacm.domain.BlankSize;
+import com.imustacm.domain.Po.BlankSize;
 
 
 /**

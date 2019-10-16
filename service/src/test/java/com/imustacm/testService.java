@@ -1,6 +1,6 @@
 package com.imustacm;
 
-import com.imustacm.domain.*;
+import com.imustacm.domain.Po.*;
 import com.imustacm.service.*;
 import org.junit.Test;
 import org.springframework.context.ApplicationContext;

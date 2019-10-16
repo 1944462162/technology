@@ -6,7 +6,7 @@ package com.imustacm.dao.Impl;
 
 import com.imustacm.dao.SmeltingRecordDao;
 import com.imustacm.dao.base.BaseDaoImpl;
-import com.imustacm.domain.SmeltingRecord;
+import com.imustacm.domain.Po.SmeltingRecord;
 import org.springframework.stereotype.Repository;
 
 

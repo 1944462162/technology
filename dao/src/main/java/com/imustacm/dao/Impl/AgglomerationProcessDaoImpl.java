@@ -6,7 +6,7 @@ package com.imustacm.dao.Impl;
 
 import com.imustacm.dao.AgglomerationProcessDao;
 import com.imustacm.dao.base.BaseDaoImpl;
-import com.imustacm.domain.AgglomerationProcess;
+import com.imustacm.domain.Po.AgglomerationProcess;
 import org.springframework.stereotype.Repository;
 
 

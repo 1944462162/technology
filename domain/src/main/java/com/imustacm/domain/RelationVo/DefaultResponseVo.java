@@ -1,4 +1,4 @@
-package com.imustacm.domain.Vo;
+package com.imustacm.domain.RelationVo;
 
 import lombok.Data;
 

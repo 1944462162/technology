@@ -1,7 +1,7 @@
 package com.imustacm.service.Impl;
 
 import com.imustacm.dao.SparePartsDao;
-import com.imustacm.domain.SpareParts;
+import com.imustacm.domain.Po.SpareParts;
 import com.imustacm.service.SparePartsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

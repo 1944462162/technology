@@ -1,6 +1,6 @@
 package com.imustacm.service;
 
-import com.imustacm.domain.Smelt;
+import com.imustacm.domain.Po.Smelt;
 
 import java.util.List;
 

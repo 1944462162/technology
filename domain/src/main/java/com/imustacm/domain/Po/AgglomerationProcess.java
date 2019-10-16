@@ -2,7 +2,7 @@
  * Copyright (c) 2019 www.jd.com All rights reserved.
  * 本软件源代码版权归京东成都研究院所有
  */
-package com.imustacm.domain;
+package com.imustacm.domain.Po;
 
 import com.imustacm.domain.base.BaseDomain;
 

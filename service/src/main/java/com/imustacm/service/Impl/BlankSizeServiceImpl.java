@@ -1,7 +1,7 @@
 package com.imustacm.service.Impl;
 
 import com.imustacm.dao.BlankSizeDao;
-import com.imustacm.domain.BlankSize;
+import com.imustacm.domain.Po.BlankSize;
 import com.imustacm.service.BlankSizeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

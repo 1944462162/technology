@@ -2,7 +2,7 @@ package com.imustacm.service.Impl;
 
 
 import com.imustacm.dao.PressureRecordDao;
-import com.imustacm.domain.PressureRecord;
+import com.imustacm.domain.Po.PressureRecord;
 import com.imustacm.service.PressureRecordService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

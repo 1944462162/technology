@@ -1,7 +1,7 @@
 package com.imustacm.service;
 
 
-import com.imustacm.domain.BlankSize;
+import com.imustacm.domain.Po.BlankSize;
 
 import java.util.List;
 

@@ -1,7 +1,7 @@
 package com.imustacm.service.Impl;
 
 import com.imustacm.dao.AgglomerationProcessDao;
-import com.imustacm.domain.AgglomerationProcess;
+import com.imustacm.domain.Po.AgglomerationProcess;
 import com.imustacm.service.AgglomerationProcessService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

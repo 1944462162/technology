@@ -1,8 +1,8 @@
 package com.imustacm.controller;
 
 
-import com.imustacm.domain.PressureRecord;
-import com.imustacm.domain.Vo.DefaultResponseVo;
+import com.imustacm.domain.Po.PressureRecord;
+import com.imustacm.domain.RelationVo.DefaultResponseVo;
 import com.imustacm.service.PressureRecordService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;

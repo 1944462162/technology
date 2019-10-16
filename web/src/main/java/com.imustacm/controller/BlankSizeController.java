@@ -1,7 +1,7 @@
 package com.imustacm.controller;
 
-import com.imustacm.domain.BlankSize;
-import com.imustacm.domain.Vo.DefaultResponseVo;
+import com.imustacm.domain.Po.BlankSize;
+import com.imustacm.domain.RelationVo.DefaultResponseVo;
 import com.imustacm.service.BlankSizeService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;

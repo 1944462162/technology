@@ -1,7 +1,7 @@
 package com.imustacm.service.Impl;
 
 import com.imustacm.dao.SmeltDao;
-import com.imustacm.domain.Smelt;
+import com.imustacm.domain.Po.Smelt;
 import com.imustacm.service.SmeltService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

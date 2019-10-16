@@ -6,7 +6,7 @@ package com.imustacm.dao.Impl;
 
 import com.imustacm.dao.RolesDao;
 import com.imustacm.dao.base.BaseDaoImpl;
-import com.imustacm.domain.Roles;
+import com.imustacm.domain.Po.Roles;
 import org.springframework.stereotype.Repository;
 
 /**

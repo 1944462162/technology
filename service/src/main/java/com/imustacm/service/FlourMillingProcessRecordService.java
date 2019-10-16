@@ -1,6 +1,6 @@
 package com.imustacm.service;
 
-import com.imustacm.domain.FlourMillingProcessRecord;
+import com.imustacm.domain.Po.FlourMillingProcessRecord;
 
 import java.util.List;
 

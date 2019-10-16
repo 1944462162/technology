@@ -1,6 +1,6 @@
 package com.imustacm.service;
 
-import com.imustacm.domain.PressureRecord;
+import com.imustacm.domain.Po.PressureRecord;
 
 import java.util.List;
 

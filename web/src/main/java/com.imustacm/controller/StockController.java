@@ -1,7 +1,7 @@
 package com.imustacm.controller;
 
-import com.imustacm.domain.Stock;
-import com.imustacm.domain.Vo.DefaultResponseVo;
+import com.imustacm.domain.Po.Stock;
+import com.imustacm.domain.RelationVo.DefaultResponseVo;
 
 import com.imustacm.service.StockService;
 import io.swagger.annotations.Api;

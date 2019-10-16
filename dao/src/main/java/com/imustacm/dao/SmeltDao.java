@@ -5,7 +5,7 @@
 package com.imustacm.dao;
 
 import com.imustacm.dao.base.BaseDao;
-import com.imustacm.domain.Smelt;
+import com.imustacm.domain.Po.Smelt;
 
 
 /**

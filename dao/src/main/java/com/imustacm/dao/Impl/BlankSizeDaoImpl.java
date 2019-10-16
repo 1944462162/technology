@@ -6,7 +6,7 @@ package com.imustacm.dao.Impl;
 
 import com.imustacm.dao.BlankSizeDao;
 import com.imustacm.dao.base.BaseDaoImpl;
-import com.imustacm.domain.BlankSize;
+import com.imustacm.domain.Po.BlankSize;
 import org.springframework.stereotype.Repository;
 
 

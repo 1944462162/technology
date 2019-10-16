@@ -1,6 +1,6 @@
 package com.imustacm.service;
 
-import com.imustacm.domain.Stock;
+import com.imustacm.domain.Po.Stock;
 
 import java.util.List;
 

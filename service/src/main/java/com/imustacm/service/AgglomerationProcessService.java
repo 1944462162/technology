@@ -1,6 +1,6 @@
 package com.imustacm.service;
 
-import com.imustacm.domain.AgglomerationProcess;
+import com.imustacm.domain.Po.AgglomerationProcess;
 
 import java.util.List;
 

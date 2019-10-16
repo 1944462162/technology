@@ -1,7 +1,7 @@
 package com.imustacm.controller;
 
-import com.imustacm.domain.SpareParts;
-import com.imustacm.domain.Vo.DefaultResponseVo;
+import com.imustacm.domain.Po.SpareParts;
+import com.imustacm.domain.RelationVo.DefaultResponseVo;
 import com.imustacm.service.SparePartsService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;

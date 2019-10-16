@@ -5,18 +5,18 @@
 <configuration>
     <typeAliases>
         <!--这里给实体类取别名，方便在mapper配置文件中使用-->
-        <typeAlias type="com.imustacm.domain.Stock" alias="stock"/>
-        <typeAlias type="com.imustacm.domain.AgglomerationProcess" alias="agglomerationProcess"/>
-        <typeAlias type="com.imustacm.domain.AgglomerationProcessRecord" alias="agglomerationProcessRecord"/>
-        <typeAlias type="com.imustacm.domain.Users" alias="users"/>
-        <typeAlias type="com.imustacm.domain.RolesPermission" alias="rolesPermission"/>
-        <typeAlias type="com.imustacm.domain.BlankSize" alias="blankSize"/>
-        <typeAlias type="com.imustacm.domain.FlourMillingProcessRecord" alias="flourMillingProcessRecord"/>
-        <typeAlias type="com.imustacm.domain.PressureRecord" alias="pressureRecord"/>
-        <typeAlias type="com.imustacm.domain.Roles" alias="roles"/>
-        <typeAlias type="com.imustacm.domain.Smelt" alias="smelt"/>
-        <typeAlias type="com.imustacm.domain.SpareParts" alias="spareParts"/>
-        <typeAlias type="com.imustacm.domain.SmeltingRecord" alias="smeltingRecord"/>
+        <typeAlias type="com.imustacm.domain.Po.Stock" alias="stock"/>
+        <typeAlias type="com.imustacm.domain.Po.AgglomerationProcess" alias="agglomerationProcess"/>
+        <typeAlias type="com.imustacm.domain.Po.AgglomerationProcessRecord" alias="agglomerationProcessRecord"/>
+        <typeAlias type="com.imustacm.domain.Po.Users" alias="users"/>
+        <typeAlias type="com.imustacm.domain.Po.RolesPermission" alias="rolesPermission"/>
+        <typeAlias type="com.imustacm.domain.Po.BlankSize" alias="blankSize"/>
+        <typeAlias type="com.imustacm.domain.Po.FlourMillingProcessRecord" alias="flourMillingProcessRecord"/>
+        <typeAlias type="com.imustacm.domain.Po.PressureRecord" alias="pressureRecord"/>
+        <typeAlias type="com.imustacm.domain.Po.Roles" alias="roles"/>
+        <typeAlias type="com.imustacm.domain.Po.Smelt" alias="smelt"/>
+        <typeAlias type="com.imustacm.domain.Po.SpareParts" alias="spareParts"/>
+        <typeAlias type="com.imustacm.domain.Po.SmeltingRecord" alias="smeltingRecord"/>
     </typeAliases>
 
     <!--映射文件路径-->

@@ -1,6 +1,6 @@
 package com.imustacm.service;
 
-import com.imustacm.domain.SpareParts;
+import com.imustacm.domain.Po.SpareParts;
 
 import java.util.List;
 
