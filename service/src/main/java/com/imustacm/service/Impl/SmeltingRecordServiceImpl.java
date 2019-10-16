@@ -1,11 +1,16 @@
 package com.imustacm.service.Impl;
 
+import com.fasterxml.jackson.databind.util.BeanUtil;
 import com.imustacm.dao.SmeltingRecordDao;
 import com.imustacm.domain.Po.SmeltingRecord;
+import com.imustacm.domain.Vo.SmeltingRecordVo;
 import com.imustacm.service.SmeltingRecordService;
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -14,31 +19,35 @@ public class SmeltingRecordServiceImpl implements SmeltingRecordService {
 
 
     @Autowired
-    SmeltingRecordDao dao;
+    SmeltingRecordDao smeltingRecordDao;
 
 
     @Override
-    public List<SmeltingRecord> getAllSmeltingRecord() throws Exception {
+    public List<SmeltingRecordVo> getAllSmeltingRecord() throws Exception {
 
-        List<SmeltingRecord> result=null;
+        List<SmeltingRecordVo> result= new ArrayList<>();
 
-        List<SmeltingRecord> spareParts = dao.selectEntryList(null);
-        if( spareParts!=null  && spareParts.size()!=0  )
+        List<SmeltingRecord> spareParts = smeltingRecordDao.selectEntryList(null);
+        if( spareParts!=null  && spareParts.size()!=0)
         {
-            for (SmeltingRecord SmeltingRecord1:spareParts)
-                result.add(SmeltingRecord1);
+            for (SmeltingRecord SmeltingRecord1:spareParts){
+                SmeltingRecordVo smeltingRecordVo = new SmeltingRecordVo();
+                BeanUtils.copyProperties(SmeltingRecord1,smeltingRecordVo);
+                result.add(smeltingRecordVo);
+            }
         }
-
         return result;
     }
 
     @Override
-    public int insertSmeltingRecord(SmeltingRecord smeltingRecord) throws Exception {
-        int isExist = dao.selectEntryListCount(smeltingRecord);
+    public int insertSmeltingRecord(SmeltingRecordVo smeltingRecordVo) throws Exception {
+        SmeltingRecord smeltingRecord = new SmeltingRecord();
+        BeanUtils.copyProperties(smeltingRecordVo,smeltingRecord);
+        int isExist = smeltingRecordDao.selectEntryListCount(smeltingRecord);
         if (isExist == 1){
             return 0;
         }
-        dao.insertEntry(smeltingRecord);
+        smeltingRecordDao.insertEntry(smeltingRecord);
         return 1;
     }
 
@@ -46,37 +55,40 @@ public class SmeltingRecordServiceImpl implements SmeltingRecordService {
     public int deleteSmeltingRecordById(int index) throws Exception {
         SmeltingRecord smeltingRecord = new SmeltingRecord();
         smeltingRecord.setId(index);
-        Integer isExist = dao.selectEntryListCount(smeltingRecord);
+        Integer isExist = smeltingRecordDao.selectEntryListCount(smeltingRecord);
         if(isExist == 1){
-            dao.deleteByKey(smeltingRecord);
+            smeltingRecordDao.deleteByKey(smeltingRecord);
             return 1;
         }
         return 0;
     }
 
     @Override
-    public int updateSmeltingRecord(SmeltingRecord smeltingRecord) throws Exception {
-        SmeltingRecord smeltingRecord1 = new SmeltingRecord();
-        smeltingRecord1.setId(smeltingRecord.getId());
-        Integer isExist = dao.selectEntryListCount(smeltingRecord1);
+    public int updateSmeltingRecord(SmeltingRecordVo smeltingRecordVo) throws Exception {
+        SmeltingRecord smeltingRecord = new SmeltingRecord();
+        smeltingRecord.setId(smeltingRecordVo.getId());
+        Integer isExist = smeltingRecordDao.selectEntryListCount(smeltingRecord);
         //如果不存在返回0
         if(isExist == 0)
         {
             return 0;
         }
+        BeanUtils.copyProperties(smeltingRecordVo,smeltingRecord);
         // 如果存在就进行跟新
-        dao.updateByKey(smeltingRecord);
+        smeltingRecordDao.updateByKey(smeltingRecord);
         return 1;
     }
 
     @Override
-    public SmeltingRecord getOneSmeltingRecord(int index) throws Exception {
+    public SmeltingRecordVo getOneSmeltingRecord(int index) throws Exception {
         SmeltingRecord smeltingRecord = new SmeltingRecord();
         smeltingRecord.setId(index);
-        List<SmeltingRecord> sparePartsList = dao.selectEntryList(smeltingRecord);
+        SmeltingRecordVo smeltingRecordVo =  new SmeltingRecordVo();
+        List<SmeltingRecord> sparePartsList = smeltingRecordDao.selectEntryList(smeltingRecord);
         if (sparePartsList.size() != 0){
             smeltingRecord = sparePartsList.get(0);
+            BeanUtils.copyProperties(smeltingRecord,smeltingRecordVo);
         }
-        return smeltingRecord;
+        return smeltingRecordVo;
     }
 }

@@ -2,6 +2,7 @@ package com.imustacm.controller;
 
 import com.imustacm.domain.Po.SmeltingRecord;
 import com.imustacm.domain.RelationVo.DefaultResponseVo;
+import com.imustacm.domain.Vo.SmeltingRecordVo;
 import com.imustacm.service.SmeltingRecordService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -17,22 +18,23 @@ import java.util.List;
 public class SmeltingRecordController {
 
     @Autowired
-    SmeltingRecordService service=null;
+    SmeltingRecordService smeltingRecordService=null;
 
     @ApiOperation(value = "获取所有的备料库存")
     @GetMapping("/getAllSmeltingRecord")
     public DefaultResponseVo getAllSmeltingRecord(){
 
-        List<SmeltingRecord> SmeltingRecords = null;
+        List<SmeltingRecordVo> SmeltingRecordsVo = null;
         try {
-            SmeltingRecords = service.getAllSmeltingRecord();
+            SmeltingRecordsVo = smeltingRecordService.getAllSmeltingRecord();
         } catch (Exception e) {
             e.printStackTrace();
         }
 
         DefaultResponseVo defaultResponseVo = new DefaultResponseVo();
-        if(SmeltingRecords != null && SmeltingRecords.size() != 0){
+        if(SmeltingRecordsVo != null && SmeltingRecordsVo.size() != 0){
             HashMap<String, Object> data = new HashMap<String, Object>();
+            data.put("SmeltingRecords",SmeltingRecordsVo);
             defaultResponseVo.setData(data);
             defaultResponseVo.setCode(200);
             defaultResponseVo.setMsg("ok");
@@ -45,10 +47,10 @@ public class SmeltingRecordController {
     }
     @ApiOperation(value = "冶金操作记录添加")
     @GetMapping("/insertSmeltingRecord")
-    public DefaultResponseVo insertSmeltingRecord(@RequestBody SmeltingRecord smeltingRecord) {
+    public DefaultResponseVo insertSmeltingRecord(@RequestBody SmeltingRecordVo smeltingRecordVo) {
         DefaultResponseVo defaultResponseVo = null;
         try {
-            int code = service.insertSmeltingRecord(smeltingRecord);
+            int code = smeltingRecordService.insertSmeltingRecord(smeltingRecordVo);
 
             if (code == 1){
                 defaultResponseVo = new DefaultResponseVo(200,"ok");
@@ -67,7 +69,7 @@ public class SmeltingRecordController {
     public DefaultResponseVo deleteSmeltingRecord(@PathVariable("index") int index){
         DefaultResponseVo defaultResponseVo = null;
         try {
-            int code = service.deleteSmeltingRecordById(index);
+            int code = smeltingRecordService.deleteSmeltingRecordById(index);
             if (code == 1){
                 defaultResponseVo = new DefaultResponseVo(200,"ok");
             }
@@ -83,10 +85,10 @@ public class SmeltingRecordController {
 
     @ApiOperation(value = "更改原料库存", notes = "根据id更改")
     @GetMapping("/updateSmeltingRecord")
-    public DefaultResponseVo updateSmeltingRecord(@RequestBody SmeltingRecord smeltingRecord){
+    public DefaultResponseVo updateSmeltingRecord(@RequestBody SmeltingRecordVo smeltingRecordVo){
         DefaultResponseVo defaultResponseVo = null;
         try {
-            int code = service.updateSmeltingRecord(smeltingRecord);
+            int code = smeltingRecordService.updateSmeltingRecord(smeltingRecordVo);
             if(code == 1){
                 defaultResponseVo = new DefaultResponseVo(200,"ok");
             }
@@ -101,18 +103,14 @@ public class SmeltingRecordController {
 
     @ApiOperation(value = "获取冶金操作记录",notes = "根据id查找")
     @GetMapping("/getSmeltingRecordsById/{index}")
-    public DefaultResponseVo getSmeltingRecordsById(@PathVariable("index") int index){
-        DefaultResponseVo defaultResponseVo = null;
-        try {
-            SmeltingRecord smeltingRecord = service.getOneSmeltingRecord(index);
-            defaultResponseVo.setCode(200);
-            defaultResponseVo.setMsg("ok");
-            HashMap<String,Object> map = new HashMap<String, Object>();
-            map.put("SmeltingRecord",smeltingRecord);
-            defaultResponseVo.setData(map);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+    public DefaultResponseVo getSmeltingRecordsById(@PathVariable("index") int index) throws Exception {
+        SmeltingRecordVo smeltingRecordVo = smeltingRecordService.getOneSmeltingRecord(index);
+        DefaultResponseVo defaultResponseVo = new DefaultResponseVo();
+        defaultResponseVo.setCode(200);
+        defaultResponseVo.setMsg("ok");
+        HashMap<String,Object> map = new HashMap<>();
+        map.put("smeltingRecord",smeltingRecordVo);
+        defaultResponseVo.setData(map);
         return defaultResponseVo;
     }
 
