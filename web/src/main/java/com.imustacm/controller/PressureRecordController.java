@@ -3,6 +3,7 @@ package com.imustacm.controller;
 
 import com.imustacm.domain.Po.PressureRecord;
 import com.imustacm.domain.RelationVo.DefaultResponseVo;
+import com.imustacm.domain.Vo.PressureRecordVo;
 import com.imustacm.service.PressureRecordService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -24,18 +25,14 @@ public class PressureRecordController {
 
     @ApiOperation(value = "获取所有的炼料库存")
     @GetMapping("/getAllPressureRecord")
-    public DefaultResponseVo getAllPressureRecord(){
+    public DefaultResponseVo getAllPressureRecord() throws Exception {
 
-        List<PressureRecord> pressureRecords = null;
-        try {
-            pressureRecords = service.getAllPressureRecord();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+        List<PressureRecordVo> pressureRecordsVo= service.getAllPressureRecord();
 
         DefaultResponseVo defaultResponseVo = new DefaultResponseVo();
-        if(pressureRecords != null && pressureRecords.size() != 0){
+        if(pressureRecordsVo != null && pressureRecordsVo.size() != 0){
             HashMap<String, Object> data = new HashMap<String, Object>();
+            data.put("pressureRecords",pressureRecordsVo);
             defaultResponseVo.setData(data);
             defaultResponseVo.setCode(200);
             defaultResponseVo.setMsg("ok");
@@ -48,10 +45,10 @@ public class PressureRecordController {
     }
     @ApiOperation(value = "增加压型库存")
     @GetMapping("/insertPressureRecord")
-    public DefaultResponseVo insertPressureRecord(@RequestBody PressureRecord pressureRecord) {
-        DefaultResponseVo defaultResponseVo = null;
+    public DefaultResponseVo insertPressureRecord(@RequestBody PressureRecordVo pressureRecordVo) {
+        DefaultResponseVo defaultResponseVo = new DefaultResponseVo();
         try {
-            int code = service.insertPressureRecord(pressureRecord);
+            int code = service.insertPressureRecord(pressureRecordVo);
 
             if (code == 1){
                 defaultResponseVo = new DefaultResponseVo(200,"ok");
@@ -84,10 +81,10 @@ public class PressureRecordController {
 
     @ApiOperation(value = "更改压型库存", notes = "根据id更改")
     @GetMapping("/updatePressureRecord")
-    public DefaultResponseVo updatePressureRecord(@RequestBody PressureRecord pressureRecord){
+    public DefaultResponseVo updatePressureRecord(@RequestBody PressureRecordVo pressureRecordVo){
         DefaultResponseVo defaultResponseVo = null;
         try {
-            int code = service.updatePressureRecord(pressureRecord);
+            int code = service.updatePressureRecord(pressureRecordVo);
             if(code == 1){
                 defaultResponseVo = new DefaultResponseVo(200,"ok");
             }
@@ -101,18 +98,14 @@ public class PressureRecordController {
     }
     @ApiOperation(value = "获取单备料",notes = "根据id查找")
     @GetMapping("/PressureRecord/{index}")
-    public DefaultResponseVo getPressureRecordId(@PathVariable("index") int index){
-        DefaultResponseVo defaultResponseVo = null;
-        try {
-            PressureRecord pressureRecord = service.getOnePressureRecord(index);
-            defaultResponseVo.setCode(200);
-            defaultResponseVo.setMsg("ok");
-            HashMap<String,Object> map = new HashMap<String, Object>();
-            map.put("pressureRecord",pressureRecord);
-            defaultResponseVo.setData(map);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+    public DefaultResponseVo getPressureRecordId(@PathVariable("index") int index) throws Exception {
+        DefaultResponseVo defaultResponseVo = new DefaultResponseVo();
+        PressureRecordVo pressureRecordVo = service.getOnePressureRecord(index);
+        defaultResponseVo.setCode(200);
+        defaultResponseVo.setMsg("ok");
+        HashMap<String,Object> map = new HashMap<>();
+        map.put("pressureRecord",pressureRecordVo);
+        defaultResponseVo.setData(map);
         return defaultResponseVo;
     }
 

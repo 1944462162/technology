@@ -53,7 +53,7 @@ public class testService {
         ApplicationContext ap =new ClassPathXmlApplicationContext("spring-service.xml");
         PressureRecordService service=(PressureRecordService)ap.getBean("pressureRecordService");
         System.out.println(service);
-        List<PressureRecord> allPressureRecord = service.getAllPressureRecord();
+        List<PressureRecordVo> allPressureRecord = service.getAllPressureRecord();
         System.out.println(allPressureRecord);
 
     }
