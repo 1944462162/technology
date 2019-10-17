@@ -1,6 +1,7 @@
 package com.imustacm;
 
 import com.imustacm.domain.Po.*;
+import com.imustacm.domain.Vo.SmeltVo;
 import com.imustacm.domain.Vo.SmeltingRecordVo;
 import com.imustacm.domain.Vo.SparePartsVo;
 import com.imustacm.domain.Vo.StockVo;
@@ -36,7 +37,7 @@ public class testService {
         ApplicationContext ap=new ClassPathXmlApplicationContext("spring-service.xml");
         SmeltService service= (SmeltService) ap.getBean("smeltService");
         System.out.println(service);
-        List<Smelt> allSmelt = service.getAllSmelt();
+        List<SmeltVo> allSmelt = service.getAllSmelt();
         System.out.println(allSmelt);
     }
 
