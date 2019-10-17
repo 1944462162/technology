@@ -1,10 +1,7 @@
 package com.imustacm;
 
 import com.imustacm.domain.Po.*;
-import com.imustacm.domain.Vo.SmeltVo;
-import com.imustacm.domain.Vo.SmeltingRecordVo;
-import com.imustacm.domain.Vo.SparePartsVo;
-import com.imustacm.domain.Vo.StockVo;
+import com.imustacm.domain.Vo.*;
 import com.imustacm.service.*;
 import org.junit.Test;
 import org.springframework.context.ApplicationContext;
@@ -66,7 +63,7 @@ public class testService {
         ApplicationContext ap =new ClassPathXmlApplicationContext("spring-service.xml");
         FlourMillingProcessRecordService service= (FlourMillingProcessRecordService) ap.getBean("flourMillingProcessRecordService");
         System.out.println(service);
-        List<FlourMillingProcessRecord> allFlourMillingProcessRecord = service.getAllFlourMillingProcessRecord();
+        List<FlourMillingProcessRecordVo> allFlourMillingProcessRecord = service.getAllFlourMillingProcessRecord();
         System.out.println(allFlourMillingProcessRecord);
     }
 
