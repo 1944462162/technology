@@ -2,10 +2,13 @@ package com.imustacm.service.Impl;
 
 import com.imustacm.dao.AgglomerationProcessRecordDao;
 import com.imustacm.domain.Po.AgglomerationProcessRecord;
+import com.imustacm.domain.Vo.AgglomerationProcessRecordVo;
 import com.imustacm.service.AgglomerationProcessRecordService;
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -18,21 +21,27 @@ public class AgglomerationProcessRecordServiceImpl implements AgglomerationProce
 
 
     @Override
-    public List<AgglomerationProcessRecord> getAllAgglomerationProcessRecord() throws Exception {
-        List<AgglomerationProcessRecord> result=null;
+    public List<AgglomerationProcessRecordVo> getAllAgglomerationProcessRecord() throws Exception {
+        List<AgglomerationProcessRecordVo> result= new ArrayList<>();
 
         List<AgglomerationProcessRecord> agglomerationProcessRecords = dao.selectEntryList(null);
-        if(agglomerationProcessRecords!=null && agglomerationProcessRecords.size()!=0  )
+        if(agglomerationProcessRecords!=null && agglomerationProcessRecords.size()!=0)
         {
-            for (AgglomerationProcessRecord agglomerationProcessRecord1:agglomerationProcessRecords)
-                result.add(agglomerationProcessRecord1);
+            for (AgglomerationProcessRecord agglomerationProcessRecord:agglomerationProcessRecords)
+            {
+                AgglomerationProcessRecordVo agglomerationProcessRecordVo = new AgglomerationProcessRecordVo();
+                BeanUtils.copyProperties(agglomerationProcessRecord,agglomerationProcessRecordVo);
+                result.add(agglomerationProcessRecordVo);
+            }
         }
 
         return result;
     }
 
     @Override
-    public int insertAgglomerationProcessRecord(AgglomerationProcessRecord agglomerationProcessRecord) throws Exception {
+    public int insertAgglomerationProcessRecord(AgglomerationProcessRecordVo agglomerationProcessRecordVo) throws Exception {
+       AgglomerationProcessRecord agglomerationProcessRecord = new AgglomerationProcessRecord();
+       BeanUtils.copyProperties(agglomerationProcessRecordVo,agglomerationProcessRecord);
         int isExist = dao.selectEntryListCount(agglomerationProcessRecord);
         if (isExist == 1){
             return 0;
@@ -54,10 +63,10 @@ public class AgglomerationProcessRecordServiceImpl implements AgglomerationProce
     }
 
     @Override
-    public int updateAgglomerationProcessRecord(AgglomerationProcessRecord agglomerationProcessRecord) throws Exception {
-        AgglomerationProcessRecord blankSize1 = new AgglomerationProcessRecord();
-        blankSize1.setId( agglomerationProcessRecord.getId());
-        Integer isExist = dao.selectEntryListCount(blankSize1);
+    public int updateAgglomerationProcessRecord(AgglomerationProcessRecordVo agglomerationProcessRecordVo) throws Exception {
+        AgglomerationProcessRecord agglomerationProcessRecord = new AgglomerationProcessRecord();
+        agglomerationProcessRecord.setId( agglomerationProcessRecordVo.getId());
+        Integer isExist = dao.selectEntryListCount(agglomerationProcessRecord);
         //如果不存在返回0
         if(isExist == 0)
         {
@@ -69,13 +78,15 @@ public class AgglomerationProcessRecordServiceImpl implements AgglomerationProce
     }
 
     @Override
-    public AgglomerationProcessRecord getOneAgglomerationProcessRecord(int index) throws Exception {
+    public AgglomerationProcessRecordVo getOneAgglomerationProcessRecord(int index) throws Exception {
         AgglomerationProcessRecord agglomerationProcessRecord = new AgglomerationProcessRecord();
+        AgglomerationProcessRecordVo agglomerationProcessRecordVo = new AgglomerationProcessRecordVo();
         agglomerationProcessRecord.setId(index);
         List<AgglomerationProcessRecord> blankSizeList = dao.selectEntryList(agglomerationProcessRecord);
         if (blankSizeList.size() != 0){
             agglomerationProcessRecord = blankSizeList.get(0);
+            BeanUtils.copyProperties(agglomerationProcessRecord,agglomerationProcessRecordVo);
         }
-        return agglomerationProcessRecord;
+        return agglomerationProcessRecordVo;
     }
 }
