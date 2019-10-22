@@ -2,20 +2,27 @@ package com.imustacm.service;
 
 
 import com.imustacm.domain.Po.BlankSize;
+import com.imustacm.domain.Vo.BlankSizeVo;
 
 import java.util.List;
 
 public interface BlankSizeService {
-    List<BlankSize> getAllBlankSize() throws Exception;
+    List<BlankSizeVo> getAllBlankSize() throws Exception;
     //增加原料库存
-    int insertBlankSize(BlankSize blankSize) throws Exception;
+    int insertBlankSize(BlankSizeVo blankSizeVo) throws Exception;
 
     //根据ID删除原料库存
     int deleteBlankSizeById(int index) throws Exception;
 
     //更新原料库存
-    int updateBlankSize(BlankSize blankSize) throws Exception;
+    int updateBlankSize(BlankSizeVo blankSizeVo) throws Exception;
 
     //根据ID获取原料库存
-    BlankSize getOneBlankSize(int index) throws Exception;
+    BlankSizeVo getOneBlankSize(int index) throws Exception;
+
+    int insertRelationPressureAndBlank(int PressureId, int... BlankId);
+
+    int updateRelationPressureAndBlank(int PressureId, int... BlankId) throws Exception;
+
+    int deleteOneRelation(int PressureId, int BlankId) throws Exception;
 }

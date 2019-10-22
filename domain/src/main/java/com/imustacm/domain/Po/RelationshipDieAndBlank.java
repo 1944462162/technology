@@ -8,7 +8,7 @@ import com.imustacm.domain.base.BaseDomain;
 /**
  * 
  * @author Lenovo
- * @since 2019-10-21 11:00:16
+ * @since 2019-10-22 15:45:08
  */
 public class RelationshipDieAndBlank extends BaseDomain {
 

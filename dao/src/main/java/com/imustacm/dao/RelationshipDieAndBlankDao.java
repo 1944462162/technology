@@ -10,7 +10,7 @@ import com.imustacm.dao.base.BaseDao;
 /**
  * RelationshipDieAndBlankDao 接口
  * @author Lenovo
- * @since 2019-10-21 11:00:16
+ * @since 2019-10-22 15:45:08
  */
 public interface RelationshipDieAndBlankDao extends BaseDao<RelationshipDieAndBlank, Long> {
     //自定义扩展

@@ -127,8 +127,20 @@ public class AgglomerationProcessServiceImpl implements AgglomerationProcessServ
             return 0;
         }
         else{
-            deleteAgglomerationProcessById(RecordId);
+            deleteRelationByRecordId(RecordId);
             insertRelationOfAgglomerationAndProcess(RecordId,processGroupId);
+            return 1;
+        }
+    }
+
+    public int deleteRelationByRecordId(int RecordId) throws Exception {
+        if(RecordId == 0){
+            return 0;
+        }
+        else{
+            RelationshipAgglomerationProcess relationshipAgglomerationProcess = new RelationshipAgglomerationProcess();
+            relationshipAgglomerationProcess.setRecordId(RecordId);
+            relationshipAgglomerationProcessDao.deleteByKey(relationshipAgglomerationProcess);
             return 1;
         }
     }
