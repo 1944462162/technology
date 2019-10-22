@@ -54,7 +54,7 @@ public class SparePartsController {
     }
 
     @ApiOperation(value = "增加备料库存")
-    @GetMapping("/insertSpareParts")
+    @PostMapping("/insertSpareParts")
     public DefaultResponseVo insertSpareParts(@RequestBody SparePartsVo sparePartsVo) {
         DefaultResponseVo defaultResponseVo = null;
         try {
@@ -73,7 +73,7 @@ public class SparePartsController {
     }
 
     @ApiOperation(value = "删除原料库存", notes = "根据id")
-    @GetMapping("/deleteSpareParts/{index}")
+    @DeleteMapping("/deleteSpareParts/{index}")
     public DefaultResponseVo deleteSpareParts(@PathVariable("index") int index){
         DefaultResponseVo defaultResponseVo = null;
         try {
@@ -91,7 +91,7 @@ public class SparePartsController {
     }
 
     @ApiOperation(value = "更改原料库存", notes = "根据id更改")
-    @GetMapping("/updateSpareParts")
+    @PutMapping("/updateSpareParts")
     public DefaultResponseVo updateSpareParts(@RequestBody SparePartsVo sparePartsVo){
         DefaultResponseVo defaultResponseVo = null;
         try {

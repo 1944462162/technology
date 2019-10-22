@@ -4,10 +4,10 @@
  */
 package com.imustacm.dao.Impl;
 
-import org.springframework.stereotype.Repository;
-import com.imustacm.domain.RelationshipDieAndBlank;
-import com.imustacm.dao.base.BaseDaoImpl;
 import com.imustacm.dao.RelationshipDieAndBlankDao;
+import org.springframework.stereotype.Repository;
+import com.imustacm.domain.Po.RelationshipDieAndBlank;
+import com.imustacm.dao.base.BaseDaoImpl;
 
 /**
  * RelationshipDieAndBlankDao 实现类

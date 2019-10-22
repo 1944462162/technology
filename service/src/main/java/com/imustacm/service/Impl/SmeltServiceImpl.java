@@ -44,8 +44,7 @@ public class SmeltServiceImpl implements SmeltService {
         if (isExist == 1){
             return 0;
         }
-        dao.insertEntry(smelt);
-        return 1;
+        return dao.insertEntry(smelt);
     }
 
     @Override
@@ -71,6 +70,7 @@ public class SmeltServiceImpl implements SmeltService {
             return 0;
         }
         // 如果存在就进行跟新
+        BeanUtils.copyProperties(smeltVo,smelt1);
         dao.updateByKey(smelt1);
         return 1;
     }

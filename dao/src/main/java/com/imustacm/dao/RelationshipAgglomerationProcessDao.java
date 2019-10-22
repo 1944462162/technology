@@ -4,7 +4,7 @@
  */
 package com.imustacm.dao;
 
-import com.imustacm.domain.RelationshipAgglomerationProcess;
+import com.imustacm.domain.Po.RelationshipAgglomerationProcess;
 import com.imustacm.dao.base.BaseDao;
 
 /**

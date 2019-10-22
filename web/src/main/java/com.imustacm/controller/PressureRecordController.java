@@ -44,7 +44,7 @@ public class PressureRecordController {
         return defaultResponseVo;
     }
     @ApiOperation(value = "增加压型库存")
-    @GetMapping("/insertPressureRecord")
+    @PostMapping("/insertPressureRecord")
     public DefaultResponseVo insertPressureRecord(@RequestBody PressureRecordVo pressureRecordVo) {
         DefaultResponseVo defaultResponseVo = new DefaultResponseVo();
         try {
@@ -62,7 +62,7 @@ public class PressureRecordController {
         return  defaultResponseVo;
     }
     @ApiOperation(value = "删除原料库存", notes = "根据id")
-    @GetMapping("/deletePressureRecord/{index}")
+    @DeleteMapping("/deletePressureRecord/{index}")
     public DefaultResponseVo deletePressureRecord(@PathVariable("index") int index){
         DefaultResponseVo defaultResponseVo = null;
         try {
@@ -80,7 +80,7 @@ public class PressureRecordController {
     }
 
     @ApiOperation(value = "更改压型库存", notes = "根据id更改")
-    @GetMapping("/updatePressureRecord")
+    @PutMapping("/updatePressureRecord")
     public DefaultResponseVo updatePressureRecord(@RequestBody PressureRecordVo pressureRecordVo){
         DefaultResponseVo defaultResponseVo = null;
         try {

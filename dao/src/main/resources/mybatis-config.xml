@@ -17,6 +17,8 @@
         <typeAlias type="com.imustacm.domain.Po.Smelt" alias="smelt"/>
         <typeAlias type="com.imustacm.domain.Po.SpareParts" alias="spareParts"/>
         <typeAlias type="com.imustacm.domain.Po.SmeltingRecord" alias="smeltingRecord"/>
+        <typeAlias type="com.imustacm.domain.Po.RelationshipAgglomerationProcess" alias="relationshipAgglomerationProcess"/>
+        <typeAlias type="com.imustacm.domain.Po.RelationshipDieAndBlank" alias="relationshipDieAndBlank"/>
     </typeAliases>
 
     <!--映射文件路径-->

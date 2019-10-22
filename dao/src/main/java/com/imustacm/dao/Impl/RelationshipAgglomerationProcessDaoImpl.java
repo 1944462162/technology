@@ -4,10 +4,10 @@
  */
 package com.imustacm.dao.Impl;
 
-import org.springframework.stereotype.Repository;
-import com.imustacm.domain.RelationshipAgglomerationProcess;
-import com.imustacm.dao.base.BaseDaoImpl;
 import com.imustacm.dao.RelationshipAgglomerationProcessDao;
+import org.springframework.stereotype.Repository;
+import com.imustacm.domain.Po.RelationshipAgglomerationProcess;
+import com.imustacm.dao.base.BaseDaoImpl;
 
 /**
  * RelationshipAgglomerationProcessDao 实现类

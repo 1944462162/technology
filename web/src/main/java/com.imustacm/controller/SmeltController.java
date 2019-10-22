@@ -46,7 +46,7 @@ public class SmeltController {
     }
 
     @ApiOperation("增加冶炼信息")
-    @GetMapping("/insertSmelt")
+    @PostMapping("/insertSmelt")
     public DefaultResponseVo insertSmelt(@RequestBody SmeltVo smeltVo) throws Exception {
         DefaultResponseVo defaultResponseVo = new DefaultResponseVo();
         int code = smeltService.insertSmelt(smeltVo);
@@ -62,7 +62,7 @@ public class SmeltController {
     }
 
     @ApiOperation("删除冶炼信息根据id")
-    @GetMapping("/deleteSmeltById/{index}")
+    @DeleteMapping("/deleteSmeltById/{index}")
     public DefaultResponseVo deleteSmeltById(@PathVariable("index") int index) throws Exception {
         DefaultResponseVo defaultResponseVo = new DefaultResponseVo();
         int code = smeltService.deleteSmeltById(index);
@@ -77,7 +77,7 @@ public class SmeltController {
         return defaultResponseVo;
     }
     @ApiOperation("更新冶炼信息")
-    @GetMapping("/updateSmelt")
+    @PutMapping("/updateSmelt")
     public DefaultResponseVo updateSmelt(@RequestBody SmeltVo smeltVo) throws Exception {
         DefaultResponseVo defaultResponseVo = new DefaultResponseVo();
         int code = smeltService.updateSmelt(smeltVo);

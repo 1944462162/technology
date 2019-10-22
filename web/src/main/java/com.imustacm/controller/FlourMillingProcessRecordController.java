@@ -42,7 +42,7 @@ public class FlourMillingProcessRecordController {
     }
 
     @ApiOperation(value = "增加制粉库存")
-    @GetMapping("/insertFlourMillingProcessRecords")
+    @PostMapping("/insertFlourMillingProcessRecords")
     public DefaultResponseVo insertFlourMillingProcessRecords(@RequestBody FlourMillingProcessRecordVo flourMillingProcessRecordsVo) {
         DefaultResponseVo defaultResponseVo = null;
         try {
@@ -60,7 +60,7 @@ public class FlourMillingProcessRecordController {
         return  defaultResponseVo;
     }
     @ApiOperation(value = "删除原料库存", notes = "根据id")
-    @GetMapping("/deleteFlourMillingProcessRecords/{index}")
+    @DeleteMapping("/deleteFlourMillingProcessRecords/{index}")
     public DefaultResponseVo deleteFlourMillingProcessRecords(@PathVariable("index") int index){
         DefaultResponseVo defaultResponseVo = null;
         try {
@@ -78,7 +78,7 @@ public class FlourMillingProcessRecordController {
     }
 
     @ApiOperation(value = "更改制粉记录", notes = "根据id更改")
-    @GetMapping("/updateFlourMillingProcessRecord")
+    @PutMapping("/updateFlourMillingProcessRecord")
     public DefaultResponseVo updateFlourMillingProcessRecord(@RequestBody FlourMillingProcessRecordVo pressureRecordVo){
         DefaultResponseVo defaultResponseVo = null;
         try {

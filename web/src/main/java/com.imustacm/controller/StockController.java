@@ -32,7 +32,7 @@ public class StockController {
         System.out.println("hello world");
         List<StockVo> allStock = null;
         try {
-            allStock = stockService.getAllStoch();
+            allStock = stockService.getAllStock();
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -55,11 +55,11 @@ public class StockController {
     }
 
     @ApiOperation(value = "增加原料库存")
-    @GetMapping("/insertStock")
+    @PostMapping("/insertStock")
     public DefaultResponseVo insertStock(@RequestBody StockVo stockVo) {
-        DefaultResponseVo defaultResponseVo = null;
+        DefaultResponseVo defaultResponseVo = new DefaultResponseVo();
         try {
-            int code = stockService.insertStoch(stockVo);
+            int code = stockService.insertStock(stockVo);
 
             if (code == 1){
                 defaultResponseVo = new DefaultResponseVo(200,"ok");
@@ -74,11 +74,11 @@ public class StockController {
     }
 
     @ApiOperation(value = "删除原料库存", notes = "根据id")
-    @GetMapping("/deleteStock/{index}")
+    @DeleteMapping("/deleteStock/{index}")
     public DefaultResponseVo deleteStock(@PathVariable("index") int index){
         DefaultResponseVo defaultResponseVo = null;
         try {
-            int code = stockService.deleteStochById(index);
+            int code = stockService.deleteStockById(index);
             if (code == 1){
                 defaultResponseVo = new DefaultResponseVo(200,"ok");
             }
@@ -92,7 +92,7 @@ public class StockController {
     }
 
     @ApiOperation(value = "更改原料库存", notes = "根据id更改")
-    @GetMapping("/updateStock")
+    @PutMapping("/updateStock")
     public DefaultResponseVo updateStock(@RequestBody StockVo stockVo){
         DefaultResponseVo defaultResponseVo = null;
         try {

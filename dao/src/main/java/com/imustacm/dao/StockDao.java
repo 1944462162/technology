@@ -4,14 +4,13 @@
  */
 package com.imustacm.dao;
 
-import com.imustacm.dao.base.BaseDao;
 import com.imustacm.domain.Po.Stock;
-
+import com.imustacm.dao.base.BaseDao;
 
 /**
  * StockDao 接口
  * @author Lenovo
- * @since 2019-09-28 20:19:30
+ * @since 2019-10-21 21:18:29
  */
 public interface StockDao extends BaseDao<Stock, Long> {
     //自定义扩展

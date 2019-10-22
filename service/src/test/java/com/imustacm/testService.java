@@ -15,7 +15,7 @@ public class testService {
     public void Stock_Test() throws Exception {
         ApplicationContext ap=new ClassPathXmlApplicationContext("spring-service.xml");
         StockService service = (StockService) ap.getBean("stockService");
-        List<StockVo> allStoch = service.getAllStoch();
+        List<StockVo> allStoch = service.getAllStock();
         System.out.println(allStoch);
     }
 

@@ -73,6 +73,7 @@ public class AgglomerationProcessRecordServiceImpl implements AgglomerationProce
             return 0;
         }
         // 如果存在就进行跟新
+        BeanUtils.copyProperties(agglomerationProcessRecordVo,agglomerationProcessRecord);
         dao.updateByKey(agglomerationProcessRecord);
         return 1;
     }

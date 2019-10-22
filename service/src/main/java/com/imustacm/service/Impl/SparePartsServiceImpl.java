@@ -68,6 +68,7 @@ public class SparePartsServiceImpl implements SparePartsService {
             return 0;
         }
         // 如果存在就进行跟新
+        BeanUtils.copyProperties(sparePartsVo,spareParts1);
         sparePartsDao.updateByKey(spareParts1);
         return 1;
     }

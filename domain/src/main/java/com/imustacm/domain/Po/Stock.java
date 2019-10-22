@@ -4,18 +4,17 @@
  */
 package com.imustacm.domain.Po;
 
-import com.imustacm.domain.base.BaseDomain;
-
 import java.util.Date;
+import com.imustacm.domain.base.BaseDomain;
 
 /**
  * 
  * @author Lenovo
- * @since 2019-09-28 20:19:30
+ * @since 2019-10-21 21:18:29
  */
 public class Stock extends BaseDomain {
 
-	private static final long serialVersionUID = 8975113928L;
+	private static final long serialVersionUID = 9637600849L;
 
 	public Stock() {
 		//默认无参构造方法
@@ -23,7 +22,7 @@ public class Stock extends BaseDomain {
 	private Integer id;
 
 	// max length: 80
-	private String name;
+	private String stockName;
 
 	private String company;
 
@@ -44,11 +43,11 @@ public class Stock extends BaseDomain {
 		this.id = id;
 	}
 	
-	public String getName() {
-		return this.name;
+	public String getStockName() {
+		return this.stockName;
 	}
-    public void setName(String name) {
-		this.name = name;
+    public void setStockName(String stockName) {
+		this.stockName = stockName;
 	}
 	
 	public String getCompany() {

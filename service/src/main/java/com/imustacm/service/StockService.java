@@ -13,13 +13,13 @@ import java.util.List;
 public interface StockService {
 
     //获取所有的原料库存
-    List<StockVo> getAllStoch() throws Exception;
+    List<StockVo> getAllStock() throws Exception;
 
     //增加原料库存
-    int insertStoch(StockVo stockVo) throws Exception;
+    int insertStock(StockVo stockVo) throws Exception;
 
     //根据ID删除原料库存
-    int deleteStochById(int index) throws Exception;
+    int deleteStockById(int index) throws Exception;
 
     //更新原料库存
     int updateStock(StockVo stockVo) throws Exception;

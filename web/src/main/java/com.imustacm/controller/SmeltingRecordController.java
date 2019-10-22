@@ -46,7 +46,7 @@ public class SmeltingRecordController {
         return defaultResponseVo;
     }
     @ApiOperation(value = "冶金操作记录添加")
-    @GetMapping("/insertSmeltingRecord")
+    @PostMapping("/insertSmeltingRecord")
     public DefaultResponseVo insertSmeltingRecord(@RequestBody SmeltingRecordVo smeltingRecordVo) {
         DefaultResponseVo defaultResponseVo = null;
         try {
@@ -65,7 +65,7 @@ public class SmeltingRecordController {
     }
 
     @ApiOperation(value = "删除冶金操作记录", notes = "根据id")
-    @GetMapping("/deleteSmeltingRecord/{index}")
+    @DeleteMapping("/deleteSmeltingRecord/{index}")
     public DefaultResponseVo deleteSmeltingRecord(@PathVariable("index") int index){
         DefaultResponseVo defaultResponseVo = null;
         try {
@@ -84,7 +84,7 @@ public class SmeltingRecordController {
 
 
     @ApiOperation(value = "更改原料库存", notes = "根据id更改")
-    @GetMapping("/updateSmeltingRecord")
+    @PutMapping("/updateSmeltingRecord")
     public DefaultResponseVo updateSmeltingRecord(@RequestBody SmeltingRecordVo smeltingRecordVo){
         DefaultResponseVo defaultResponseVo = null;
         try {

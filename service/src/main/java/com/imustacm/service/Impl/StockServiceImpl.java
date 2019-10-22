@@ -1,6 +1,7 @@
 package com.imustacm.service.Impl;
 
 import com.imustacm.dao.StockDao;
+
 import com.imustacm.domain.Po.Stock;
 import com.imustacm.domain.Vo.StockVo;
 import com.imustacm.service.StockService;
@@ -24,7 +25,7 @@ public class StockServiceImpl implements StockService {
     StockDao stockDao;
 
     //获取所有的原料库存
-    public List<StockVo> getAllStoch() throws Exception {
+    public List<StockVo> getAllStock() throws Exception {
         List<StockVo> result = new ArrayList<>();
 
         //填入null表示查询所有
@@ -40,21 +41,19 @@ public class StockServiceImpl implements StockService {
     }
 
     //插入原料库存
-    public int insertStoch(StockVo stockVo) throws Exception {
+    public int insertStock(StockVo stockVo) throws Exception {
 
         Stock stock = new Stock();
         BeanUtils.copyProperties(stockVo,stock);
-        //返回值是1，表示查到有
         int isExist = stockDao.selectEntryListCount(stock);
         if (isExist == 1){
             return 0;
         }
-        stockDao.insertEntry(stock);
-        return 1;
+        return stockDao.insertEntry(stock);
     }
 
     //删除原料库存通过Id
-    public int deleteStochById(int index) throws Exception {
+    public int deleteStockById(int index) throws Exception {
         Stock stock = new Stock();
         stock.setId(index);
         Integer isExist = stockDao.selectEntryListCount(stock);

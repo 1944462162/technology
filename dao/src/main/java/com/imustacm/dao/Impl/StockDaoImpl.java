@@ -4,18 +4,16 @@
  */
 package com.imustacm.dao.Impl;
 
-import com.imustacm.dao.StockDao;
-import com.imustacm.dao.base.BaseDaoImpl;
-import com.imustacm.domain.Po.Stock;
 import org.springframework.stereotype.Repository;
-
+import com.imustacm.domain.Po.Stock;
+import com.imustacm.dao.base.BaseDaoImpl;
+import com.imustacm.dao.StockDao;
 
 /**
  * StockDao 实现类
  * @author Lenovo
- * @since 2019-09-28 20:19:30
+ * @since 2019-10-21 21:18:29
  */
-
 @Repository("stockDao")
 public class StockDaoImpl extends BaseDaoImpl<Stock, Long> implements StockDao {
 	private final static String NAMESPACE = "com.imustacm.dao.StockDao.";

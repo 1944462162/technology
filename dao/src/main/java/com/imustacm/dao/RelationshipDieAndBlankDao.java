@@ -4,7 +4,7 @@
  */
 package com.imustacm.dao;
 
-import com.imustacm.domain.RelationshipDieAndBlank;
+import com.imustacm.domain.Po.RelationshipDieAndBlank;
 import com.imustacm.dao.base.BaseDao;
 
 /**

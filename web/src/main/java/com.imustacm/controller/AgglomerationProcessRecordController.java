@@ -46,7 +46,7 @@ public class AgglomerationProcessRecordController {
         return defaultResponseVo;
     }
     @ApiOperation(value = "增加烧结工艺记录")
-    @GetMapping("/insertAgglomerationProcessRecord")
+    @PostMapping("/insertAgglomerationProcessRecord")
     public DefaultResponseVo insertAgglomerationProcessRecord(@RequestBody AgglomerationProcessRecordVo agglomerationProcessRecordVo) {
         DefaultResponseVo defaultResponseVo = new DefaultResponseVo();
         try {
@@ -65,7 +65,7 @@ public class AgglomerationProcessRecordController {
     }
 
     @ApiOperation(value = "删除烧结工艺记录", notes = "根据id")
-    @GetMapping("/deleteAgglomerationProcessRecord/{index}")
+    @DeleteMapping("/deleteAgglomerationProcessRecord/{index}")
     public DefaultResponseVo deleteAgglomerationProcessRecord(@PathVariable("index") int index){
         DefaultResponseVo defaultResponseVo = new DefaultResponseVo();
         try {
@@ -83,7 +83,7 @@ public class AgglomerationProcessRecordController {
     }
 
     @ApiOperation(value = "更改烧结工艺记录", notes = "根据id更改")
-    @GetMapping("/updateAgglomerationProcessRecord")
+    @PutMapping("/updateAgglomerationProcessRecord")
     public DefaultResponseVo updateAgglomerationProcessRecord(@RequestBody AgglomerationProcessRecordVo agglomerationProcessRecordVo){
         DefaultResponseVo defaultResponseVo = new DefaultResponseVo();
         try {

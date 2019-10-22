@@ -7,7 +7,7 @@
 	<sql id="QUERY_COLUMN_LIST">
 		<![CDATA[
             ID AS id,
-            name,
+            stock_name AS stockName,
             company,
             initial_stage AS initialStage,
             increase,
@@ -24,7 +24,7 @@
 	<sql id="QUERY_WHERE_CLAUSE">
 		<where>
             <if test="id != null and id != ''"><![CDATA[AND ID = #{id}]]></if>
-            <if test="name != null and name != ''"><![CDATA[AND name = #{name}]]></if>
+            <if test="stockName != null and stockName != ''"><![CDATA[AND stock_name = #{stockName}]]></if>
             <if test="company != null and company != ''"><![CDATA[AND company = #{company}]]></if>
             <if test="initialStage != null and initialStage != ''"><![CDATA[AND initial_stage = #{initialStage}]]></if>
             <if test="increase != null and increase != ''"><![CDATA[AND increase = #{increase}]]></if>
@@ -44,7 +44,7 @@
 	<sql id="UPDATE_COLUMN_SET">
 		<set>
 			<if test="id != null"><![CDATA[ID = #{id},]]></if>
-			<if test="name != null"><![CDATA[name = #{name},]]></if>
+			<if test="stockName != null"><![CDATA[stock_name = #{stockName},]]></if>
 			<if test="company != null"><![CDATA[company = #{company},]]></if>
 			<if test="initialStage != null"><![CDATA[initial_stage = #{initialStage},]]></if>
 			<if test="increase != null"><![CDATA[increase = #{increase},]]></if>
@@ -60,7 +60,7 @@
 			INSERT INTO stock
 				(
                 ID, 
-                name, 
+                stock_name, 
                 company, 
                 initial_stage, 
                 increase, 
@@ -71,7 +71,7 @@
 			VALUES
 				(
                 #{id}, 
-                #{name}, 
+                #{stockName}, 
                 #{company}, 
                 #{initialStage}, 
                 #{increase}, 

@@ -25,7 +25,7 @@ public class StockVo {
 
     // max length: 80
     @ApiModelProperty(value = "原料名称",example = "铁")
-    private String name;
+    private String stockName;
 
     @ApiModelProperty(value = "单位", example = "kg")
     private String company;
