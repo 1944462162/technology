@@ -7,6 +7,7 @@ import com.imustacm.domain.RelationVo.RelationOneToOneRequestVo;
 import com.imustacm.domain.Vo.AgglomerationProcessRecordVo;
 import com.imustacm.domain.Vo.AgglomerationProcessVo;
 import com.imustacm.service.AgglomerationProcessService;
+import com.imustacm.shiro.CustomRealm;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,6 +33,7 @@ public class AgglomerationProcessController {
     @ApiOperation(value = "获取所有的结烧工艺")
     @GetMapping("/getAllAgglomerationProcess")
     public DefaultResponseVo getAllAgglomerationProcess() throws Exception {
+
         List<AgglomerationProcessVo> agglomerationProcessVos = new ArrayList<>();
         agglomerationProcessVos = agglomerationProcessService.getAllAgglomerationProcess();
         DefaultResponseVo defaultResponseVo = new DefaultResponseVo();

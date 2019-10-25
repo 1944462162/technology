@@ -9,11 +9,13 @@
         <module name="dao" />
         <module name="domain" />
         <module name="service" />
+        <module name="shiro" />
         <module name="web" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="controller" target="1.7" />
+      <module name="shrio" target="1.7" />
     </bytecodeTargetLevel>
   </component>
 </project>

@@ -4,15 +4,15 @@
  */
 package com.imustacm.dao.Impl;
 
-import com.imustacm.dao.RolesDao;
-import com.imustacm.dao.base.BaseDaoImpl;
-import com.imustacm.domain.Po.Roles;
 import org.springframework.stereotype.Repository;
+import com.imustacm.domain.Po.Roles;
+import com.imustacm.dao.base.BaseDaoImpl;
+import com.imustacm.dao.RolesDao;
 
 /**
  * RolesDao 实现类
  * @author Lenovo
- * @since 2019-09-28 20:19:30
+ * @since 2019-10-25 10:46:07
  */
 @Repository("rolesDao")
 public class RolesDaoImpl extends BaseDaoImpl<Roles, Long> implements RolesDao {

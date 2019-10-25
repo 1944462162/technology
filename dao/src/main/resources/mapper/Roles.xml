@@ -6,7 +6,7 @@
 	<!-- roles 所有查询列 -->
 	<sql id="QUERY_COLUMN_LIST">
 		<![CDATA[
-            user_name AS userName,
+            user_code AS userCode,
             role_name AS roleName 
 		]]>
 	</sql>
@@ -17,7 +17,7 @@
 	<!-- 全部条件(更多功能可以通过queryData扩展实现)  -->
 	<sql id="QUERY_WHERE_CLAUSE">
 		<where>
-            <if test="userName != null and userName != ''"><![CDATA[AND user_name = #{userName}]]></if>
+            <if test="userCode != null and userCode != ''"><![CDATA[AND user_code = #{userCode}]]></if>
             <if test="roleName != null and roleName != ''"><![CDATA[AND role_name = #{roleName}]]></if> 
 		</where>
 	</sql>
@@ -31,7 +31,7 @@
 	<!-- 更新列字段,只要不为NULL则更新,除开主键列 -->
 	<sql id="UPDATE_COLUMN_SET">
 		<set>
-			<if test="userName != null"><![CDATA[user_name = #{userName},]]></if>
+			<if test="userCode != null"><![CDATA[user_code = #{userCode},]]></if>
 			<if test="roleName != null"><![CDATA[role_name = #{roleName},]]></if>
 		</set>
 	</sql>
@@ -41,12 +41,12 @@
 		<![CDATA[
 			INSERT INTO roles
 				(
-                user_name, 
+                user_code, 
                 role_name 
 				)
 			VALUES
 				(
-                #{userName}, 
+                #{userCode}, 
                 #{roleName} 
 				)
 		]]>
