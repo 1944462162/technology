@@ -50,7 +50,7 @@ public class SmeltingRecordController {
     public DefaultResponseVo insertSmeltingRecord(@RequestBody SmeltingRecordVo smeltingRecordVo) {
         DefaultResponseVo defaultResponseVo = null;
         try {
-            int code = smeltingRecordService.insertSmeltingRecord(smeltingRecordVo);
+            Integer code = smeltingRecordService.insertSmeltingRecord(smeltingRecordVo);
 
             if (code == 1){
                 defaultResponseVo = new DefaultResponseVo(200,"ok");
@@ -69,7 +69,7 @@ public class SmeltingRecordController {
     public DefaultResponseVo deleteSmeltingRecord(@PathVariable("index") int index){
         DefaultResponseVo defaultResponseVo = null;
         try {
-            int code = smeltingRecordService.deleteSmeltingRecordById(index);
+            Integer code = smeltingRecordService.deleteSmeltingRecordById(index);
             if (code == 1){
                 defaultResponseVo = new DefaultResponseVo(200,"ok");
             }
@@ -88,7 +88,7 @@ public class SmeltingRecordController {
     public DefaultResponseVo updateSmeltingRecord(@RequestBody SmeltingRecordVo smeltingRecordVo){
         DefaultResponseVo defaultResponseVo = null;
         try {
-            int code = smeltingRecordService.updateSmeltingRecord(smeltingRecordVo);
+            Integer code = smeltingRecordService.updateSmeltingRecord(smeltingRecordVo);
             if(code == 1){
                 defaultResponseVo = new DefaultResponseVo(200,"ok");
             }

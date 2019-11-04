@@ -10,7 +10,7 @@ import com.imustacm.domain.base.BaseDomain;
 /**
  * 
  * @author Lenovo
- * @since 2019-10-21 21:18:29
+ * @since 2019-11-04 17:14:44
  */
 public class Stock extends BaseDomain {
 

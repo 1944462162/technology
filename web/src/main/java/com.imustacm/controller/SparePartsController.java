@@ -58,7 +58,7 @@ public class SparePartsController {
     public DefaultResponseVo insertSpareParts(@RequestBody SparePartsVo sparePartsVo) {
         DefaultResponseVo defaultResponseVo = null;
         try {
-            int code = sparePartsService.insertSpareParts(sparePartsVo);
+            Integer code = sparePartsService.insertSpareParts(sparePartsVo);
 
             if (code == 1){
                 defaultResponseVo = new DefaultResponseVo(200,"ok");
@@ -77,7 +77,7 @@ public class SparePartsController {
     public DefaultResponseVo deleteSpareParts(@PathVariable("index") int index){
         DefaultResponseVo defaultResponseVo = null;
         try {
-            int code = sparePartsService.deleteSparePartsById(index);
+            Integer code = sparePartsService.deleteSparePartsById(index);
             if (code == 1){
                 defaultResponseVo = new DefaultResponseVo(200,"ok");
             }
@@ -95,7 +95,7 @@ public class SparePartsController {
     public DefaultResponseVo updateSpareParts(@RequestBody SparePartsVo sparePartsVo){
         DefaultResponseVo defaultResponseVo = null;
         try {
-            int code = sparePartsService.updateSpareParts(sparePartsVo);
+            Integer code = sparePartsService.updateSpareParts(sparePartsVo);
             if(code == 1){
                 defaultResponseVo = new DefaultResponseVo(200,"ok");
             }

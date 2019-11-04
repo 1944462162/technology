@@ -32,7 +32,7 @@ public class SmeltingRecordVo {
     @ApiModelProperty(value = "料包总重", example = "53.9")
     private String rawMaterialAllUp;
 
-    @ApiModelProperty(value = "中间料包重", example = "65")
+    @ApiModelProperty(value = "中间料包重", example = "65.3")
     private String tundishMaterial;
 
     @ApiModelProperty(value = "该坩埚使用炉次", example = "6")
@@ -45,7 +45,7 @@ public class SmeltingRecordVo {
     @ApiModelProperty(value = "时间", example = "")
     private Date operationTime;
 
-    @ApiModelProperty(value = "真空度", example = "69")
+    @ApiModelProperty(value = "真空度", example = "69.6")
     private String vacuum;
 
     @ApiModelProperty(value = "加热功率", example = "73.5")

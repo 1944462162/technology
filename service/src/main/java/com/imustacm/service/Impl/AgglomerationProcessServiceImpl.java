@@ -46,8 +46,7 @@ public class AgglomerationProcessServiceImpl implements AgglomerationProcessServ
         if (isExist == 1){
             return 0;
         }
-        agglomerationProcessDao.insertEntry(agglomerationProcess);
-        return 1;
+        return agglomerationProcessDao.insertEntry(agglomerationProcess);
     }
 
     @Override
@@ -56,8 +55,7 @@ public class AgglomerationProcessServiceImpl implements AgglomerationProcessServ
         agglomerationProcess.setId(index);
         Integer isExist = agglomerationProcessDao.selectEntryListCount(agglomerationProcess);
         if(isExist == 1){
-            agglomerationProcessDao.deleteByKey(agglomerationProcess);
-            return 1;
+            return agglomerationProcessDao.deleteByKey(agglomerationProcess);
         }
         return 0;
     }
@@ -74,8 +72,7 @@ public class AgglomerationProcessServiceImpl implements AgglomerationProcessServ
         }
         // 如果存在就进行跟新
         BeanUtils.copyProperties(agglomerationProcessVo,agglomerationProcess1);
-        agglomerationProcessDao.updateByKey(agglomerationProcess1);
-        return 1;
+        return agglomerationProcessDao.updateByKey(agglomerationProcess1);
     }
 
     @Override
@@ -103,8 +100,7 @@ public class AgglomerationProcessServiceImpl implements AgglomerationProcessServ
                 relationshipAgglomerationProcess.setAgglomerationId(processGroupId[i]);
                 relationshipAgglomerationProcesses[i] = relationshipAgglomerationProcess;
             }
-            relationshipAgglomerationProcessDao.insertEntry(relationshipAgglomerationProcesses);
-            return 1;
+            return relationshipAgglomerationProcessDao.insertEntry(relationshipAgglomerationProcesses);
         }
         return 0;
     }
@@ -117,8 +113,7 @@ public class AgglomerationProcessServiceImpl implements AgglomerationProcessServ
         RelationshipAgglomerationProcess relationshipAgglomerationProcess = new RelationshipAgglomerationProcess();
         relationshipAgglomerationProcess.setRecordId(RecordId);
         relationshipAgglomerationProcess.setAgglomerationId(ProcessId);
-        relationshipAgglomerationProcessDao.deleteByKey(relationshipAgglomerationProcess);
-        return 1;
+        return relationshipAgglomerationProcessDao.deleteByKey(relationshipAgglomerationProcess);
     }
 
     @Override
@@ -140,8 +135,7 @@ public class AgglomerationProcessServiceImpl implements AgglomerationProcessServ
         else{
             RelationshipAgglomerationProcess relationshipAgglomerationProcess = new RelationshipAgglomerationProcess();
             relationshipAgglomerationProcess.setRecordId(RecordId);
-            relationshipAgglomerationProcessDao.deleteByKey(relationshipAgglomerationProcess);
-            return 1;
+            return relationshipAgglomerationProcessDao.deleteByKey(relationshipAgglomerationProcess);
         }
     }
 

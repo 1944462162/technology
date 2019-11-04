@@ -54,7 +54,7 @@ public class AgglomerationProcessController {
     @PostMapping("/insertAgglomerationProcess")
     public DefaultResponseVo insertAgglomerationProcess(@RequestBody AgglomerationProcessVo agglomerationProcessVo) throws Exception {
         DefaultResponseVo defaultResponseVo = new DefaultResponseVo();
-        int code = agglomerationProcessService.insertAgglomerationProcess(agglomerationProcessVo);
+        Integer code = agglomerationProcessService.insertAgglomerationProcess(agglomerationProcessVo);
         if (code == 1) {
             defaultResponseVo.setCode(200);
             defaultResponseVo.setMsg("ok");
@@ -69,7 +69,7 @@ public class AgglomerationProcessController {
     @DeleteMapping("/deleteAgglomerationProcess/{index}")
     public DefaultResponseVo deleteAgglomerationProcess(@PathVariable("index") int index) throws Exception {
         DefaultResponseVo defaultResponseVo = new DefaultResponseVo();
-        int code = agglomerationProcessService.deleteAgglomerationProcessById(index);
+        Integer code = agglomerationProcessService.deleteAgglomerationProcessById(index);
         if(code == 1){
             defaultResponseVo.setCode(200);
             defaultResponseVo.setMsg("ok");
@@ -99,7 +99,7 @@ public class AgglomerationProcessController {
     public DefaultResponseVo updateAgglomerationProcess(@RequestBody AgglomerationProcessVo agglomerationProcessVo){
         DefaultResponseVo defaultResponseVo = new DefaultResponseVo();
         try {
-            int code = agglomerationProcessService.updateAgglomerationProcess(agglomerationProcessVo);
+            Integer code = agglomerationProcessService.updateAgglomerationProcess(agglomerationProcessVo);
             if(code == 1){
                 defaultResponseVo = new DefaultResponseVo(200,"ok");
             }
@@ -115,7 +115,7 @@ public class AgglomerationProcessController {
     @ApiOperation(value = "增加结烧工艺与结烧工艺记录之间的关系")
     @PostMapping("/insertRelationShipRecordAndProcess")
     public DefaultResponseVo insertRelationShipRecordAndProcess(@RequestBody RelationOneToManyRequestVo relationOneToManyRequestVo) throws Exception {
-        int code = agglomerationProcessService.insertRelationOfAgglomerationAndProcess(relationOneToManyRequestVo.getOneId(),relationOneToManyRequestVo.getManyId());
+        Integer code = agglomerationProcessService.insertRelationOfAgglomerationAndProcess(relationOneToManyRequestVo.getOneId(),relationOneToManyRequestVo.getManyId());
         DefaultResponseVo defaultResponseVo = new DefaultResponseVo();
         if(code == 1){
             defaultResponseVo.setCode(200);
@@ -132,7 +132,7 @@ public class AgglomerationProcessController {
     @DeleteMapping("/deleteRelationShipRecordAndProcess")
     public DefaultResponseVo deleteRelationShipRecordAndProcess(@RequestBody RelationOneToOneRequestVo relationOneToOneRequestVo) throws Exception {
         DefaultResponseVo defaultResponseVo = new DefaultResponseVo();
-        int code = agglomerationProcessService.deleteOneRelation(relationOneToOneRequestVo.getId1(),relationOneToOneRequestVo.getId2());
+        Integer code = agglomerationProcessService.deleteOneRelation(relationOneToOneRequestVo.getId1(),relationOneToOneRequestVo.getId2());
         if (code == 1){
             defaultResponseVo.setCode(200);
             defaultResponseVo.setMsg("ok");
@@ -148,7 +148,7 @@ public class AgglomerationProcessController {
     @DeleteMapping("/updateRelationShipRecordAndProcess")
     public DefaultResponseVo updateRelationShipRecordAndProcess(@RequestBody RelationOneToManyRequestVo relationOneToManyRequestVo) throws Exception {
         DefaultResponseVo defaultResponseVo = new DefaultResponseVo();
-        int code = agglomerationProcessService.updateRelationOfAgglomerationAndProcess(relationOneToManyRequestVo.getOneId(),relationOneToManyRequestVo.getManyId());
+        Integer code = agglomerationProcessService.updateRelationOfAgglomerationAndProcess(relationOneToManyRequestVo.getOneId(),relationOneToManyRequestVo.getManyId());
         if(code == 1)
         {
             defaultResponseVo.setCode(200);

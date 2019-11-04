@@ -48,7 +48,7 @@ public class PressureRecordController {
     public DefaultResponseVo insertPressureRecord(@RequestBody PressureRecordVo pressureRecordVo) {
         DefaultResponseVo defaultResponseVo = new DefaultResponseVo();
         try {
-            int code = service.insertPressureRecord(pressureRecordVo);
+            Integer code = service.insertPressureRecord(pressureRecordVo);
 
             if (code == 1){
                 defaultResponseVo = new DefaultResponseVo(200,"ok");
@@ -66,7 +66,7 @@ public class PressureRecordController {
     public DefaultResponseVo deletePressureRecord(@PathVariable("index") int index){
         DefaultResponseVo defaultResponseVo = null;
         try {
-            int code = service.deletePressureRecordById(index);
+            Integer code = service.deletePressureRecordById(index);
             if (code == 1){
                 defaultResponseVo = new DefaultResponseVo(200,"ok");
             }
@@ -84,7 +84,7 @@ public class PressureRecordController {
     public DefaultResponseVo updatePressureRecord(@RequestBody PressureRecordVo pressureRecordVo){
         DefaultResponseVo defaultResponseVo = null;
         try {
-            int code = service.updatePressureRecord(pressureRecordVo);
+            Integer code = service.updatePressureRecord(pressureRecordVo);
             if(code == 1){
                 defaultResponseVo = new DefaultResponseVo(200,"ok");
             }

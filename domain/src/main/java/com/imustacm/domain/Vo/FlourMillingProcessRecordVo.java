@@ -40,7 +40,7 @@ public class FlourMillingProcessRecordVo {
     private String feedWeight;
 
     // max length: 400
-    @ApiModelProperty(value = "投料说明", example = "投入50.3kg，铁")
+    @ApiModelProperty(value = "投料说明", example = "投入50.3kg铁")
     private String feedInstructions;
 
     @ApiModelProperty(value = "制粉起始时间", example = "")
@@ -61,25 +61,25 @@ public class FlourMillingProcessRecordVo {
     @ApiModelProperty(value = "制粉终了氧含量", example = "500")
     private String endOxygenContent;
 
-    @ApiModelProperty(value = "分选机转速", example = "5000转")
+    @ApiModelProperty(value = "分选机转速", example = "5000.56")
     private String speed;
 
-    @ApiModelProperty(value = "研磨压力", example = "600")
+    @ApiModelProperty(value = "研磨压力", example = "600.4")
     private String grindPressure;
 
-    @ApiModelProperty(value = "制粉起始流量", example = "5000")
+    @ApiModelProperty(value = "制粉起始流量", example = "5000.5")
     private String millingStarFlow;
 
-    @ApiModelProperty(value = "制粉终了流量", example = "6000")
+    @ApiModelProperty(value = "制粉终了流量", example = "6000.6")
     private String millingEndFlow;
 
-    @ApiModelProperty(value = "出料料重", example = "3000")
+    @ApiModelProperty(value = "出料料重", example = "3000.7")
     private String materialWeight;
 
-    @ApiModelProperty(value = "吐料", example = "4000")
+    @ApiModelProperty(value = "吐料", example = "4000.5")
     private String spitting;
 
-    @ApiModelProperty(value = "收率", example = "2000")
+    @ApiModelProperty(value = "收率", example = "2000.4")
     private String yield;
 
     // max length: 400

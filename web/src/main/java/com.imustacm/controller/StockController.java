@@ -29,7 +29,7 @@ public class StockController {
     @ApiOperation(value = "获取所有的原料库存")
     @GetMapping("/getAllStock")
     public DefaultResponseVo getAllStock(){
-        System.out.println("hello world");
+
         List<StockVo> allStock = null;
         try {
             allStock = stockService.getAllStock();
@@ -59,7 +59,7 @@ public class StockController {
     public DefaultResponseVo insertStock(@RequestBody StockVo stockVo) {
         DefaultResponseVo defaultResponseVo = new DefaultResponseVo();
         try {
-            int code = stockService.insertStock(stockVo);
+            Integer code = stockService.insertStock(stockVo);
 
             if (code == 1){
                 defaultResponseVo = new DefaultResponseVo(200,"ok");
@@ -78,7 +78,7 @@ public class StockController {
     public DefaultResponseVo deleteStock(@PathVariable("index") int index){
         DefaultResponseVo defaultResponseVo = null;
         try {
-            int code = stockService.deleteStockById(index);
+            Integer code = stockService.deleteStockById(index);
             if (code == 1){
                 defaultResponseVo = new DefaultResponseVo(200,"ok");
             }
@@ -96,7 +96,7 @@ public class StockController {
     public DefaultResponseVo updateStock(@RequestBody StockVo stockVo){
         DefaultResponseVo defaultResponseVo = null;
         try {
-            int code = stockService.updateStock(stockVo);
+            Integer code = stockService.updateStock(stockVo);
             if(code == 1){
                 defaultResponseVo = new DefaultResponseVo(200,"ok");
             }

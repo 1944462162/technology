@@ -5,7 +5,6 @@ import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.AuthenticationException;
 import org.apache.shiro.authc.UsernamePasswordToken;
 import org.apache.shiro.authz.annotation.RequiresPermissions;
-import org.apache.shiro.authz.annotation.RequiresRoles;
 import org.apache.shiro.subject.Subject;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -35,10 +34,43 @@ public class UserController {
     }
 
     // admin角色
-    @RequiresPermissions({"stock","spareParts"})
+    @RequiresPermissions({"stock","spareParts","smeltingRecord","smeltingRecord","smelt","flourMillingProcessRecord","pressureRecord","blankSize","relationshipDieAndBlank","agglomerationProcessRecord","relationShipAgglomerationProcess","agglomerationProcess"})
     @RequestMapping(value = "/adminShiro", method = RequestMethod.GET)
     @ResponseBody
-    public String adminRo(){
+    public String adminRole(){
         return "admin";
     }
+//
+//
+////    director角色
+//    @RequiresPermissions({"stock","smeltingRecord","smelt","pressureRecord","blankSize","relationshipDieAndBlank"})
+//    @RequestMapping(value = "/adminShiro", method = RequestMethod.GET)
+//    @ResponseBody
+//    public String directorRole(){
+//        return "director";
+//    }
+//
+//    //    scientific角色
+//    @RequiresPermissions({"stock","flourMillingProcessRecord"})
+//    @RequestMapping(value = "/adminShiro", method = RequestMethod.GET)
+//    @ResponseBody
+//    public String scientificRole(){
+//        return "scientific";
+//    }
+//
+//    //    Sale角色，目前不清楚具体要求
+//    @RequiresPermissions("stock")
+//    @RequestMapping(value = "/adminShiro", method = RequestMethod.GET)
+//    @ResponseBody
+//    public String SaleRole(){
+//        return "scientific";
+//    }
+//
+//    //    production1角色
+//    @RequiresPermissions({"stock","spareParts","smeltingRecord","smeltingRecord","smelt","flourMillingProcessRecord","pressureRecord"})
+//    @RequestMapping(value = "/adminShiro", method = RequestMethod.GET)
+//    @ResponseBody
+//    public String productionRole(){
+//        return "production";
+//    }
 }

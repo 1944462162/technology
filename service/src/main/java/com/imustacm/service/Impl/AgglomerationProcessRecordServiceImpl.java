@@ -17,14 +17,14 @@ public class AgglomerationProcessRecordServiceImpl implements AgglomerationProce
 
 
     @Autowired
-    private AgglomerationProcessRecordDao dao;
+    private AgglomerationProcessRecordDao agglomerationProcessRecordDao;
 
 
     @Override
     public List<AgglomerationProcessRecordVo> getAllAgglomerationProcessRecord() throws Exception {
         List<AgglomerationProcessRecordVo> result= new ArrayList<>();
 
-        List<AgglomerationProcessRecord> agglomerationProcessRecords = dao.selectEntryList(null);
+        List<AgglomerationProcessRecord> agglomerationProcessRecords = agglomerationProcessRecordDao.selectEntryList(null);
         if(agglomerationProcessRecords!=null && agglomerationProcessRecords.size()!=0)
         {
             for (AgglomerationProcessRecord agglomerationProcessRecord:agglomerationProcessRecords)
@@ -42,22 +42,20 @@ public class AgglomerationProcessRecordServiceImpl implements AgglomerationProce
     public int insertAgglomerationProcessRecord(AgglomerationProcessRecordVo agglomerationProcessRecordVo) throws Exception {
        AgglomerationProcessRecord agglomerationProcessRecord = new AgglomerationProcessRecord();
        BeanUtils.copyProperties(agglomerationProcessRecordVo,agglomerationProcessRecord);
-        int isExist = dao.selectEntryListCount(agglomerationProcessRecord);
+        int isExist = agglomerationProcessRecordDao.selectEntryListCount(agglomerationProcessRecord);
         if (isExist == 1){
             return 0;
         }
-        dao.insertEntry(agglomerationProcessRecord);
-        return 1;
+        return agglomerationProcessRecordDao.insertEntry(agglomerationProcessRecord);
     }
 
     @Override
     public int deleteAgglomerationProcessRecordById(int index) throws Exception {
         AgglomerationProcessRecord agglomerationProcessRecord = new AgglomerationProcessRecord();
         agglomerationProcessRecord.setId(index);
-        Integer isExist = dao.selectEntryListCount(agglomerationProcessRecord);
+        Integer isExist = agglomerationProcessRecordDao.selectEntryListCount(agglomerationProcessRecord);
         if(isExist == 1){
-            dao.deleteByKey(agglomerationProcessRecord);
-            return 1;
+            return agglomerationProcessRecordDao.deleteByKey(agglomerationProcessRecord);
         }
         return 0;
     }
@@ -66,7 +64,7 @@ public class AgglomerationProcessRecordServiceImpl implements AgglomerationProce
     public int updateAgglomerationProcessRecord(AgglomerationProcessRecordVo agglomerationProcessRecordVo) throws Exception {
         AgglomerationProcessRecord agglomerationProcessRecord = new AgglomerationProcessRecord();
         agglomerationProcessRecord.setId( agglomerationProcessRecordVo.getId());
-        Integer isExist = dao.selectEntryListCount(agglomerationProcessRecord);
+        Integer isExist = agglomerationProcessRecordDao.selectEntryListCount(agglomerationProcessRecord);
         //如果不存在返回0
         if(isExist == 0)
         {
@@ -74,8 +72,7 @@ public class AgglomerationProcessRecordServiceImpl implements AgglomerationProce
         }
         // 如果存在就进行跟新
         BeanUtils.copyProperties(agglomerationProcessRecordVo,agglomerationProcessRecord);
-        dao.updateByKey(agglomerationProcessRecord);
-        return 1;
+        return agglomerationProcessRecordDao.updateByKey(agglomerationProcessRecord);
     }
 
     @Override
@@ -83,7 +80,7 @@ public class AgglomerationProcessRecordServiceImpl implements AgglomerationProce
         AgglomerationProcessRecord agglomerationProcessRecord = new AgglomerationProcessRecord();
         AgglomerationProcessRecordVo agglomerationProcessRecordVo = new AgglomerationProcessRecordVo();
         agglomerationProcessRecord.setId(index);
-        List<AgglomerationProcessRecord> blankSizeList = dao.selectEntryList(agglomerationProcessRecord);
+        List<AgglomerationProcessRecord> blankSizeList = agglomerationProcessRecordDao.selectEntryList(agglomerationProcessRecord);
         if (blankSizeList.size() != 0){
             agglomerationProcessRecord = blankSizeList.get(0);
             BeanUtils.copyProperties(agglomerationProcessRecord,agglomerationProcessRecordVo);

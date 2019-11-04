@@ -51,7 +51,7 @@ public class BlankSizeController {
     @PostMapping("/insertBlankSize")
     public DefaultResponseVo insertBlankSize(@RequestBody BlankSizeVo blankSizeVo) throws Exception {
         DefaultResponseVo defaultResponseVo = new DefaultResponseVo();
-        int code = blankSizeService.insertBlankSize(blankSizeVo);
+        Integer code = blankSizeService.insertBlankSize(blankSizeVo);
         if(code == 1)
         {
             defaultResponseVo.setCode(200);
@@ -68,7 +68,7 @@ public class BlankSizeController {
     @DeleteMapping("/deleteBlankSize/{index}")
     public DefaultResponseVo deleteBlankSize(@PathVariable int index) throws Exception {
         DefaultResponseVo defaultResponseVo = new DefaultResponseVo();
-        int code = blankSizeService.deleteBlankSizeById(index);
+        Integer code = blankSizeService.deleteBlankSizeById(index);
         if(code == 1){
             defaultResponseVo.setCode(200);
             defaultResponseVo.setMsg("ok");
@@ -84,7 +84,7 @@ public class BlankSizeController {
     @PutMapping("/updateBlankSize")
     public DefaultResponseVo updateBlankSize(@RequestBody BlankSizeVo blankSizeVo) throws Exception {
         DefaultResponseVo defaultResponseVo = new DefaultResponseVo();
-        int code = blankSizeService.updateBlankSize(blankSizeVo);
+        Integer code = blankSizeService.updateBlankSize(blankSizeVo);
         if(code == 1){
             defaultResponseVo.setCode(200);
             defaultResponseVo.setMsg("ok");
@@ -113,7 +113,7 @@ public class BlankSizeController {
     @PostMapping("/insertRelationPressureAndBlank")
     public DefaultResponseVo insertRelationPressureAndBlank(@RequestBody RelationOneToManyRequestVo relationOneToManyRequestVo){
         DefaultResponseVo defaultResponseVo = new DefaultResponseVo();
-        int code = blankSizeService.insertRelationPressureAndBlank(relationOneToManyRequestVo.getOneId(),relationOneToManyRequestVo.getManyId());
+        Integer code = blankSizeService.insertRelationPressureAndBlank(relationOneToManyRequestVo.getOneId(),relationOneToManyRequestVo.getManyId());
         if(code == 1){
             defaultResponseVo.setCode(200);
             defaultResponseVo.setMsg("ok");
@@ -129,7 +129,7 @@ public class BlankSizeController {
     @DeleteMapping("/deleteRelationPressureAndBlank")
     public DefaultResponseVo deleteRelationPressureAndBlank(@RequestBody RelationOneToOneRequestVo relationOneToOneRequestVo) throws Exception {
         DefaultResponseVo defaultResponseVo = new DefaultResponseVo();
-        int code  = blankSizeService.deleteOneRelation(relationOneToOneRequestVo.getId1(),relationOneToOneRequestVo.getId2());
+        Integer code  = blankSizeService.deleteOneRelation(relationOneToOneRequestVo.getId1(),relationOneToOneRequestVo.getId2());
         if(code == 1)
         {
             defaultResponseVo.setCode(200);
@@ -145,7 +145,7 @@ public class BlankSizeController {
     @DeleteMapping("/updateRelationPressureAndBlank")
     public DefaultResponseVo updateRelationPressureAndBlank(@RequestBody RelationOneToManyRequestVo relationOneToManyRequestVo) throws Exception {
         DefaultResponseVo defaultResponseVo = new DefaultResponseVo();
-        int code = blankSizeService.updateRelationPressureAndBlank(relationOneToManyRequestVo.getOneId(),relationOneToManyRequestVo.getManyId());
+        Integer code = blankSizeService.updateRelationPressureAndBlank(relationOneToManyRequestVo.getOneId(),relationOneToManyRequestVo.getManyId());
         if(code == 1){
             defaultResponseVo.setCode(200);
             defaultResponseVo.setMsg("ok");

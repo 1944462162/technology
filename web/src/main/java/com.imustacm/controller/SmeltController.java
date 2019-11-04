@@ -49,7 +49,7 @@ public class SmeltController {
     @PostMapping("/insertSmelt")
     public DefaultResponseVo insertSmelt(@RequestBody SmeltVo smeltVo) throws Exception {
         DefaultResponseVo defaultResponseVo = new DefaultResponseVo();
-        int code = smeltService.insertSmelt(smeltVo);
+        Integer code = smeltService.insertSmelt(smeltVo);
         if (code == 1){
             defaultResponseVo.setCode(200);
             defaultResponseVo.setMsg("ok");
@@ -65,7 +65,7 @@ public class SmeltController {
     @DeleteMapping("/deleteSmeltById/{index}")
     public DefaultResponseVo deleteSmeltById(@PathVariable("index") int index) throws Exception {
         DefaultResponseVo defaultResponseVo = new DefaultResponseVo();
-        int code = smeltService.deleteSmeltById(index);
+        Integer code = smeltService.deleteSmeltById(index);
         if (code == 1){
             defaultResponseVo.setCode(200);
             defaultResponseVo.setMsg("ok");
@@ -80,7 +80,7 @@ public class SmeltController {
     @PutMapping("/updateSmelt")
     public DefaultResponseVo updateSmelt(@RequestBody SmeltVo smeltVo) throws Exception {
         DefaultResponseVo defaultResponseVo = new DefaultResponseVo();
-        int code = smeltService.updateSmelt(smeltVo);
+        Integer code = smeltService.updateSmelt(smeltVo);
         if (code == 1){
             defaultResponseVo.setCode(200);
             defaultResponseVo.setMsg("ok");

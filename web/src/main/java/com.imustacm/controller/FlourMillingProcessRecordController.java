@@ -46,7 +46,7 @@ public class FlourMillingProcessRecordController {
     public DefaultResponseVo insertFlourMillingProcessRecords(@RequestBody FlourMillingProcessRecordVo flourMillingProcessRecordsVo) {
         DefaultResponseVo defaultResponseVo = null;
         try {
-            int code = flourMillingProcessRecordService.insertFlourMillingProcessRecord(flourMillingProcessRecordsVo);
+            Integer code = flourMillingProcessRecordService.insertFlourMillingProcessRecord(flourMillingProcessRecordsVo);
 
             if (code == 1){
                 defaultResponseVo = new DefaultResponseVo(200,"ok");
@@ -64,7 +64,7 @@ public class FlourMillingProcessRecordController {
     public DefaultResponseVo deleteFlourMillingProcessRecords(@PathVariable("index") int index){
         DefaultResponseVo defaultResponseVo = null;
         try {
-            int code = flourMillingProcessRecordService.deleteFlourMillingProcessRecordById(index);
+            Integer code = flourMillingProcessRecordService.deleteFlourMillingProcessRecordById(index);
             if (code == 1){
                 defaultResponseVo = new DefaultResponseVo(200,"ok");
             }
@@ -82,7 +82,7 @@ public class FlourMillingProcessRecordController {
     public DefaultResponseVo updateFlourMillingProcessRecord(@RequestBody FlourMillingProcessRecordVo pressureRecordVo){
         DefaultResponseVo defaultResponseVo = null;
         try {
-            int code = flourMillingProcessRecordService.updateFlourMillingProcessRecord(pressureRecordVo);
+            Integer code = flourMillingProcessRecordService.updateFlourMillingProcessRecord(pressureRecordVo);
             if(code == 1){
                 defaultResponseVo = new DefaultResponseVo(200,"ok");
             }

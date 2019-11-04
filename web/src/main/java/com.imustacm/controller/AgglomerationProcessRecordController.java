@@ -50,7 +50,7 @@ public class AgglomerationProcessRecordController {
     public DefaultResponseVo insertAgglomerationProcessRecord(@RequestBody AgglomerationProcessRecordVo agglomerationProcessRecordVo) {
         DefaultResponseVo defaultResponseVo = new DefaultResponseVo();
         try {
-            int code = service.insertAgglomerationProcessRecord(agglomerationProcessRecordVo);
+            Integer code = service.insertAgglomerationProcessRecord(agglomerationProcessRecordVo);
 
             if (code == 1){
                 defaultResponseVo = new DefaultResponseVo(200,"ok");
@@ -69,7 +69,7 @@ public class AgglomerationProcessRecordController {
     public DefaultResponseVo deleteAgglomerationProcessRecord(@PathVariable("index") int index){
         DefaultResponseVo defaultResponseVo = new DefaultResponseVo();
         try {
-            int code = service.deleteAgglomerationProcessRecordById(index);
+            Integer code = service.deleteAgglomerationProcessRecordById(index);
             if (code == 1){
                 defaultResponseVo = new DefaultResponseVo(200,"ok");
             }
@@ -87,7 +87,7 @@ public class AgglomerationProcessRecordController {
     public DefaultResponseVo updateAgglomerationProcessRecord(@RequestBody AgglomerationProcessRecordVo agglomerationProcessRecordVo){
         DefaultResponseVo defaultResponseVo = new DefaultResponseVo();
         try {
-            int code = service.updateAgglomerationProcessRecord(agglomerationProcessRecordVo);
+            Integer code = service.updateAgglomerationProcessRecord(agglomerationProcessRecordVo);
             if(code == 1){
                 defaultResponseVo = new DefaultResponseVo(200,"ok");
             }

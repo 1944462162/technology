@@ -57,8 +57,7 @@ public class BlankSizeServiceImpl implements BlankSizeService {
         blankSize.setId(index);
         Integer isExist = blankSizeDao.selectEntryListCount(blankSize);
         if(isExist == 1){
-            blankSizeDao.deleteByKey(blankSize);
-            return 1;
+            return blankSizeDao.deleteByKey(blankSize);
         }
         return 0;
     }
@@ -75,8 +74,7 @@ public class BlankSizeServiceImpl implements BlankSizeService {
         }
         // 如果存在就进行跟新
         BeanUtils.copyProperties(blankSizeVo,blankSize);
-        blankSizeDao.updateByKey(blankSize);
-        return 1;
+        return blankSizeDao.updateByKey(blankSize);
     }
 
     @Override
@@ -104,8 +102,7 @@ public class BlankSizeServiceImpl implements BlankSizeService {
                 relationshipDieAndBlanks[i] = relationshipDieAndBlank;
             }
 
-            relationshipDieAndBlankDao.insertEntry(relationshipDieAndBlanks);
-            return 1;
+            return relationshipDieAndBlankDao.insertEntry(relationshipDieAndBlanks);
         }
         return 0;
     }
@@ -130,8 +127,7 @@ public class BlankSizeServiceImpl implements BlankSizeService {
         RelationshipDieAndBlank relationshipDieAndBlank = new RelationshipDieAndBlank();
         relationshipDieAndBlank.setBlankSizeId(BlankId);
         relationshipDieAndBlank.setPressureRecordId(PressureId);
-        relationshipDieAndBlankDao.deleteByKey(relationshipDieAndBlank);
-        return 1;
+        return relationshipDieAndBlankDao.deleteByKey(relationshipDieAndBlank);
     }
 
     public int deleteRelationByPressureId(int PressureId) throws Exception {
@@ -141,8 +137,7 @@ public class BlankSizeServiceImpl implements BlankSizeService {
         else{
             RelationshipDieAndBlank relationshipDieAndBlank = new RelationshipDieAndBlank();
             relationshipDieAndBlank.setPressureRecordId(PressureId);
-            relationshipDieAndBlankDao.deleteByKey(relationshipDieAndBlank);
-            return 1;
+            return relationshipDieAndBlankDao.deleteByKey(relationshipDieAndBlank);
         }
     }
 

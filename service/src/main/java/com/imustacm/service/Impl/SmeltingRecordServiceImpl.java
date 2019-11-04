@@ -1,13 +1,12 @@
 package com.imustacm.service.Impl;
 
-import com.fasterxml.jackson.databind.util.BeanUtil;
+
 import com.imustacm.dao.SmeltingRecordDao;
 import com.imustacm.domain.Po.SmeltingRecord;
 import com.imustacm.domain.Vo.SmeltingRecordVo;
 import com.imustacm.service.SmeltingRecordService;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -47,8 +46,8 @@ public class SmeltingRecordServiceImpl implements SmeltingRecordService {
         if (isExist == 1){
             return 0;
         }
-        smeltingRecordDao.insertEntry(smeltingRecord);
-        return 1;
+
+        return smeltingRecordDao.insertEntry(smeltingRecord);
     }
 
     @Override
@@ -57,8 +56,8 @@ public class SmeltingRecordServiceImpl implements SmeltingRecordService {
         smeltingRecord.setId(index);
         Integer isExist = smeltingRecordDao.selectEntryListCount(smeltingRecord);
         if(isExist == 1){
-            smeltingRecordDao.deleteByKey(smeltingRecord);
-            return 1;
+
+            return  smeltingRecordDao.deleteByKey(smeltingRecord);
         }
         return 0;
     }
@@ -75,8 +74,8 @@ public class SmeltingRecordServiceImpl implements SmeltingRecordService {
         }
         BeanUtils.copyProperties(smeltingRecordVo,smeltingRecord);
         // 如果存在就进行跟新
-        smeltingRecordDao.updateByKey(smeltingRecord);
-        return 1;
+
+        return smeltingRecordDao.updateByKey(smeltingRecord);
     }
 
     @Override

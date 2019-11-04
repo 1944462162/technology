@@ -44,8 +44,8 @@ public class FlourMillingProcessRecordServiceImpl implements FlourMillingProcess
         if (isExist == 1){
             return 0;
         }
-        flourMillingProcessRecordDao.insertEntry(flourMillingProcessRecord);
-        return 1;
+
+        return flourMillingProcessRecordDao.insertEntry(flourMillingProcessRecord);
     }
 
     @Override
@@ -54,8 +54,7 @@ public class FlourMillingProcessRecordServiceImpl implements FlourMillingProcess
         flourMillingProcessRecord.setId(index);
         Integer isExist = flourMillingProcessRecordDao.selectEntryListCount(flourMillingProcessRecord);
         if(isExist == 1){
-            flourMillingProcessRecordDao.deleteByKey(flourMillingProcessRecord);
-            return 1;
+            return flourMillingProcessRecordDao.deleteByKey(flourMillingProcessRecord);
         }
         return 0;
     }
@@ -72,8 +71,7 @@ public class FlourMillingProcessRecordServiceImpl implements FlourMillingProcess
         }
         BeanUtils.copyProperties(flourMillingProcessRecordVo,flourMillingProcessRecord);
         // 如果存在就进行跟新
-        flourMillingProcessRecordDao.updateByKey(flourMillingProcessRecord);
-        return 1;
+        return flourMillingProcessRecordDao.updateByKey(flourMillingProcessRecord);
     }
 
     @Override

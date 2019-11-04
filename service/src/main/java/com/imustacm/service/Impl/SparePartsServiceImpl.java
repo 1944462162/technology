@@ -17,7 +17,7 @@ public class SparePartsServiceImpl implements SparePartsService {
 
 
     @Autowired
-    private SparePartsDao sparePartsDao=null;
+    private SparePartsDao sparePartsDao;
 
     public List<SparePartsVo> getAllSpareParts() throws Exception {
 
@@ -43,8 +43,8 @@ public class SparePartsServiceImpl implements SparePartsService {
         if (isExist == 1){
             return 0;
         }
-        sparePartsDao.insertEntry(spareParts);
-        return 1;
+
+        return sparePartsDao.insertEntry(spareParts);
     }
 
     public int deleteSparePartsById(int index) throws Exception {
@@ -52,8 +52,8 @@ public class SparePartsServiceImpl implements SparePartsService {
         stock.setId(index);
         Integer isExist = sparePartsDao.selectEntryListCount(stock);
         if(isExist == 1){
-            sparePartsDao.deleteByKey(stock);
-            return 1;
+
+            return sparePartsDao.deleteByKey(stock);
         }
         return 0;
     }
@@ -69,8 +69,7 @@ public class SparePartsServiceImpl implements SparePartsService {
         }
         // 如果存在就进行跟新
         BeanUtils.copyProperties(sparePartsVo,spareParts1);
-        sparePartsDao.updateByKey(spareParts1);
-        return 1;
+        return sparePartsDao.updateByKey(spareParts1);
     }
 
     public SparePartsVo getOneSpareParts(int index) throws Exception {

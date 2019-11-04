@@ -43,8 +43,8 @@ public class PressureRecordServiceImpl implements PressureRecordService {
         if (isExist == 1){
             return 0;
         }
-        pressureRecordDao.insertEntry(pressureRecord);
-        return 1;
+
+        return  pressureRecordDao.insertEntry(pressureRecord);
     }
 
     @Override
@@ -53,8 +53,7 @@ public class PressureRecordServiceImpl implements PressureRecordService {
         pressureRecord.setId(index);
         Integer isExist = pressureRecordDao.selectEntryListCount(pressureRecord);
         if(isExist == 1){
-            pressureRecordDao.deleteByKey(pressureRecord);
-            return 1;
+            return  pressureRecordDao.deleteByKey(pressureRecord);
         }
         return 0;
     }
@@ -71,8 +70,7 @@ public class PressureRecordServiceImpl implements PressureRecordService {
         }
         BeanUtils.copyProperties(pressureRecordVo,pressureRecord);
         // 如果存在就进行跟新
-        pressureRecordDao.updateByKey(pressureRecord);
-        return 1;
+        return pressureRecordDao.updateByKey(pressureRecord);
     }
 
     @Override

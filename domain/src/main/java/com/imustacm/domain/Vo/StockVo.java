@@ -36,7 +36,7 @@ public class StockVo {
     @ApiModelProperty(value = "增加", example = "3274.65")
     private String increase;
 
-    @ApiModelProperty(value = "减少", example = "200,64")
+    @ApiModelProperty(value = "减少", example = "200.64")
     private String reduce;
 
     @ApiModelProperty(value = "重量,计算得出前端无需插入")

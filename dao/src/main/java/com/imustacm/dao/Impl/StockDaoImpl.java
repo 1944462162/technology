@@ -12,7 +12,7 @@ import com.imustacm.dao.StockDao;
 /**
  * StockDao 实现类
  * @author Lenovo
- * @since 2019-10-21 21:18:29
+ * @since 2019-11-04 17:14:44
  */
 @Repository("stockDao")
 public class StockDaoImpl extends BaseDaoImpl<Stock, Long> implements StockDao {

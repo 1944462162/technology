@@ -49,6 +49,7 @@ public class StockServiceImpl implements StockService {
         if (isExist == 1){
             return 0;
         }
+
         return stockDao.insertEntry(stock);
     }
 
@@ -58,8 +59,8 @@ public class StockServiceImpl implements StockService {
         stock.setId(index);
         Integer isExist = stockDao.selectEntryListCount(stock);
         if(isExist == 1){
-            stockDao.deleteByKey(stock);
-            return 1;
+
+            return stockDao.deleteByKey(stock);
         }
         return 0;
     }
@@ -76,8 +77,8 @@ public class StockServiceImpl implements StockService {
         }
         BeanUtils.copyProperties(stockVo,stock);
         // 如果存在就进行跟新
-        stockDao.updateByKey(stock);
-        return 1;
+
+        return stockDao.updateByKey(stock);
     }
 
 
