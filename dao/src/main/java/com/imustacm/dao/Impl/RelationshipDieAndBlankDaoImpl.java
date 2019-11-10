@@ -4,15 +4,15 @@
  */
 package com.imustacm.dao.Impl;
 
+import com.imustacm.dao.RelationshipDieAndBlankDao;
 import org.springframework.stereotype.Repository;
 import com.imustacm.domain.Po.RelationshipDieAndBlank;
 import com.imustacm.dao.base.BaseDaoImpl;
-import com.imustacm.dao.RelationshipDieAndBlankDao;
 
 /**
  * RelationshipDieAndBlankDao 实现类
  * @author Lenovo
- * @since 2019-10-22 15:45:08
+ * @since 2019-11-10 20:45:57
  */
 @Repository("relationshipDieAndBlankDao")
 public class RelationshipDieAndBlankDaoImpl extends BaseDaoImpl<RelationshipDieAndBlank, Long> implements RelationshipDieAndBlankDao {

@@ -75,7 +75,7 @@
 	</sql>
 
 	<!-- 插入app记录 -->
-	<insert id="insertEntry" parameterType="smeltingrecord" >
+	<insert id="insertEntry" parameterType="smeltingRecord" >
 		<![CDATA[
 			INSERT INTO smelting_record
 				(
@@ -128,20 +128,20 @@
 	</delete>
 
 	<!-- 删除,通过条件 -->
-	<delete id="deleteByCondtion" parameterType="smeltingrecord" >
+	<delete id="deleteByCondtion" parameterType="smeltingRecord" >
 		<![CDATA[DELETE FROM smelting_record]]>
 		<include refid="QUERY_WHERE_CLAUSE"/>
 	</delete>
 
 	<!-- 修改记录通过主键 -->
-	<update id="updateByKey" parameterType="smeltingrecord" >
+	<update id="updateByKey" parameterType="smeltingRecord" >
 		<![CDATA[UPDATE smelting_record]]>
 		<include refid="UPDATE_COLUMN_SET"/>
 		<![CDATA[WHERE id = #{id}]]>
 	</update>
 
 	<!-- 查询,通过主键IN(array) -->
-	<select id="selectEntryArray" parameterType="java.lang.reflect.Array" resultType="smeltingrecord">
+	<select id="selectEntryArray" parameterType="java.lang.reflect.Array" resultType="smeltingRecord">
 		<![CDATA[SELECT]]>
 		<include refid="QUERY_COLUMN_LIST"/>
 		<include refid="QUERY_FROM_TABLE"/>
@@ -152,7 +152,7 @@
 	</select>
 
 	<!-- 查询,通过条件 -->
-	<select id="selectEntryList" parameterType="smeltingrecord" resultType="smeltingrecord">
+	<select id="selectEntryList" parameterType="smeltingRecord" resultType="smeltingRecord">
 		<![CDATA[SELECT]]>
 		<include refid="QUERY_COLUMN_LIST"/>
 		<include refid="QUERY_FROM_TABLE"/>
@@ -161,7 +161,7 @@
 	</select>
 
 	<!-- 总数查询,通过条件 -->
-	<select id="selectEntryListCount" parameterType="smeltingrecord" resultType="int">
+	<select id="selectEntryListCount" parameterType="smeltingRecord" resultType="int">
 		<![CDATA[SELECT COUNT(id) AS dataCount]]>
 		<include refid="QUERY_FROM_TABLE"/>
 		<include refid="QUERY_WHERE_CLAUSE"/>

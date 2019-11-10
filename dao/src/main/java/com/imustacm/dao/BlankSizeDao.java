@@ -4,14 +4,13 @@
  */
 package com.imustacm.dao;
 
-import com.imustacm.dao.base.BaseDao;
 import com.imustacm.domain.Po.BlankSize;
-
+import com.imustacm.dao.base.BaseDao;
 
 /**
  * BlankSizeDao 接口
  * @author Lenovo
- * @since 2019-09-28 20:19:30
+ * @since 2019-11-10 20:45:56
  */
 public interface BlankSizeDao extends BaseDao<BlankSize, Long> {
     //自定义扩展

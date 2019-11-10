@@ -30,7 +30,7 @@ public class FlourMillingProcessRecordVo {
     private String operator;
 
     @ApiModelProperty(value = "创建时间，无需从前端传入")
-    private Date createTime;
+    private String createTime;
 
     // max length: 400
     @ApiModelProperty(value = "设备运行情况", example = "良好")
@@ -44,13 +44,13 @@ public class FlourMillingProcessRecordVo {
     private String feedInstructions;
 
     @ApiModelProperty(value = "制粉起始时间", example = "")
-    private Date millingStarTime;
+    private String millingStarTime;
 
     @ApiModelProperty(value = "制粉结束时间", example = "")
-    private Date millingEndTime;
+    private String millingEndTime;
 
     @ApiModelProperty(value = "制粉耗时", example = "")
-    private Date millingTime;
+    private String millingTime;
 
     @ApiModelProperty(value = "制粉起始氧含量", example = "1000")
     private String starOxygenContent;

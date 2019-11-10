@@ -43,5 +43,5 @@ public class StockVo {
     private String weight;
 
     @ApiModelProperty(value = "更新时间，前端无需写此操作")
-    private Date createTime;
+    private String createTime;
 }

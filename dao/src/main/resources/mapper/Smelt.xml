@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
-		"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.imustacm.dao.SmeltDao">
 
 	<!-- smelt 所有查询列 -->
@@ -16,30 +16,30 @@
             discharge,
             feeding,
             yield,
-            operator
+            operator 
 		]]>
 	</sql>
 
 	<!-- smelt 查询列来源表-->
 	<sql id="QUERY_FROM_TABLE"><![CDATA[FROM smelt]]></sql>
-
+	
 	<!-- 全部条件(更多功能可以通过queryData扩展实现)  -->
 	<sql id="QUERY_WHERE_CLAUSE">
 		<where>
-			<if test="id != null and id != ''"><![CDATA[AND id = #{id}]]></if>
-			<if test="createTime != null and createTime != ''"><![CDATA[AND create_time = #{createTime}]]></if>
-			<if test="number != null and number != ''"><![CDATA[AND number = #{number}]]></if>
-			<if test="fristTare != null and fristTare != ''"><![CDATA[AND frist_tare = #{fristTare}]]></if>
-			<if test="fristNetWeight != null and fristNetWeight != ''"><![CDATA[AND frist_net_weight = #{fristNetWeight}]]></if>
-			<if test="secondTare != null and secondTare != ''"><![CDATA[AND second_tare = #{secondTare}]]></if>
-			<if test="secondNetWeight != null and secondNetWeight != ''"><![CDATA[AND second_net_weight = #{secondNetWeight}]]></if>
-			<if test="discharge != null and discharge != ''"><![CDATA[AND discharge = #{discharge}]]></if>
-			<if test="feeding != null and feeding != ''"><![CDATA[AND feeding = #{feeding}]]></if>
-			<if test="yield != null and yield != ''"><![CDATA[AND yield = #{yield}]]></if>
-			<if test="operator != null and operator != ''"><![CDATA[AND operator = #{operator}]]></if>
+            <if test="id != null and id != ''"><![CDATA[AND id = #{id}]]></if>
+            <if test="createTime != null and createTime != ''"><![CDATA[AND create_time = #{createTime}]]></if>
+            <if test="number != null and number != ''"><![CDATA[AND number = #{number}]]></if>
+            <if test="fristTare != null and fristTare != ''"><![CDATA[AND frist_tare = #{fristTare}]]></if>
+            <if test="fristNetWeight != null and fristNetWeight != ''"><![CDATA[AND frist_net_weight = #{fristNetWeight}]]></if>
+            <if test="secondTare != null and secondTare != ''"><![CDATA[AND second_tare = #{secondTare}]]></if>
+            <if test="secondNetWeight != null and secondNetWeight != ''"><![CDATA[AND second_net_weight = #{secondNetWeight}]]></if>
+            <if test="discharge != null and discharge != ''"><![CDATA[AND discharge = #{discharge}]]></if>
+            <if test="feeding != null and feeding != ''"><![CDATA[AND feeding = #{feeding}]]></if>
+            <if test="yield != null and yield != ''"><![CDATA[AND yield = #{yield}]]></if>
+            <if test="operator != null and operator != ''"><![CDATA[AND operator = #{operator}]]></if> 
 		</where>
 	</sql>
-
+	
 	<!-- 智能排序与分页 -->
 	<sql id="QUERY_ORDER_LIMIT_CONDTION">
 		<if test="orderField != null and orderField != '' and orderFieldType != null and orderFieldType != ''"><![CDATA[ORDER BY ${orderField} ${orderFieldType}]]></if>
@@ -67,35 +67,35 @@
 		<![CDATA[
 			INSERT INTO smelt
 				(
-                id,
-                create_time,
-                number,
-                frist_tare,
-                frist_net_weight,
-                second_tare,
-                second_net_weight,
-                discharge,
-                feeding,
-                yield,
-                operator
+                id, 
+                create_time, 
+                number, 
+                frist_tare, 
+                frist_net_weight, 
+                second_tare, 
+                second_net_weight, 
+                discharge, 
+                feeding, 
+                yield, 
+                operator 
 				)
 			VALUES
 				(
-                #{id},
-                #{createTime},
-                #{number},
-                #{fristTare},
-                #{fristNetWeight},
-                #{secondTare},
-                #{secondNetWeight},
-                #{discharge},
-                #{feeding},
-                #{yield},
-                #{operator}
+                #{id}, 
+                #{createTime}, 
+                #{number}, 
+                #{fristTare}, 
+                #{fristNetWeight}, 
+                #{secondTare}, 
+                #{secondNetWeight}, 
+                #{discharge}, 
+                #{feeding}, 
+                #{yield}, 
+                #{operator} 
 				)
 		]]>
 	</insert>
-
+	
 	<!-- 返回插入的编号,在事务开启状态下有效 -->
 	<select id="lastSequence" resultType="long"><![CDATA[SELECT LAST_INSERT_ID() AS id]]></select>
 
@@ -146,7 +146,7 @@
 		<include refid="QUERY_FROM_TABLE"/>
 		<include refid="QUERY_WHERE_CLAUSE"/>
 	</select>
-
+	
 	<!-- 其它SQL语句 -->
-
+	
 </mapper>

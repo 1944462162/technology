@@ -3,18 +3,16 @@
  * 本软件源代码版权归京东成都研究院所有
  */
 package com.imustacm.domain.Po;
-
-import java.util.Date;
 import com.imustacm.domain.base.BaseDomain;
 
 /**
  * 
  * @author Lenovo
- * @since 2019-11-04 17:14:44
+ * @since 2019-11-10 21:27:38
  */
 public class Stock extends BaseDomain {
 
-	private static final long serialVersionUID = 9637600849L;
+	private static final long serialVersionUID = 9974843060L;
 
 	public Stock() {
 		//默认无参构造方法
@@ -34,7 +32,8 @@ public class Stock extends BaseDomain {
 
 	private String weight;
 
-	private Date createTime;
+	// max length: 80
+	private String createTime;
 
 	public Integer getId() {
 		return this.id;
@@ -85,10 +84,10 @@ public class Stock extends BaseDomain {
 		this.weight = weight;
 	}
 	
-	public Date getCreateTime() {
+	public String getCreateTime() {
 		return this.createTime;
 	}
-    public void setCreateTime(Date createTime) {
+    public void setCreateTime(String createTime) {
 		this.createTime = createTime;
 	}
 	 

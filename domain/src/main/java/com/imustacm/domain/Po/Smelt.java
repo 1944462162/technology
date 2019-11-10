@@ -3,28 +3,25 @@
  * 本软件源代码版权归京东成都研究院所有
  */
 package com.imustacm.domain.Po;
-
 import com.imustacm.domain.base.BaseDomain;
-
-import java.util.Date;
 
 /**
  * 
  * @author Lenovo
- * @since 2019-09-28 20:19:30
+ * @since 2019-11-10 20:45:57
  */
 public class Smelt extends BaseDomain {
 
-	private static final long serialVersionUID = 14899818172L;
+	private static final long serialVersionUID = 15237060383L;
 
 	public Smelt() {
 		//默认无参构造方法
 	}
 	private Integer id;
 
-	private Date createTime;
+	// max length: 80
+	private String createTime;
 
-	// max length: 100
 	private String number;
 
 	private String fristTare;
@@ -51,10 +48,10 @@ public class Smelt extends BaseDomain {
 		this.id = id;
 	}
 	
-	public Date getCreateTime() {
+	public String getCreateTime() {
 		return this.createTime;
 	}
-    public void setCreateTime(Date createTime) {
+    public void setCreateTime(String createTime) {
 		this.createTime = createTime;
 	}
 	

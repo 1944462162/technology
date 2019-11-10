@@ -30,7 +30,7 @@ public class PressureRecordVo {
     private String pressNumber;
 
     @ApiModelProperty(value = "日期，无需从前端传入")
-    private Date createTime;
+    private String createTime;
 
     @ApiModelProperty(value = "毛坯数量", example = "3")
     private Integer roughcastNumber;
@@ -52,19 +52,19 @@ public class PressureRecordVo {
     private String suppressPressure;
 
     @ApiModelProperty(value = "压制时间, 先不用从前端传入")
-    private Date suppressTime;
+    private String suppressTime;
 
     @ApiModelProperty(value = "充磁电流", example = "223")
     private String magnetizingCurrent;
 
     @ApiModelProperty(value = "充磁时间，先不用从前端传入")
-    private Date magentizingTime;
+    private String magentizingTime;
 
     @ApiModelProperty(value = "退磁电流", example = "336")
     private String demagnetizationCurrent;
 
     @ApiModelProperty(value = "退磁时间, 先不用从前端传入")
-    private Date demagnetizatioTime;
+    private String demagnetizatioTime;
 
     // max length: 100
     @ApiModelProperty(value = "含氧量，称料室", example = "233")

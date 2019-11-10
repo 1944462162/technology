@@ -3,19 +3,16 @@
  * 本软件源代码版权归京东成都研究院所有
  */
 package com.imustacm.domain.Po;
-
 import com.imustacm.domain.base.BaseDomain;
-
-import java.util.Date;
 
 /**
  * 
  * @author Lenovo
- * @since 2019-09-28 20:19:30
+ * @since 2019-11-10 20:45:57
  */
 public class PressureRecord extends BaseDomain {
 
-	private static final long serialVersionUID = 29483407244L;
+	private static final long serialVersionUID = 30832376088L;
 
 	public PressureRecord() {
 		//默认无参构造方法
@@ -27,7 +24,8 @@ public class PressureRecord extends BaseDomain {
 
 	private String pressNumber;
 
-	private Date createTime;
+	// max length: 80
+	private String createTime;
 
 	private Integer roughcastNumber;
 
@@ -42,19 +40,22 @@ public class PressureRecord extends BaseDomain {
 
 	private String suppressPressure;
 
-	private Date suppressTime;
+	// max length: 80
+	private String suppressTime;
 
 	private String magnetizingCurrent;
 
-	private Date magentizingTime;
+	// max length: 80
+	private String magentizingTime;
 
 	private String demagnetizationCurrent;
 
-	private Date demagnetizatioTime;
+	// max length: 80
+	private String demagnetizatioTime;
 
-	// max length: 100
 	private String oxygenWeighingRoom;
 
+	// max length: 100
 	private String oxygenPackingRoom;
 
 	private String starNitrogen;
@@ -87,10 +88,10 @@ public class PressureRecord extends BaseDomain {
 		this.pressNumber = pressNumber;
 	}
 	
-	public Date getCreateTime() {
+	public String getCreateTime() {
 		return this.createTime;
 	}
-    public void setCreateTime(Date createTime) {
+    public void setCreateTime(String createTime) {
 		this.createTime = createTime;
 	}
 	
@@ -136,10 +137,10 @@ public class PressureRecord extends BaseDomain {
 		this.suppressPressure = suppressPressure;
 	}
 	
-	public Date getSuppressTime() {
+	public String getSuppressTime() {
 		return this.suppressTime;
 	}
-    public void setSuppressTime(Date suppressTime) {
+    public void setSuppressTime(String suppressTime) {
 		this.suppressTime = suppressTime;
 	}
 	
@@ -150,10 +151,10 @@ public class PressureRecord extends BaseDomain {
 		this.magnetizingCurrent = magnetizingCurrent;
 	}
 	
-	public Date getMagentizingTime() {
+	public String getMagentizingTime() {
 		return this.magentizingTime;
 	}
-    public void setMagentizingTime(Date magentizingTime) {
+    public void setMagentizingTime(String magentizingTime) {
 		this.magentizingTime = magentizingTime;
 	}
 	
@@ -164,10 +165,10 @@ public class PressureRecord extends BaseDomain {
 		this.demagnetizationCurrent = demagnetizationCurrent;
 	}
 	
-	public Date getDemagnetizatioTime() {
+	public String getDemagnetizatioTime() {
 		return this.demagnetizatioTime;
 	}
-    public void setDemagnetizatioTime(Date demagnetizatioTime) {
+    public void setDemagnetizatioTime(String demagnetizatioTime) {
 		this.demagnetizatioTime = demagnetizatioTime;
 	}
 	

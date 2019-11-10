@@ -23,7 +23,7 @@ public class SmeltingRecordVo {
     private String number;
 
     @ApiModelProperty(value = "创建时间,无需前端输入")
-    private Date createTime;
+    private String createTime;
 
     // max length: 100
     @ApiModelProperty(value = "操作人员", example = "张三")
@@ -43,7 +43,7 @@ public class SmeltingRecordVo {
     private String operationSteps;
 
     @ApiModelProperty(value = "时间", example = "")
-    private Date operationTime;
+    private String operationTime;
 
     @ApiModelProperty(value = "真空度", example = "69.6")
     private String vacuum;

@@ -3,19 +3,16 @@
  * 本软件源代码版权归京东成都研究院所有
  */
 package com.imustacm.domain.Po;
-
 import com.imustacm.domain.base.BaseDomain;
-
-import java.util.Date;
 
 /**
  * 
  * @author Lenovo
- * @since 2019-09-28 20:19:30
+ * @since 2019-11-10 20:45:57
  */
 public class SpareParts extends BaseDomain {
 
-	private static final long serialVersionUID = 14974223664L;
+	private static final long serialVersionUID = 15311465875L;
 
 	public SpareParts() {
 		//默认无参构造方法
@@ -32,7 +29,7 @@ public class SpareParts extends BaseDomain {
 	// max length: 400
 	private String remarks;
 
-	private Date createTime;
+	private String createTime;
 
 	private Integer brandName;
 
@@ -76,10 +73,10 @@ public class SpareParts extends BaseDomain {
 		this.remarks = remarks;
 	}
 	
-	public Date getCreateTime() {
+	public String getCreateTime() {
 		return this.createTime;
 	}
-    public void setCreateTime(Date createTime) {
+    public void setCreateTime(String createTime) {
 		this.createTime = createTime;
 	}
 	

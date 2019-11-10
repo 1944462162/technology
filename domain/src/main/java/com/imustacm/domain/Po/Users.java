@@ -5,11 +5,10 @@
 package com.imustacm.domain.Po;
 import com.imustacm.domain.base.BaseDomain;
 
-
 /**
  * 
  * @author Lenovo
- * @since 2019-09-29 14:22:23
+ * @since 2019-11-10 20:45:57
  */
 public class Users extends BaseDomain {
 

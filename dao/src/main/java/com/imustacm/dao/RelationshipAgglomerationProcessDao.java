@@ -10,7 +10,7 @@ import com.imustacm.dao.base.BaseDao;
 /**
  * RelationshipAgglomerationProcessDao 接口
  * @author Lenovo
- * @since 2019-10-21 11:00:16
+ * @since 2019-11-10 20:45:57
  */
 public interface RelationshipAgglomerationProcessDao extends BaseDao<RelationshipAgglomerationProcess, Long> {
     //自定义扩展

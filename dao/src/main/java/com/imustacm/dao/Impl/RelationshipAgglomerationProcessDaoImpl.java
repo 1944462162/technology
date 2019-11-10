@@ -12,7 +12,7 @@ import com.imustacm.dao.base.BaseDaoImpl;
 /**
  * RelationshipAgglomerationProcessDao 实现类
  * @author Lenovo
- * @since 2019-10-21 11:00:16
+ * @since 2019-11-10 20:45:57
  */
 @Repository("relationshipAgglomerationProcessDao")
 public class RelationshipAgglomerationProcessDaoImpl extends BaseDaoImpl<RelationshipAgglomerationProcess, Long> implements RelationshipAgglomerationProcessDao {

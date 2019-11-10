@@ -22,7 +22,7 @@ public class AgglomerationProcessRecordVo {
     private Integer id;
 
     @ApiModelProperty(value = "创建的时间，无需从前端传入")
-    private Date createTime;
+    private String createTime;
 
     // max length: 100
     @ApiModelProperty(value = "编号", example = "235")

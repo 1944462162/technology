@@ -5,11 +5,10 @@
 package com.imustacm.domain.Po;
 import com.imustacm.domain.base.BaseDomain;
 
-
 /**
  * 
  * @author Lenovo
- * @since 2019-09-28 20:19:30
+ * @since 2019-11-10 20:45:57
  */
 public class RolesPermission extends BaseDomain {
 

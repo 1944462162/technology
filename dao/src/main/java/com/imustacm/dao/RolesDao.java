@@ -10,7 +10,7 @@ import com.imustacm.dao.base.BaseDao;
 /**
  * RolesDao 接口
  * @author Lenovo
- * @since 2019-10-25 10:46:07
+ * @since 2019-11-10 20:45:57
  */
 public interface RolesDao extends BaseDao<Roles, Long> {
     //自定义扩展

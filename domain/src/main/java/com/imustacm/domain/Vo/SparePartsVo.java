@@ -38,7 +38,7 @@ public class SparePartsVo {
     private String remarks;
 
     @ApiModelProperty(value = "创建时间，无需从前端传入")
-    private Date createTime;
+    private String createTime;
 
     @ApiModelProperty(value = "牌号", example = "234")
     private Integer brandName;

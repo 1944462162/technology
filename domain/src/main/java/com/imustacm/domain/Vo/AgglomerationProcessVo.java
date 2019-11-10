@@ -23,10 +23,10 @@ public class AgglomerationProcessVo {
     private Integer id;
 
     @ApiModelProperty(value = "创建时间,无需从前端传入")
-    private Date createTime;
+    private String datatime;
 
     @ApiModelProperty(value = "累计时间，无需从前端传入")
-    private Date totalTime;
+    private String totalTime;
 
     // max length: 100
     @ApiModelProperty(value = "烧结过程",example = "煅烧")

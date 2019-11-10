@@ -5,14 +5,14 @@
 package com.imustacm.dao.Impl;
 
 import com.imustacm.dao.UsersDao;
-import com.imustacm.dao.base.BaseDaoImpl;
-import com.imustacm.domain.Po.Users;
 import org.springframework.stereotype.Repository;
+import com.imustacm.domain.Po.Users;
+import com.imustacm.dao.base.BaseDaoImpl;
 
 /**
  * UsersDao 实现类
  * @author Lenovo
- * @since 2019-09-29 14:22:23
+ * @since 2019-11-10 20:45:57
  */
 @Repository("usersDao")
 public class UsersDaoImpl extends BaseDaoImpl<Users, Long> implements UsersDao {

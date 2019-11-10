@@ -24,7 +24,7 @@ public class SmeltVo {
     private Integer id;
 
     @ApiModelProperty(value = "日期，无需前端给出")
-    private Date createTime;
+    private String createTime;
 
     @ApiModelProperty(value = "编号", example = "255")
     // max length: 100

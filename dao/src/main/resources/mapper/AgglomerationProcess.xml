@@ -7,7 +7,7 @@
 	<sql id="QUERY_COLUMN_LIST">
 		<![CDATA[
             id,
-            create_time AS createTime,
+            datatime,
             total_time AS totalTime,
             sinter_process AS sinterProcess,
             furnace_temperature AS furnaceTemperature,
@@ -22,7 +22,7 @@
 	<sql id="QUERY_WHERE_CLAUSE">
 		<where>
             <if test="id != null and id != ''"><![CDATA[AND id = #{id}]]></if>
-            <if test="createTime != null and createTime != ''"><![CDATA[AND create_time = #{createTime}]]></if>
+            <if test="datatime != null and datatime != ''"><![CDATA[AND datatime = #{datatime}]]></if>
             <if test="totalTime != null and totalTime != ''"><![CDATA[AND total_time = #{totalTime}]]></if>
             <if test="sinterProcess != null and sinterProcess != ''"><![CDATA[AND sinter_process = #{sinterProcess}]]></if>
             <if test="furnaceTemperature != null and furnaceTemperature != ''"><![CDATA[AND furnace_temperature = #{furnaceTemperature}]]></if>
@@ -39,7 +39,7 @@
 	<!-- 更新列字段,只要不为NULL则更新,除开主键列 -->
 	<sql id="UPDATE_COLUMN_SET">
 		<set>
-			<if test="createTime != null"><![CDATA[create_time = #{createTime},]]></if>
+			<if test="datatime != null"><![CDATA[datatime = #{datatime},]]></if>
 			<if test="totalTime != null"><![CDATA[total_time = #{totalTime},]]></if>
 			<if test="sinterProcess != null"><![CDATA[sinter_process = #{sinterProcess},]]></if>
 			<if test="furnaceTemperature != null"><![CDATA[furnace_temperature = #{furnaceTemperature},]]></if>
@@ -53,7 +53,7 @@
 			INSERT INTO agglomeration_process
 				(
                 id, 
-                create_time, 
+                datatime, 
                 total_time, 
                 sinter_process, 
                 furnace_temperature, 
@@ -62,7 +62,7 @@
 			VALUES
 				(
                 #{id}, 
-                #{createTime}, 
+                #{datatime}, 
                 #{totalTime}, 
                 #{sinterProcess}, 
                 #{furnaceTemperature}, 
