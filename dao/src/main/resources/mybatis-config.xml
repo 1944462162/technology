@@ -35,6 +35,6 @@
         <!--<mapper resource="mapper/SmeltingRecord.xml"/>-->
         <!--<mapper resource="mapper/SpareParts.xml"/>-->
         <!--<mapper resource="mapper/Stock.xml"/>-->
-        <!--<mapper resource="mapper/Users.xml"/>-->
+        <!--<mapper resource="mapper/UsersVo.xml"/>-->
     </mappers>
 </configuration>

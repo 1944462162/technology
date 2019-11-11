@@ -109,4 +109,22 @@ public class PressureRecordController {
         return defaultResponseVo;
     }
 
+    @ApiOperation(value = "获取备料信息", notes = "根据编码查找")
+    @GetMapping("/getPressureRecordByCode/{index}")
+    public DefaultResponseVo getPressureRecordByCode(@PathVariable("index") String index) throws Exception {
+        DefaultResponseVo defaultResponseVo = new DefaultResponseVo();
+        List<PressureRecordVo> pressureRecordVo = service.getPressureRecordByCode(index);
+        if(pressureRecordVo != null && pressureRecordVo.size() != 0){
+            HashMap<String, Object> data = new HashMap<String, Object>();
+            data.put("pressureRecordsCode",pressureRecordVo);
+            defaultResponseVo.setData(data);
+            defaultResponseVo.setCode(200);
+            defaultResponseVo.setMsg("ok");
+        }
+        else{
+            defaultResponseVo.setCode(500);
+            defaultResponseVo.setMsg("压型操作编码记录为空");
+        }
+        return defaultResponseVo;
+    }
 }

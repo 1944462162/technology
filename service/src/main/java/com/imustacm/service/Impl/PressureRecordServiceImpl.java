@@ -73,6 +73,8 @@ public class PressureRecordServiceImpl implements PressureRecordService {
         return pressureRecordDao.updateByKey(pressureRecord);
     }
 
+
+    //根据ID获取信息
     @Override
     public PressureRecordVo getOnePressureRecord(int index) throws Exception {
         PressureRecord pressureRecord = new PressureRecord();
@@ -84,5 +86,22 @@ public class PressureRecordServiceImpl implements PressureRecordService {
             BeanUtils.copyProperties(pressureRecord,pressureRecordVo);
         }
         return pressureRecordVo;
+    }
+
+    //根据编码获取信息
+    public List<PressureRecordVo> getPressureRecordByCode(String number) throws Exception {
+        List<PressureRecordVo> result = new ArrayList<>();
+        PressureRecord pressureRecord = new PressureRecord();
+        pressureRecord.setNumber(number);
+        List<PressureRecord> pressureRecords = pressureRecordDao.selectEntryList(pressureRecord);
+        if(pressureRecords!=null  && pressureRecords.size()!=0)
+        {
+            for (PressureRecord pressureRecords1:pressureRecords){
+                PressureRecordVo pressureRecordVo = new PressureRecordVo();
+                BeanUtils.copyProperties(pressureRecords1,pressureRecordVo);
+                result.add(pressureRecordVo);
+            }
+        }
+        return result;
     }
 }
