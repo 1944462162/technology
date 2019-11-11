@@ -2,9 +2,11 @@ package com.imustacm.service.Impl;
 
 import com.imustacm.dao.BlankSizeDao;
 import com.imustacm.dao.Impl.RelationshipDieAndBlankDaoImpl;
+import com.imustacm.dao.RelationshipDieAndBlankDao;
 import com.imustacm.domain.Po.BlankSize;
 import com.imustacm.domain.Po.RelationshipDieAndBlank;
 import com.imustacm.domain.Vo.BlankSizeVo;
+import com.imustacm.domain.Vo.RelationshipDieAndBlankVo;
 import com.imustacm.service.BlankSizeService;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,7 +22,8 @@ public class BlankSizeServiceImpl implements BlankSizeService {
     private BlankSizeDao blankSizeDao;
 
     @Autowired
-    private RelationshipDieAndBlankDaoImpl relationshipDieAndBlankDao;
+    private RelationshipDieAndBlankDao relationshipDieAndBlankDao;
+
 
     @Override
     public List<BlankSizeVo> getAllBlankSize() throws Exception {
@@ -90,9 +93,9 @@ public class BlankSizeServiceImpl implements BlankSizeService {
         return blankSizeVo;
     }
 
-    // 对表关系的增删改
+    // 对表关系的增删改查
     @Override
-    public int insertRelationPressureAndBlank(int PressureId, int... BlankId) {
+    public int insertRelationPressureAndBlank(int PressureId, int... BlankId) throws Exception {
         if(PressureId != 0 && BlankId.length != 0){
             RelationshipDieAndBlank[] relationshipDieAndBlanks = new RelationshipDieAndBlank[BlankId.length];
             for (int i = 0; i < BlankId.length; i++) {
@@ -102,7 +105,8 @@ public class BlankSizeServiceImpl implements BlankSizeService {
                 relationshipDieAndBlanks[i] = relationshipDieAndBlank;
             }
 
-            return relationshipDieAndBlankDao.insertEntry(relationshipDieAndBlanks);
+            relationshipDieAndBlankDao.insertEntry(relationshipDieAndBlanks);
+            return 1;
         }
         return 0;
     }
@@ -130,6 +134,21 @@ public class BlankSizeServiceImpl implements BlankSizeService {
         return relationshipDieAndBlankDao.deleteByKey(relationshipDieAndBlank);
     }
 
+    @Override
+    public List<RelationshipDieAndBlankVo> getAllRelation() throws Exception {
+
+        List<RelationshipDieAndBlankVo> result = new ArrayList<>();
+        List<RelationshipDieAndBlank> list = relationshipDieAndBlankDao.selectEntryList(null);
+        if (list != null && list.size() != 0){
+            for (RelationshipDieAndBlank dieAndBlank : list) {
+                RelationshipDieAndBlankVo relationshipDieAndBlankVo = new RelationshipDieAndBlankVo();
+                BeanUtils.copyProperties(dieAndBlank,relationshipDieAndBlankVo);
+                result.add(relationshipDieAndBlankVo);
+            }
+        }
+        return result;
+    }
+
     public int deleteRelationByPressureId(int PressureId) throws Exception {
         if(PressureId == 0){
             return 0;
@@ -140,5 +159,7 @@ public class BlankSizeServiceImpl implements BlankSizeService {
             return relationshipDieAndBlankDao.deleteByKey(relationshipDieAndBlank);
         }
     }
+
+
 
 }

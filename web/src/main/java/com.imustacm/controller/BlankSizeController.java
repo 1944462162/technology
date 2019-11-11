@@ -4,6 +4,7 @@ import com.imustacm.domain.RelationVo.DefaultResponseVo;
 import com.imustacm.domain.RelationVo.RelationOneToManyRequestVo;
 import com.imustacm.domain.RelationVo.RelationOneToOneRequestVo;
 import com.imustacm.domain.Vo.BlankSizeVo;
+import com.imustacm.domain.Vo.RelationshipDieAndBlankVo;
 import com.imustacm.service.Impl.BlankSizeServiceImpl;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -111,7 +112,7 @@ public class BlankSizeController {
 
     @ApiOperation("增加压型记录和设计压坯尺寸对照表")
     @PostMapping("/insertRelationPressureAndBlank")
-    public DefaultResponseVo insertRelationPressureAndBlank(@RequestBody RelationOneToManyRequestVo relationOneToManyRequestVo){
+    public DefaultResponseVo insertRelationPressureAndBlank(@RequestBody RelationOneToManyRequestVo relationOneToManyRequestVo) throws Exception {
         DefaultResponseVo defaultResponseVo = new DefaultResponseVo();
         Integer code = blankSizeService.insertRelationPressureAndBlank(relationOneToManyRequestVo.getOneId(),relationOneToManyRequestVo.getManyId());
         if(code == 1){
@@ -156,4 +157,25 @@ public class BlankSizeController {
         }
         return defaultResponseVo;
     }
+
+
+    @ApiOperation("获取所有的压型记录和设计压坯尺寸对照表信息")
+    @GetMapping("/getAllRelationDieAndBlank")
+    public DefaultResponseVo getAllRelationDieAndBlank() throws Exception {
+        DefaultResponseVo defaultResponseVo = new DefaultResponseVo();
+        List<RelationshipDieAndBlankVo> relationshipDieAndBlankVos = blankSizeService.getAllRelation();
+        if (relationshipDieAndBlankVos != null && relationshipDieAndBlankVos.size() != 0){
+            HashMap map = new HashMap();
+            map.put("relationshipDieAndBlank",relationshipDieAndBlankVos);
+            defaultResponseVo.setData(map);
+            defaultResponseVo.setCode(200);
+            defaultResponseVo.setMsg("ok");
+        }
+        else{
+            defaultResponseVo.setCode(500);
+            defaultResponseVo.setMsg("获取关系对照表失败");
+        }
+        return defaultResponseVo;
+    }
+
 }

@@ -3,6 +3,7 @@ package com.imustacm.service;
 
 import com.imustacm.domain.Po.BlankSize;
 import com.imustacm.domain.Vo.BlankSizeVo;
+import com.imustacm.domain.Vo.RelationshipDieAndBlankVo;
 
 import java.util.List;
 
@@ -20,9 +21,11 @@ public interface BlankSizeService {
     //根据ID获取原料库存
     BlankSizeVo getOneBlankSize(int index) throws Exception;
 
-    int insertRelationPressureAndBlank(int PressureId, int... BlankId);
+    int insertRelationPressureAndBlank(int PressureId, int... BlankId) throws Exception;
 
     int updateRelationPressureAndBlank(int PressureId, int... BlankId) throws Exception;
 
     int deleteOneRelation(int PressureId, int BlankId) throws Exception;
+
+    List<RelationshipDieAndBlankVo> getAllRelation() throws Exception;
 }
