@@ -7,10 +7,10 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="dao" />
-        <module name="domain" />
-        <module name="service" />
         <module name="shiro" />
+        <module name="domain" />
         <module name="web" />
+        <module name="service" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
