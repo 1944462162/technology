@@ -20,5 +20,6 @@ public interface SmeltingRecordService {
     //根据ID获取原料库存
     SmeltingRecordVo getOneSmeltingRecord(int index) throws Exception;
 
+    List<SmeltingRecordVo> getSmeltingRecordByCode(String index) throws Exception;
 
 }

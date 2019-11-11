@@ -114,5 +114,24 @@ public class SmeltingRecordController {
         return defaultResponseVo;
     }
 
+    @ApiOperation(value = "获取冶炼操作记录", notes = "根据编号进行查找")
+    @GetMapping("/getSmeltingRecordsByCode/{index}")
+    public DefaultResponseVo getSmeltingRecordsByCode(@PathVariable("index") String index) throws Exception {
+        List<SmeltingRecordVo> smeltingRecordVo = smeltingRecordService.getSmeltingRecordByCode(index);
+        DefaultResponseVo defaultResponseVo = new DefaultResponseVo();
+
+        if(smeltingRecordVo != null && smeltingRecordVo.size() != 0){
+            HashMap<String, Object> data = new HashMap<String, Object>();
+            data.put("smeltingRecordByCode",smeltingRecordVo);
+            defaultResponseVo.setData(data);
+            defaultResponseVo.setCode(200);
+            defaultResponseVo.setMsg("ok");
+        }
+        else{
+            defaultResponseVo.setCode(500);
+            defaultResponseVo.setMsg("此编号记录为空");
+        }
+        return defaultResponseVo;
+    }
 
 }

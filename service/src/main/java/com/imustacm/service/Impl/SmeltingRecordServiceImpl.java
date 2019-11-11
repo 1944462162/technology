@@ -90,4 +90,20 @@ public class SmeltingRecordServiceImpl implements SmeltingRecordService {
         }
         return smeltingRecordVo;
     }
+
+    // 根据编号进行查找
+    public List<SmeltingRecordVo> getSmeltingRecordByCode(String index) throws Exception {
+        List<SmeltingRecordVo> list = new ArrayList<>();
+        SmeltingRecord smeltingRecord = new SmeltingRecord();
+        smeltingRecord.setNumber(index);
+        List<SmeltingRecord> smeltingRecords = smeltingRecordDao.selectEntryList(smeltingRecord);
+        if (smeltingRecords != null && smeltingRecords.size() != 0){
+            for (SmeltingRecord record : smeltingRecords) {
+                SmeltingRecordVo smeltingRecordVo = new SmeltingRecordVo();
+                BeanUtils.copyProperties(record,smeltingRecordVo);
+                list.add(smeltingRecordVo);
+            }
+        }
+        return list;
+    }
 }
