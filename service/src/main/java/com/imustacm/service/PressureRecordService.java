@@ -21,5 +21,6 @@ public interface PressureRecordService {
     //根据ID获取原料库存
     PressureRecordVo getOnePressureRecord(int index) throws Exception;
 
+    //根据编码获取库存
     List<PressureRecordVo> getPressureRecordByCode(String number) throws Exception;
 }

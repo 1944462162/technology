@@ -15,7 +15,6 @@ import java.util.List;
 @Service("sparePartsService")
 public class SparePartsServiceImpl implements SparePartsService {
 
-
     @Autowired
     private SparePartsDao sparePartsDao;
 
@@ -82,5 +81,22 @@ public class SparePartsServiceImpl implements SparePartsService {
             BeanUtils.copyProperties(spareParts,sparePartsVo);
         }
         return sparePartsVo;
+    }
+
+    @Override
+    public List<SparePartsVo> getSparePartsByCode(Integer number) throws Exception {
+        List<SparePartsVo> result = new ArrayList<>();
+        SpareParts spareParts = new SpareParts();
+        spareParts.setBrandName(number);
+        List<SpareParts> sparePartsList = sparePartsDao.selectEntryList(spareParts);
+        if(sparePartsList != null  && sparePartsList.size()!=0)
+        {
+            for (SpareParts spareParts1:sparePartsList){
+                SparePartsVo sparePartsVo = new SparePartsVo();
+                BeanUtils.copyProperties(spareParts1,sparePartsVo);
+                result.add(sparePartsVo);
+            }
+        }
+        return result;
     }
 }

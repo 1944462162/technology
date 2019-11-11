@@ -22,5 +22,8 @@ public interface SparePartsService {
     //根据ID获取原料库存
     SparePartsVo getOneSpareParts(int index) throws Exception;
 
+    //根据牌号获取原料库存
+    List<SparePartsVo> getSparePartsByCode(Integer number) throws Exception;
+
 
 }

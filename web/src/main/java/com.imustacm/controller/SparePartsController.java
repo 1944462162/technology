@@ -9,6 +9,7 @@ import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Objects;
@@ -118,6 +119,26 @@ public class SparePartsController {
        HashMap<String,Object> map = new HashMap<>();
        map.put("spareParts",sparePartsVo);
        defaultResponseVo.setData(map);
+        return defaultResponseVo;
+    }
+
+
+    @ApiOperation(value = "根据牌号获取单备料",notes = "根据Code查找")
+    @GetMapping("/getSparePartsByCode/{code}")
+    public DefaultResponseVo getSparePartsByCode(@PathVariable("code") int index) throws Exception {
+        DefaultResponseVo defaultResponseVo = new DefaultResponseVo();
+        List<SparePartsVo> sparePartsVos = sparePartsService.getSparePartsByCode(index);
+        if(sparePartsVos != null && sparePartsVos.size() != 0){
+            HashMap<String, Object> data = new HashMap<String, Object>();
+            data.put("getSparePartsByCode",sparePartsVos);
+            defaultResponseVo.setData(data);
+            defaultResponseVo.setCode(200);
+            defaultResponseVo.setMsg("ok");
+        }
+        else{
+            defaultResponseVo.setCode(500);
+            defaultResponseVo.setMsg("此牌号信息为空");
+        }
         return defaultResponseVo;
     }
 }
