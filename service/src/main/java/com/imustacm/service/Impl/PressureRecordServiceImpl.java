@@ -105,5 +105,19 @@ public class PressureRecordServiceImpl implements PressureRecordService {
         return result;
     }
 
+    @Override
+    public int getNewInsertPressureRecord() {
+        int k = 0;
+        try {
+            List<PressureRecord> pressureRecords = pressureRecordDao.selectEntryList(null);
+            for (PressureRecord pressureRecord : pressureRecords) {
+                k = pressureRecord.getId();
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return k;
+    }
+
 
 }

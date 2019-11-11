@@ -23,4 +23,6 @@ public interface PressureRecordService {
 
     //根据编码获取库存
     List<PressureRecordVo> getPressureRecordByCode(String number) throws Exception;
+
+    int getNewInsertPressureRecord();
 }

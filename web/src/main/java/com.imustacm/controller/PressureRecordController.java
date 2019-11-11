@@ -50,9 +50,13 @@ public class PressureRecordController {
         DefaultResponseVo defaultResponseVo = new DefaultResponseVo();
         try {
             Integer code = service.insertPressureRecord(pressureRecordVo);
-
+            Integer number = service.getNewInsertPressureRecord();
             if (code == 1){
-                defaultResponseVo = new DefaultResponseVo(200,"ok");
+                HashMap map = new HashMap();
+                map.put("NewInsertPressureRecord",number);
+                defaultResponseVo.setCode(200);
+                defaultResponseVo.setMsg("ok");
+                defaultResponseVo.setData(map);
             }
             else{
                 defaultResponseVo = new DefaultResponseVo(500,"无法增加压型记录");

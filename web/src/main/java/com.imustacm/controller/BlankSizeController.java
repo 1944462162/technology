@@ -53,10 +53,14 @@ public class BlankSizeController {
     public DefaultResponseVo insertBlankSize(@RequestBody BlankSizeVo blankSizeVo) throws Exception {
         DefaultResponseVo defaultResponseVo = new DefaultResponseVo();
         Integer code = blankSizeService.insertBlankSize(blankSizeVo);
+        Integer number = blankSizeService.getNewInsertBlankSize();
         if(code == 1)
         {
+            HashMap map = new HashMap();
+            map.put("NewInsertBlankSize",number);
             defaultResponseVo.setCode(200);
             defaultResponseVo.setMsg("ok");
+            defaultResponseVo.setData(map);
         }
         else{
             defaultResponseVo.setCode(500);

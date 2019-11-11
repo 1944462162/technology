@@ -13,7 +13,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 @Service("blankSizeService")
 public class BlankSizeServiceImpl implements BlankSizeService {
@@ -97,16 +99,34 @@ public class BlankSizeServiceImpl implements BlankSizeService {
     @Override
     public int insertRelationPressureAndBlank(int PressureId, int... BlankId) throws Exception {
         if(PressureId != 0 && BlankId.length != 0){
-            RelationshipDieAndBlank[] relationshipDieAndBlanks = new RelationshipDieAndBlank[BlankId.length];
+                RelationshipDieAndBlank[] relationshipDieAndBlanks = new RelationshipDieAndBlank[BlankId.length];
+
+            Set<Integer> set = new HashSet<>();
             for (int i = 0; i < BlankId.length; i++) {
-                RelationshipDieAndBlank relationshipDieAndBlank = new RelationshipDieAndBlank();
-                relationshipDieAndBlank.setPressureRecordId(PressureId);
-                relationshipDieAndBlank.setBlankSizeId(BlankId[i]);
-                relationshipDieAndBlanks[i] = relationshipDieAndBlank;
+                set.add(BlankId[i]);
             }
 
-            relationshipDieAndBlankDao.insertEntry(relationshipDieAndBlanks);
-            return 1;
+            int k = 0;
+            for (Integer integer : set) {
+                RelationshipDieAndBlank relationshipDieAndBlank = new RelationshipDieAndBlank();
+
+                relationshipDieAndBlank.setPressureRecordId(PressureId);
+                relationshipDieAndBlank.setBlankSizeId(integer);
+                List<RelationshipDieAndBlank> list = relationshipDieAndBlankDao.selectEntryList(null);
+                boolean flag = true;
+                for (RelationshipDieAndBlank dieAndBlank : list) {
+                    if (dieAndBlank.getPressureRecordId() == PressureId && dieAndBlank.getBlankSizeId() == integer){
+                        flag = false;
+                        break;
+                    }
+                }
+                if (flag){
+                    relationshipDieAndBlanks[k++] = relationshipDieAndBlank;
+                }
+            }
+
+                relationshipDieAndBlankDao.insertEntry(relationshipDieAndBlanks);
+                return 1;
         }
         return 0;
     }
@@ -158,6 +178,20 @@ public class BlankSizeServiceImpl implements BlankSizeService {
             relationshipDieAndBlank.setPressureRecordId(PressureId);
             return relationshipDieAndBlankDao.deleteByKey(relationshipDieAndBlank);
         }
+    }
+
+    @Override
+    public int getNewInsertBlankSize() {
+        int k = 0;
+        try {
+            List<BlankSize> pressureRecords = blankSizeDao.selectEntryList(null);
+            for (BlankSize pressureRecord : pressureRecords) {
+                k = pressureRecord.getId();
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return k;
     }
 
 

@@ -28,4 +28,7 @@ public interface BlankSizeService {
     int deleteOneRelation(int PressureId, int BlankId) throws Exception;
 
     List<RelationshipDieAndBlankVo> getAllRelation() throws Exception;
+
+    int getNewInsertBlankSize();
+
 }
