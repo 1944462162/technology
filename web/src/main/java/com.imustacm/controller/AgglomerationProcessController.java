@@ -6,6 +6,7 @@ import com.imustacm.domain.RelationVo.RelationOneToManyRequestVo;
 import com.imustacm.domain.RelationVo.RelationOneToOneRequestVo;
 import com.imustacm.domain.Vo.AgglomerationProcessRecordVo;
 import com.imustacm.domain.Vo.AgglomerationProcessVo;
+import com.imustacm.domain.Vo.RelationshipAgglomerationProcessVo;
 import com.imustacm.service.AgglomerationProcessService;
 import com.imustacm.shiro.CustomRealm;
 import io.swagger.annotations.Api;
@@ -159,6 +160,25 @@ public class AgglomerationProcessController {
             defaultResponseVo.setMsg("更新结烧工艺与结烧工艺记录之间的关系失败");
         }
 
+        return defaultResponseVo;
+    }
+
+    @ApiOperation(value = "获取所有结烧工艺与结烧工艺记录之间的关系")
+    @GetMapping("/getAllRelationShipRecordAndProcess")
+    public DefaultResponseVo getAllRelationShipRecordAndProcess() throws Exception {
+        DefaultResponseVo defaultResponseVo = new DefaultResponseVo();
+        List<RelationshipAgglomerationProcessVo> list = agglomerationProcessService.getAllRelationshipAgglomerationProcess();
+        if (list != null && list.size() != 0){
+            HashMap map = new HashMap();
+            map.put("AllRelationShipRecordAndProcess",list);
+            defaultResponseVo.setData(map);
+            defaultResponseVo.setCode(200);
+            defaultResponseVo.setMsg("ok");
+        }
+        else{
+            defaultResponseVo.setCode(500);
+            defaultResponseVo.setMsg("获取结烧工艺与结烧工艺记录之间的关系信息失败");
+        }
         return defaultResponseVo;
     }
 }

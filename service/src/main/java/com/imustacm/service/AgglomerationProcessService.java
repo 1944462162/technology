@@ -1,6 +1,7 @@
 package com.imustacm.service;
 
 import com.imustacm.domain.Vo.AgglomerationProcessVo;
+import com.imustacm.domain.Vo.RelationshipAgglomerationProcessVo;
 
 import java.util.List;
 
@@ -24,4 +25,6 @@ public interface AgglomerationProcessService {
     int deleteOneRelation(int RecordId, int ProcessId) throws Exception;
 
     int  updateRelationOfAgglomerationAndProcess(int RecordId, int... processGroupId) throws Exception;
+
+    List<RelationshipAgglomerationProcessVo> getAllRelationshipAgglomerationProcess() throws Exception;
 }

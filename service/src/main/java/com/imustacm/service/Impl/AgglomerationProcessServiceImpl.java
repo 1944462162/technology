@@ -5,6 +5,7 @@ import com.imustacm.dao.RelationshipAgglomerationProcessDao;
 import com.imustacm.domain.Po.AgglomerationProcess;
 import com.imustacm.domain.Po.RelationshipAgglomerationProcess;
 import com.imustacm.domain.Vo.AgglomerationProcessVo;
+import com.imustacm.domain.Vo.RelationshipAgglomerationProcessVo;
 import com.imustacm.service.AgglomerationProcessService;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,6 +22,7 @@ public class AgglomerationProcessServiceImpl implements AgglomerationProcessServ
 
     @Autowired
     private RelationshipAgglomerationProcessDao relationshipAgglomerationProcessDao;
+
     @Override
     public List<AgglomerationProcessVo> getAllAgglomerationProcess() throws Exception {
         List<AgglomerationProcessVo> result= new ArrayList<>();
@@ -100,7 +102,8 @@ public class AgglomerationProcessServiceImpl implements AgglomerationProcessServ
                 relationshipAgglomerationProcess.setAgglomerationId(processGroupId[i]);
                 relationshipAgglomerationProcesses[i] = relationshipAgglomerationProcess;
             }
-            return relationshipAgglomerationProcessDao.insertEntry(relationshipAgglomerationProcesses);
+             relationshipAgglomerationProcessDao.insertEntry(relationshipAgglomerationProcesses);
+            return 1;
         }
         return 0;
     }
@@ -126,6 +129,20 @@ public class AgglomerationProcessServiceImpl implements AgglomerationProcessServ
             insertRelationOfAgglomerationAndProcess(RecordId,processGroupId);
             return 1;
         }
+    }
+
+    @Override
+    public List<RelationshipAgglomerationProcessVo> getAllRelationshipAgglomerationProcess() throws Exception {
+        List<RelationshipAgglomerationProcessVo> relationshipAgglomerationProcessVos = new ArrayList<>();
+        List<RelationshipAgglomerationProcess> relationshipAgglomerationProcesses = relationshipAgglomerationProcessDao.selectEntryList(null);
+        if (relationshipAgglomerationProcesses != null && relationshipAgglomerationProcesses.size() != 0){
+            for (RelationshipAgglomerationProcess relationshipAgglomerationProcess : relationshipAgglomerationProcesses) {
+                RelationshipAgglomerationProcessVo relationshipAgglomerationProcessVo = new RelationshipAgglomerationProcessVo();
+                BeanUtils.copyProperties(relationshipAgglomerationProcess,relationshipAgglomerationProcessVo);
+                relationshipAgglomerationProcessVos.add(relationshipAgglomerationProcessVo);
+            }
+        }
+        return relationshipAgglomerationProcessVos;
     }
 
     public int deleteRelationByRecordId(int RecordId) throws Exception {
