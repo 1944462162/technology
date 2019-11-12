@@ -12,7 +12,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 @Service("agglomerationProcessService")
 public class AgglomerationProcessServiceImpl implements AgglomerationProcessService {
@@ -95,13 +97,34 @@ public class AgglomerationProcessServiceImpl implements AgglomerationProcessServ
     @Override
     public int insertRelationOfAgglomerationAndProcess(int RecordId, int... processGroupId) throws Exception {
         if(RecordId != 0 && processGroupId.length != 0){
+
+            Set<Integer> set = new HashSet<>();
+            for (int i : processGroupId) {
+                set.add(i);
+            }
+
+            int k = 0;
             RelationshipAgglomerationProcess[] relationshipAgglomerationProcesses = new RelationshipAgglomerationProcess[processGroupId.length];
-            for (int i = 0; i < processGroupId.length; i++) {
+            for (Integer integer : set) {
                 RelationshipAgglomerationProcess relationshipAgglomerationProcess = new RelationshipAgglomerationProcess();
                 relationshipAgglomerationProcess.setRecordId(RecordId);
-                relationshipAgglomerationProcess.setAgglomerationId(processGroupId[i]);
-                relationshipAgglomerationProcesses[i] = relationshipAgglomerationProcess;
+                relationshipAgglomerationProcess.setAgglomerationId(integer);
+
+                List<RelationshipAgglomerationProcess> list =  relationshipAgglomerationProcessDao.selectEntryList(relationshipAgglomerationProcess);
+
+                boolean flag = true;
+                for (RelationshipAgglomerationProcess agglomerationProcess : list) {
+                    if (agglomerationProcess.getAgglomerationId().equals(integer) && agglomerationProcess.getRecordId() == RecordId){
+                        flag = false;
+                        break;
+                    }
+                }
+                if (flag){
+                    relationshipAgglomerationProcesses[k++] = relationshipAgglomerationProcess;
+                }
             }
+
+
              relationshipAgglomerationProcessDao.insertEntry(relationshipAgglomerationProcesses);
             return 1;
         }
@@ -155,5 +178,21 @@ public class AgglomerationProcessServiceImpl implements AgglomerationProcessServ
             return relationshipAgglomerationProcessDao.deleteByKey(relationshipAgglomerationProcess);
         }
     }
+
+
+    @Override
+    public int getNewInsertagglomerationProcess() {
+        int k = 0;
+        try {
+            List<AgglomerationProcess> agglomerationProcesss = agglomerationProcessDao.selectEntryList(null);
+            for (AgglomerationProcess agglomerationProcess: agglomerationProcesss) {
+                k = agglomerationProcess.getId();
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return k;
+    }
+
 
 }

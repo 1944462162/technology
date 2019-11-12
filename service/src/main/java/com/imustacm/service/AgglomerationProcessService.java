@@ -27,4 +27,6 @@ public interface AgglomerationProcessService {
     int  updateRelationOfAgglomerationAndProcess(int RecordId, int... processGroupId) throws Exception;
 
     List<RelationshipAgglomerationProcessVo> getAllRelationshipAgglomerationProcess() throws Exception;
+
+    int getNewInsertagglomerationProcess();
 }

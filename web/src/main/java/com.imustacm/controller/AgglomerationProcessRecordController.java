@@ -5,6 +5,7 @@ import com.imustacm.domain.Vo.AgglomerationProcessRecordVo;
 import com.imustacm.service.AgglomerationProcessRecordService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
+import io.swagger.models.auth.In;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -51,9 +52,12 @@ public class AgglomerationProcessRecordController {
         DefaultResponseVo defaultResponseVo = new DefaultResponseVo();
         try {
             Integer code = service.insertAgglomerationProcessRecord(agglomerationProcessRecordVo);
-
+            Integer number = service.getNewInsertagglomerationProcessRecords();
             if (code == 1){
+                HashMap map = new HashMap();
+                map.put("insertAgglomerationProcessRecord",number);
                 defaultResponseVo = new DefaultResponseVo(200,"ok");
+                defaultResponseVo.setData(map);
             }
             else{
                 defaultResponseVo = new DefaultResponseVo(500,"无法增加压坯记录");

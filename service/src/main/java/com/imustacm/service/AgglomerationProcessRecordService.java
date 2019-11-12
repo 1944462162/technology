@@ -19,4 +19,6 @@ public interface AgglomerationProcessRecordService {
 
     //根据ID获取原料库存
     AgglomerationProcessRecordVo getOneAgglomerationProcessRecord(int index) throws Exception;
+
+    int getNewInsertagglomerationProcessRecords();
 }

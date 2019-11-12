@@ -1,6 +1,8 @@
 package com.imustacm.service.Impl;
 
+import com.imustacm.dao.AgglomerationProcessDao;
 import com.imustacm.dao.AgglomerationProcessRecordDao;
+import com.imustacm.domain.Po.AgglomerationProcess;
 import com.imustacm.domain.Po.AgglomerationProcessRecord;
 import com.imustacm.domain.Vo.AgglomerationProcessRecordVo;
 import com.imustacm.service.AgglomerationProcessRecordService;
@@ -87,4 +89,21 @@ public class AgglomerationProcessRecordServiceImpl implements AgglomerationProce
         }
         return agglomerationProcessRecordVo;
     }
+
+
+
+    @Override
+    public int getNewInsertagglomerationProcessRecords() {
+        int k = 0;
+        try {
+            List<AgglomerationProcessRecord> agglomerationProcessRecords = agglomerationProcessRecordDao.selectEntryList(null);
+            for (AgglomerationProcessRecord agglomerationProcessRecord : agglomerationProcessRecords) {
+                k = agglomerationProcessRecord.getId();
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return k;
+    }
+
 }

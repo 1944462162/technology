@@ -57,8 +57,12 @@ public class AgglomerationProcessController {
         DefaultResponseVo defaultResponseVo = new DefaultResponseVo();
         Integer code = agglomerationProcessService.insertAgglomerationProcess(agglomerationProcessVo);
         if (code == 1) {
+            Integer number = agglomerationProcessService.getNewInsertagglomerationProcess();
+            HashMap map = new HashMap();
+            map.put("agglomerationProcess",number);
             defaultResponseVo.setCode(200);
             defaultResponseVo.setMsg("ok");
+            defaultResponseVo.setData(map);
         } else {
             defaultResponseVo.setCode(500);
             defaultResponseVo.setMsg("增加所有信息失败");
@@ -119,6 +123,7 @@ public class AgglomerationProcessController {
         Integer code = agglomerationProcessService.insertRelationOfAgglomerationAndProcess(relationOneToManyRequestVo.getOneId(),relationOneToManyRequestVo.getManyId());
         DefaultResponseVo defaultResponseVo = new DefaultResponseVo();
         if(code == 1){
+
             defaultResponseVo.setCode(200);
             defaultResponseVo.setMsg("ok");
         }
