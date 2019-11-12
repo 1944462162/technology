@@ -131,9 +131,12 @@ public class BlankSizeController {
     }
 
     @ApiOperation("删除压型记录和设计压坯尺寸对照表")
-    @DeleteMapping("/deleteRelationPressureAndBlank")
-    public DefaultResponseVo deleteRelationPressureAndBlank(@RequestBody RelationOneToOneRequestVo relationOneToOneRequestVo) throws Exception {
+    @DeleteMapping("/deleteRelationPressureAndBlank/{index1}/{index2}")
+    public DefaultResponseVo deleteRelationPressureAndBlank(@PathVariable("index1") int index1,@PathVariable("index2") int index2) throws Exception {
         DefaultResponseVo defaultResponseVo = new DefaultResponseVo();
+        RelationOneToOneRequestVo relationOneToOneRequestVo = new RelationOneToOneRequestVo();
+        relationOneToOneRequestVo.setId1(index1);
+        relationOneToOneRequestVo.setId2(index2);
         Integer code  = blankSizeService.deleteOneRelation(relationOneToOneRequestVo.getId1(),relationOneToOneRequestVo.getId2());
         if(code == 1)
         {

@@ -135,9 +135,12 @@ public class AgglomerationProcessController {
     }
 
     @ApiOperation(value = "删除结烧工艺与结烧工艺记录之间的关系")
-    @DeleteMapping("/deleteRelationShipRecordAndProcess")
-    public DefaultResponseVo deleteRelationShipRecordAndProcess(@RequestBody RelationOneToOneRequestVo relationOneToOneRequestVo) throws Exception {
+    @DeleteMapping("/deleteRelationShipRecordAndProcess/{index1}/{index2}")
+    public DefaultResponseVo deleteRelationShipRecordAndProcess(@PathVariable("index1") int index1, @PathVariable("index2") int index2) throws Exception {
         DefaultResponseVo defaultResponseVo = new DefaultResponseVo();
+        RelationOneToOneRequestVo relationOneToOneRequestVo = new RelationOneToOneRequestVo();
+        relationOneToOneRequestVo.setId1(index1);
+        relationOneToOneRequestVo.setId2(index2);
         Integer code = agglomerationProcessService.deleteOneRelation(relationOneToOneRequestVo.getId1(),relationOneToOneRequestVo.getId2());
         if (code == 1){
             defaultResponseVo.setCode(200);
