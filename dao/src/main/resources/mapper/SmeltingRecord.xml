@@ -20,7 +20,8 @@
             temperature,
             discharge,
             water_temperature AS waterTemperature,
-            remarks 
+            remarks,
+            row 
 		]]>
 	</sql>
 
@@ -44,7 +45,8 @@
             <if test="temperature != null and temperature != ''"><![CDATA[AND temperature = #{temperature}]]></if>
             <if test="discharge != null and discharge != ''"><![CDATA[AND discharge = #{discharge}]]></if>
             <if test="waterTemperature != null and waterTemperature != ''"><![CDATA[AND water_temperature = #{waterTemperature}]]></if>
-            <if test="remarks != null and remarks != ''"><![CDATA[AND remarks = #{remarks}]]></if> 
+            <if test="remarks != null and remarks != ''"><![CDATA[AND remarks = #{remarks}]]></if>
+            <if test="row != null and row != ''"><![CDATA[AND row = #{row}]]></if> 
 		</where>
 	</sql>
 	
@@ -71,6 +73,7 @@
 			<if test="discharge != null"><![CDATA[discharge = #{discharge},]]></if>
 			<if test="waterTemperature != null"><![CDATA[water_temperature = #{waterTemperature},]]></if>
 			<if test="remarks != null"><![CDATA[remarks = #{remarks},]]></if>
+			<if test="row != null"><![CDATA[row = #{row},]]></if>
 		</set>
 	</sql>
 
@@ -93,7 +96,8 @@
                 temperature, 
                 discharge, 
                 water_temperature, 
-                remarks 
+                remarks, 
+                row 
 				)
 			VALUES
 				(
@@ -111,7 +115,8 @@
                 #{temperature}, 
                 #{discharge}, 
                 #{waterTemperature}, 
-                #{remarks} 
+                #{remarks}, 
+                #{row} 
 				)
 		]]>
 	</insert>

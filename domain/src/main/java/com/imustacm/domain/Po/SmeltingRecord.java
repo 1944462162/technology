@@ -8,11 +8,11 @@ import com.imustacm.domain.base.BaseDomain;
 /**
  * 
  * @author Lenovo
- * @since 2019-11-10 20:45:57
+ * @since 2019-11-12 17:32:07
  */
 public class SmeltingRecord extends BaseDomain {
 
-	private static final long serialVersionUID = 24461831965L;
+	private static final long serialVersionUID = 25937166869L;
 
 	public SmeltingRecord() {
 		//默认无参构造方法
@@ -50,6 +50,8 @@ public class SmeltingRecord extends BaseDomain {
 
 	// max length: 400
 	private String remarks;
+
+	private Integer row;
 
 	public Integer getId() {
 		return this.id;
@@ -154,6 +156,13 @@ public class SmeltingRecord extends BaseDomain {
 	}
     public void setRemarks(String remarks) {
 		this.remarks = remarks;
+	}
+	
+	public Integer getRow() {
+		return this.row;
+	}
+    public void setRow(Integer row) {
+		this.row = row;
 	}
 	 
 }

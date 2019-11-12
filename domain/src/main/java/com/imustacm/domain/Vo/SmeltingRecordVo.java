@@ -2,6 +2,7 @@ package com.imustacm.domain.Vo;
 
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+import io.swagger.annotations.ApiOperation;
 import lombok.Data;
 
 import java.util.Date;
@@ -58,6 +59,9 @@ public class SmeltingRecordVo {
     // max length: 400
     @ApiModelProperty(value = "备注", example = "成功")
     private String remarks;
+
+    @ApiModelProperty(value = "第几行", example = "1")
+    private Integer row;
 
     public SmeltingRecordVo() {
         // 设置无参构造函数
