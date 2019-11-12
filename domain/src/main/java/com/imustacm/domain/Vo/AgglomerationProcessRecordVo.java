@@ -57,4 +57,7 @@ public class AgglomerationProcessRecordVo {
 
     @ApiModelProperty(value = "第二个夜班的姓名", example = "韩六")
     private String secondOperatorNight;
+
+    @ApiModelProperty(value = "记录",example = "正常")
+    private String remark;
 }

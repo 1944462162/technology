@@ -8,11 +8,11 @@ import com.imustacm.domain.base.BaseDomain;
 /**
  * 
  * @author Lenovo
- * @since 2019-11-10 20:45:56
+ * @since 2019-11-12 17:44:48
  */
 public class AgglomerationProcessRecord extends BaseDomain {
 
-	private static final long serialVersionUID = 22755185745L;
+	private static final long serialVersionUID = 24307409922L;
 
 	public AgglomerationProcessRecord() {
 		//默认无参构造方法
@@ -47,6 +47,9 @@ public class AgglomerationProcessRecord extends BaseDomain {
 	private String secondOperatorDay;
 
 	private String secondOperatorNight;
+
+	// max length: 100
+	private String remark;
 
 	public Integer getId() {
 		return this.id;
@@ -144,6 +147,13 @@ public class AgglomerationProcessRecord extends BaseDomain {
 	}
     public void setSecondOperatorNight(String secondOperatorNight) {
 		this.secondOperatorNight = secondOperatorNight;
+	}
+	
+	public String getRemark() {
+		return this.remark;
+	}
+    public void setRemark(String remark) {
+		this.remark = remark;
 	}
 	 
 }

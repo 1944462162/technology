@@ -1,14 +1,15 @@
+
 package com.imustacm.dao.Impl;
 
-import com.imustacm.dao.AgglomerationProcessRecordDao;
 import org.springframework.stereotype.Repository;
 import com.imustacm.domain.Po.AgglomerationProcessRecord;
 import com.imustacm.dao.base.BaseDaoImpl;
+import com.imustacm.dao.AgglomerationProcessRecordDao;
 
 /**
  * AgglomerationProcessRecordDao 实现类
  * @author Lenovo
- * @since 2019-11-10 20:45:56
+ * @since 2019-11-12 17:44:48
  */
 @Repository("agglomerationProcessRecordDao")
 public class AgglomerationProcessRecordDaoImpl extends BaseDaoImpl<AgglomerationProcessRecord, Long> implements AgglomerationProcessRecordDao {

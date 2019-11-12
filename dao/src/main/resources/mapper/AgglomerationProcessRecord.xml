@@ -19,7 +19,8 @@
             frist_operator_day AS fristOperatorDay,
             frist_operator_night AS fristOperatorNight,
             second_operator_day AS secondOperatorDay,
-            second_operator_night AS secondOperatorNight 
+            second_operator_night AS secondOperatorNight,
+            remark 
 		]]>
 	</sql>
 
@@ -42,7 +43,8 @@
             <if test="fristOperatorDay != null and fristOperatorDay != ''"><![CDATA[AND frist_operator_day = #{fristOperatorDay}]]></if>
             <if test="fristOperatorNight != null and fristOperatorNight != ''"><![CDATA[AND frist_operator_night = #{fristOperatorNight}]]></if>
             <if test="secondOperatorDay != null and secondOperatorDay != ''"><![CDATA[AND second_operator_day = #{secondOperatorDay}]]></if>
-            <if test="secondOperatorNight != null and secondOperatorNight != ''"><![CDATA[AND second_operator_night = #{secondOperatorNight}]]></if> 
+            <if test="secondOperatorNight != null and secondOperatorNight != ''"><![CDATA[AND second_operator_night = #{secondOperatorNight}]]></if>
+            <if test="remark != null and remark != ''"><![CDATA[AND remark = #{remark}]]></if> 
 		</where>
 	</sql>
 	
@@ -68,6 +70,7 @@
 			<if test="fristOperatorNight != null"><![CDATA[frist_operator_night = #{fristOperatorNight},]]></if>
 			<if test="secondOperatorDay != null"><![CDATA[second_operator_day = #{secondOperatorDay},]]></if>
 			<if test="secondOperatorNight != null"><![CDATA[second_operator_night = #{secondOperatorNight},]]></if>
+			<if test="remark != null"><![CDATA[remark = #{remark},]]></if>
 		</set>
 	</sql>
 
@@ -89,7 +92,8 @@
                 frist_operator_day, 
                 frist_operator_night, 
                 second_operator_day, 
-                second_operator_night 
+                second_operator_night, 
+                remark 
 				)
 			VALUES
 				(
@@ -106,7 +110,8 @@
                 #{fristOperatorDay}, 
                 #{fristOperatorNight}, 
                 #{secondOperatorDay}, 
-                #{secondOperatorNight} 
+                #{secondOperatorNight}, 
+                #{remark} 
 				)
 		]]>
 	</insert>

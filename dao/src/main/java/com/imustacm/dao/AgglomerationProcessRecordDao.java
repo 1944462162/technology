@@ -6,7 +6,7 @@ import com.imustacm.dao.base.BaseDao;
 /**
  * AgglomerationProcessRecordDao 接口
  * @author Lenovo
- * @since 2019-11-10 20:45:56
+ * @since 2019-11-12 17:44:48
  */
 public interface AgglomerationProcessRecordDao extends BaseDao<AgglomerationProcessRecord, Long> {
     //自定义扩展
