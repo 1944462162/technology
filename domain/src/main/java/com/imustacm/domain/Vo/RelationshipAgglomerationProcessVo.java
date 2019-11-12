@@ -2,11 +2,7 @@ package com.imustacm.domain.Vo;
 
 import lombok.Data;
 
-/**
- * Author: wangJianBo
- * Date: 2019/11/12 4:16
- * Content:
- */
+
 @Data
 public class RelationshipAgglomerationProcessVo {
 

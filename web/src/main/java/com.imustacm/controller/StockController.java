@@ -13,11 +13,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.HashMap;
 import java.util.List;
 
-/**
- * Author: wangJianBo
- * Date: 2019/9/30 19:18
- * Content:
- */
+
 @RestController
 @RequestMapping("/application")
 @Api(tags = "原料库存相关请求")

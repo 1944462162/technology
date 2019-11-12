@@ -14,11 +14,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.HashMap;
 import java.util.List;
 
-/**
- * Author: wangJianBo
- * Date: 2019/10/22 9:04
- * Content:
- */
+
 
 @RestController
 @RequestMapping("/application")

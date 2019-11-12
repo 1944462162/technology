@@ -18,11 +18,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
-/**
- * Author: wangJianBo
- * Date: 2019/10/21 15:15
- * Content:
- */
+
 @RestController
 @RequestMapping("/application")
 @Api(tags = "烧结工艺")

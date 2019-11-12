@@ -7,11 +7,7 @@ import lombok.Value;
 
 import java.util.Date;
 
-/**
- * Author: wangJianBo
- * Date: 2019/10/17 11:14
- * Content:
- */
+
 
 @ApiModel("压型记录表")
 @Data

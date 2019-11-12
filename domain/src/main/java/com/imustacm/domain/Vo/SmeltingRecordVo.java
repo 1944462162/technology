@@ -6,11 +6,6 @@ import lombok.Data;
 
 import java.util.Date;
 
-/**
- * Author: wangJianBo
- * Date: 2019/10/16 18:45
- * Content:
- */
 @ApiModel("冶炼操作记录信息")
 @Data
 public class SmeltingRecordVo {

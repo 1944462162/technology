@@ -6,11 +6,7 @@ import lombok.Data;
 
 import java.util.Date;
 
-/**
- * Author: wangJianBo
- * Date: 2019/10/17 9:37
- * Content:
- */
+
 @ApiModel("制粉工艺记录相关信息")
 @Data
 public class FlourMillingProcessRecordVo {

@@ -13,11 +13,7 @@ import java.util.HashMap;
 
 import java.util.List;
 
-/**
- * Author: wangJianBo
- * Date: 2019/10/16 22:27
- * Content:
- */
+
 @RestController
 @RequestMapping("/application")
 @Api(tags = "冶炼相关信息")

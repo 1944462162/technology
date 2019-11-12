@@ -11,11 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-/**
- * Author: wangJianBo
- * Date: 2019/10/25 11:17
- * Content:
- */
+
 
 @Controller
 public class UserController {
@@ -34,7 +30,7 @@ public class UserController {
     }
 
     // admin角色：对所有表进行操作
-    @RequiresPermissions({"stock"})
+    @RequiresPermissions({"stock","spareParts","smeltingRecord","smeltingRecord","smelt","flourMillingProcessRecord","pressureRecord","blankSize","relationshipDieAndBlank","agglomerationProcessRecord","relationShipAgglomerationProcess","agglomerationProcess"})
     @RequestMapping(value = "/adminShiro", method = RequestMethod.GET)
     @ResponseBody
     public String adminRole(){
@@ -42,34 +38,68 @@ public class UserController {
     }
 
 //    director角色：对所有的表进行操作
-//    @RequiresPermissions({"stock","spareParts","smeltingRecord","smeltingRecord","smelt","flourMillingProcessRecord","pressureRecord","blankSize","relationshipDieAndBlank","agglomerationProcessRecord","relationShipAgglomerationProcess","agglomerationProcess"})
-//    @RequestMapping(value = "/adminShiro", method = RequestMethod.GET)
-//    @ResponseBody
-//    public String directorRole(){
-//        return "director";
-//    }
+    @RequiresPermissions({"stock","spareParts","smeltingRecord","smeltingRecord","smelt","flourMillingProcessRecord","pressureRecord","blankSize","relationshipDieAndBlank","agglomerationProcessRecord","relationShipAgglomerationProcess","agglomerationProcess"})
+    @RequestMapping(value = "/adminShiro", method = RequestMethod.GET)
+    @ResponseBody
+    public String directorRole(){
+        return "director";
+    }
 ////
-//    //    scientific1角色
-//    @RequiresPermissions({"stock","flourMillingProcessRecord"})
-//    @RequestMapping(value = "/adminShiro", method = RequestMethod.GET)
-//    @ResponseBody
-//    public String scientificRole(){
-//        return "scientific";
-//    }
+    //    scientific1角色
+    @RequiresPermissions({"stock","flourMillingProcessRecord"})
+    @RequestMapping(value = "/adminShiro", method = RequestMethod.GET)
+    @ResponseBody
+    public String scientificOneRole(){
+        return "scientific";
+    }
+
+    //    scientific2角色
+    @RequiresPermissions({"stock","flourMillingProcessRecord"})
+    @RequestMapping(value = "/adminShiro", method = RequestMethod.GET)
+    @ResponseBody
+    public String scientificTwoRole(){
+        return "scientific";
+    }
+
+
 //
-//    //    Sale角色，目前不清楚具体要求
-//    @RequiresPermissions("stock")
-//    @RequestMapping(value = "/adminShiro", method = RequestMethod.GET)
-//    @ResponseBody
-//    public String SaleRole(){
-//        return "scientific";
-//    }
+    //    Sale角色，目前不清楚具体要求
+    @RequiresPermissions("stock")
+    @RequestMapping(value = "/adminShiro", method = RequestMethod.GET)
+    @ResponseBody
+    public String SaleRole(){
+        return "scientific";
+    }
 //
-//    //    production1角色
-//    @RequiresPermissions({"stock","spareParts","smeltingRecord","smeltingRecord","smelt","flourMillingProcessRecord","pressureRecord"})
-//    @RequestMapping(value = "/adminShiro", method = RequestMethod.GET)
-//    @ResponseBody
-//    public String productionRole(){
-//        return "production";
-//    }
+    //    production1角色
+    @RequiresPermissions({"stock","spareParts","smeltingRecord","smeltingRecord","smelt","flourMillingProcessRecord","pressureRecord"})
+    @RequestMapping(value = "/adminShiro", method = RequestMethod.GET)
+    @ResponseBody
+    public String productionOneRole(){
+        return "production";
+    }
+
+    //    production2角色
+    @RequiresPermissions({"stock","spareParts","smeltingRecord","smeltingRecord","smelt","flourMillingProcessRecord","pressureRecord"})
+    @RequestMapping(value = "/adminShiro", method = RequestMethod.GET)
+    @ResponseBody
+    public String productionTwoRole(){
+        return "production";
+    }
+
+    //    production3角色
+    @RequiresPermissions({"stock","spareParts","smeltingRecord","smeltingRecord","smelt","flourMillingProcessRecord","pressureRecord"})
+    @RequestMapping(value = "/adminShiro", method = RequestMethod.GET)
+    @ResponseBody
+    public String productionThreeRole(){
+        return "production";
+    }
+
+    //    production4角色
+    @RequiresPermissions({"stock","spareParts","smeltingRecord","smeltingRecord","smelt","flourMillingProcessRecord","pressureRecord"})
+    @RequestMapping(value = "/adminShiro", method = RequestMethod.GET)
+    @ResponseBody
+    public String productionFourRole(){
+        return "production";
+    }
 }

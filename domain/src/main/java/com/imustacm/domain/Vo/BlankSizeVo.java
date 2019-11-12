@@ -4,11 +4,6 @@ import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 
-/**
- * Author: wangJianBo
- * Date: 2019/10/22 8:47
- * Content:
- */
 
 @ApiModel("设计压坯尺寸")
 @Data

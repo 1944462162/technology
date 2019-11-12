@@ -14,11 +14,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Objects;
 
-/**
- * Author: wangJianBo
- * Date: 2019/9/30 19:18
- * Content:
- */
+
 @RestController
 @RequestMapping("/application")
 @Api(tags = "备料库存相关请求")

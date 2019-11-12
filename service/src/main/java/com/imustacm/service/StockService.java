@@ -5,11 +5,7 @@ import com.imustacm.domain.Vo.StockVo;
 
 import java.util.List;
 
-/**
- * Author: wangJianBo
- * Date: 2019/9/30 18:48
- * Content:
- */
+
 public interface StockService {
 
     //获取所有的原料库存

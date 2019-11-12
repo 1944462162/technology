@@ -6,11 +6,6 @@ import lombok.Data;
 
 import java.util.Date;
 
-/**
- * Author: wangJianBo
- * Date: 2019/10/21 9:32
- * Content:
- */
 
 @ApiModel("烧结工艺记录")
 @Data

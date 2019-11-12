@@ -13,9 +13,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Author: wangJianBo
- * Date: 2019/9/30 18:50
- * Content:原料库存的Service
  * 判断状态 0表示不成功， 1表示成功
  */
 @Service("stockService")

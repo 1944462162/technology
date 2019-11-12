@@ -14,11 +14,6 @@ import org.springframework.util.CollectionUtils;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Author: wangJianBo
- * Date: 2019/10/25 9:55
- * Content:
- */
 
 @Service("userService")
 public class UserServiceImpl implements UserService {
