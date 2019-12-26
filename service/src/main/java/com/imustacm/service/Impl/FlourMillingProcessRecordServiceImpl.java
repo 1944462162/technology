@@ -20,70 +20,100 @@ public class FlourMillingProcessRecordServiceImpl implements FlourMillingProcess
     private FlourMillingProcessRecordDao flourMillingProcessRecordDao;
 
     @Override
-    public List<FlourMillingProcessRecordVo> getAllFlourMillingProcessRecord() throws Exception {
+    public List<FlourMillingProcessRecordVo> getAllFlourMillingProcessRecord() {
         List<FlourMillingProcessRecordVo> result= new ArrayList<>();
 
-        List<FlourMillingProcessRecord> flourMillingProcessRecords = flourMillingProcessRecordDao.selectEntryList(null);
-        if(flourMillingProcessRecords!=null  && flourMillingProcessRecords.size()!=0  )
-        {
-            for (FlourMillingProcessRecord flourMillingProcessRecords1:flourMillingProcessRecords){
-                FlourMillingProcessRecordVo flourMillingProcessRecordVo = new FlourMillingProcessRecordVo();
-                BeanUtils.copyProperties(flourMillingProcessRecords1,flourMillingProcessRecordVo);
-                result.add(flourMillingProcessRecordVo);
+        List<FlourMillingProcessRecord> flourMillingProcessRecords = null;
+        try {
+            flourMillingProcessRecords = flourMillingProcessRecordDao.selectEntryList(null);
+            if(flourMillingProcessRecords!=null  && flourMillingProcessRecords.size()!=0  )
+            {
+                for (FlourMillingProcessRecord flourMillingProcessRecords1:flourMillingProcessRecords){
+                    FlourMillingProcessRecordVo flourMillingProcessRecordVo = new FlourMillingProcessRecordVo();
+                    BeanUtils.copyProperties(flourMillingProcessRecords1,flourMillingProcessRecordVo);
+                    result.add(flourMillingProcessRecordVo);
+                }
             }
+            return result;
+        } catch (Exception e) {
+           throw new RuntimeException("获取所有制粉工艺记录信息失败");
         }
-        return result;
+
     }
 
     @Override
-    public int insertFlourMillingProcessRecord(FlourMillingProcessRecordVo flourMillingProcessRecordVo) throws Exception {
+    public int insertFlourMillingProcessRecord(FlourMillingProcessRecordVo flourMillingProcessRecordVo) {
 
         FlourMillingProcessRecord flourMillingProcessRecord = new FlourMillingProcessRecord();
         BeanUtils.copyProperties(flourMillingProcessRecordVo,flourMillingProcessRecord);
-        int isExist = flourMillingProcessRecordDao.selectEntryListCount(flourMillingProcessRecord);
-        if (isExist == 1){
-            return 0;
+
+        try {
+            Integer isExist = flourMillingProcessRecordDao.selectEntryListCount(flourMillingProcessRecord);
+            if (isExist == 1){
+                return 0;
+            }
+
+            return flourMillingProcessRecordDao.insertEntry(flourMillingProcessRecord);
+        } catch (Exception e) {
+           throw new RuntimeException("插入制粉信息失败");
         }
 
-        return flourMillingProcessRecordDao.insertEntry(flourMillingProcessRecord);
     }
 
     @Override
-    public int deleteFlourMillingProcessRecordById(int index) throws Exception {
+    public int deleteFlourMillingProcessRecordById(int index){
         FlourMillingProcessRecord flourMillingProcessRecord = new FlourMillingProcessRecord();
         flourMillingProcessRecord.setId(index);
-        Integer isExist = flourMillingProcessRecordDao.selectEntryListCount(flourMillingProcessRecord);
-        if(isExist == 1){
-            return flourMillingProcessRecordDao.deleteByKey(flourMillingProcessRecord);
+        Integer isExist = null;
+        try {
+            isExist = flourMillingProcessRecordDao.selectEntryListCount(flourMillingProcessRecord);
+            if(isExist == 1){
+                return flourMillingProcessRecordDao.deleteByKey(flourMillingProcessRecord);
+            }
+            return 0;
+        } catch (Exception e) {
+            throw new RuntimeException("删除所有信息失败");
         }
-        return 0;
+
     }
 
     @Override
-    public int updateFlourMillingProcessRecord(FlourMillingProcessRecordVo flourMillingProcessRecordVo) throws Exception {
+    public int updateFlourMillingProcessRecord(FlourMillingProcessRecordVo flourMillingProcessRecordVo) {
         FlourMillingProcessRecord flourMillingProcessRecord = new FlourMillingProcessRecord();
         flourMillingProcessRecord.setId(flourMillingProcessRecordVo.getId());
-        Integer isExist = flourMillingProcessRecordDao.selectEntryListCount(flourMillingProcessRecord);
-        //如果不存在返回0
-        if(isExist == 0)
-        {
-            return 0;
+        Integer isExist = null;
+        try {
+            isExist = flourMillingProcessRecordDao.selectEntryListCount(flourMillingProcessRecord);
+            //如果不存在返回0
+            if(isExist == 0)
+            {
+                return 0;
+            }
+            BeanUtils.copyProperties(flourMillingProcessRecordVo,flourMillingProcessRecord);
+            // 如果存在就进行跟新
+            return flourMillingProcessRecordDao.updateByKey(flourMillingProcessRecord);
+        } catch (Exception e) {
+           throw new RuntimeException("更新所有信息失败");
         }
-        BeanUtils.copyProperties(flourMillingProcessRecordVo,flourMillingProcessRecord);
-        // 如果存在就进行跟新
-        return flourMillingProcessRecordDao.updateByKey(flourMillingProcessRecord);
+
     }
 
     @Override
-    public FlourMillingProcessRecordVo getOneFlourMillingProcessRecord(int index) throws Exception {
+    public FlourMillingProcessRecordVo getOneFlourMillingProcessRecord(int index) {
         FlourMillingProcessRecord flourMillingProcessRecord = new FlourMillingProcessRecord();
         flourMillingProcessRecord.setId(index);
         FlourMillingProcessRecordVo flourMillingProcessRecordVo = new FlourMillingProcessRecordVo();
-        List<FlourMillingProcessRecord> flourMillingProcessRecordList = flourMillingProcessRecordDao.selectEntryList(flourMillingProcessRecord);
-        if (flourMillingProcessRecordList.size() != 0){
-            flourMillingProcessRecord = flourMillingProcessRecordList.get(0);
-            BeanUtils.copyProperties(flourMillingProcessRecord,flourMillingProcessRecordVo);
+        List<FlourMillingProcessRecord> flourMillingProcessRecordList = null;
+        try {
+            flourMillingProcessRecordList = flourMillingProcessRecordDao.selectEntryList(flourMillingProcessRecord);
+            if (flourMillingProcessRecordList.size() != 0){
+                flourMillingProcessRecord = flourMillingProcessRecordList.get(0);
+                BeanUtils.copyProperties(flourMillingProcessRecord,flourMillingProcessRecordVo);
+            }
+            return flourMillingProcessRecordVo;
+        } catch (Exception e) {
+            throw new RuntimeException("获取单个制粉工艺信息失败");
         }
-        return flourMillingProcessRecordVo;
+
     }
 }

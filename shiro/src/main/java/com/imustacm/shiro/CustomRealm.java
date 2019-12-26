@@ -1,7 +1,6 @@
 package com.imustacm.shiro;
 
 import com.imustacm.domain.Po.Users;
-import com.imustacm.service.Impl.UserServiceImpl;
 import com.imustacm.service.UserService;
 import org.apache.shiro.authc.AuthenticationException;
 import org.apache.shiro.authc.AuthenticationInfo;
@@ -12,10 +11,7 @@ import org.apache.shiro.authz.SimpleAuthorizationInfo;
 import org.apache.shiro.realm.AuthorizingRealm;
 import org.apache.shiro.subject.PrincipalCollection;
 import org.springframework.beans.factory.annotation.Autowired;
-import springfox.documentation.service.ApiListing;
 
-import javax.annotation.Resource;
-import java.security.PrivateKey;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;

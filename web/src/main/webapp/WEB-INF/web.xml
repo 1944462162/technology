@@ -5,15 +5,15 @@
 <web-app>
   <display-name>Archetype Created Web Application</display-name>
 
-  <!--shiro-->
-  <filter>
-    <filter-name>shiroFilter</filter-name>
-    <filter-class>org.springframework.web.filter.DelegatingFilterProxy</filter-class>
-  </filter>
-  <filter-mapping>
-    <filter-name>shiroFilter</filter-name>
-    <url-pattern>/*</url-pattern>
-  </filter-mapping>
+  <!--&lt;!&ndash;shiro&ndash;&gt;-->
+  <!--<filter>-->
+    <!--<filter-name>shiroFilter</filter-name>-->
+    <!--<filter-class>org.springframework.web.filter.DelegatingFilterProxy</filter-class>-->
+  <!--</filter>-->
+  <!--<filter-mapping>-->
+    <!--<filter-name>shiroFilter</filter-name>-->
+    <!--<url-pattern>/*</url-pattern>-->
+  <!--</filter-mapping>-->
 
   <!--前端控制器-->
   <servlet>

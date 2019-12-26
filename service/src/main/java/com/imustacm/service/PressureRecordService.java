@@ -1,6 +1,5 @@
 package com.imustacm.service;
 
-import com.imustacm.domain.Po.PressureRecord;
 import com.imustacm.domain.Vo.PressureRecordVo;
 
 import java.util.List;
@@ -8,21 +7,21 @@ import java.util.List;
 public interface PressureRecordService {
 
 
-    List<PressureRecordVo> getAllPressureRecord() throws Exception;
+    List<PressureRecordVo> getAllPressureRecord();
     //增加原料库存
-    int insertPressureRecord(PressureRecordVo pressureRecordVo) throws Exception;
+    int insertPressureRecord(PressureRecordVo pressureRecordVo);
 
     //根据ID删除原料库存
-    int deletePressureRecordById(int index) throws Exception;
+    int deletePressureRecordById(int index);
 
     //更新原料库存
-    int updatePressureRecord(PressureRecordVo pressureRecordVo) throws Exception;
+    int updatePressureRecord(PressureRecordVo pressureRecordVo);
 
     //根据ID获取原料库存
-    PressureRecordVo getOnePressureRecord(int index) throws Exception;
+    PressureRecordVo getOnePressureRecord(int index);
 
     //根据编码获取库存
-    List<PressureRecordVo> getPressureRecordByCode(String number) throws Exception;
+    List<PressureRecordVo> getPressureRecordByCode(String number);
 
     int getNewInsertPressureRecord();
 }

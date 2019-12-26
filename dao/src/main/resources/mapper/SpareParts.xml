@@ -7,14 +7,14 @@
 	<sql id="QUERY_COLUMN_LIST">
 		<![CDATA[
             id,
-            component,
-            requirement,
-            dosage,
-            remarks,
+            composition,
+            requirement_weight AS requirementWeight,
+            ingredients_weigth AS ingredientsWeigth,
+            note,
             create_time AS createTime,
-            brand_name AS brandName,
-            ingredient_person AS ingredientPerson,
-            reviewer 
+            serial,
+            ingredient_operator AS ingredientOperator,
+            composite_operator AS compositeOperator 
 		]]>
 	</sql>
 
@@ -25,14 +25,14 @@
 	<sql id="QUERY_WHERE_CLAUSE">
 		<where>
             <if test="id != null and id != ''"><![CDATA[AND id = #{id}]]></if>
-            <if test="component != null and component != ''"><![CDATA[AND component = #{component}]]></if>
-            <if test="requirement != null and requirement != ''"><![CDATA[AND requirement = #{requirement}]]></if>
-            <if test="dosage != null and dosage != ''"><![CDATA[AND dosage = #{dosage}]]></if>
-            <if test="remarks != null and remarks != ''"><![CDATA[AND remarks = #{remarks}]]></if>
+            <if test="composition != null and composition != ''"><![CDATA[AND composition = #{composition}]]></if>
+            <if test="requirementWeight != null and requirementWeight != ''"><![CDATA[AND requirement_weight = #{requirementWeight}]]></if>
+            <if test="ingredientsWeigth != null and ingredientsWeigth != ''"><![CDATA[AND ingredients_weigth = #{ingredientsWeigth}]]></if>
+            <if test="note != null and note != ''"><![CDATA[AND note = #{note}]]></if>
             <if test="createTime != null and createTime != ''"><![CDATA[AND create_time = #{createTime}]]></if>
-            <if test="brandName != null and brandName != ''"><![CDATA[AND brand_name = #{brandName}]]></if>
-            <if test="ingredientPerson != null and ingredientPerson != ''"><![CDATA[AND ingredient_person = #{ingredientPerson}]]></if>
-            <if test="reviewer != null and reviewer != ''"><![CDATA[AND reviewer = #{reviewer}]]></if> 
+            <if test="serial != null and serial != ''"><![CDATA[AND serial = #{serial}]]></if>
+            <if test="ingredientOperator != null and ingredientOperator != ''"><![CDATA[AND ingredient_operator = #{ingredientOperator}]]></if>
+            <if test="compositeOperator != null and compositeOperator != ''"><![CDATA[AND composite_operator = #{compositeOperator}]]></if> 
 		</where>
 	</sql>
 	
@@ -45,14 +45,14 @@
 	<!-- 更新列字段,只要不为NULL则更新,除开主键列 -->
 	<sql id="UPDATE_COLUMN_SET">
 		<set>
-			<if test="component != null"><![CDATA[component = #{component},]]></if>
-			<if test="requirement != null"><![CDATA[requirement = #{requirement},]]></if>
-			<if test="dosage != null"><![CDATA[dosage = #{dosage},]]></if>
-			<if test="remarks != null"><![CDATA[remarks = #{remarks},]]></if>
+			<if test="composition != null"><![CDATA[composition = #{composition},]]></if>
+			<if test="requirementWeight != null"><![CDATA[requirement_weight = #{requirementWeight},]]></if>
+			<if test="ingredientsWeigth != null"><![CDATA[ingredients_weigth = #{ingredientsWeigth},]]></if>
+			<if test="note != null"><![CDATA[note = #{note},]]></if>
 			<if test="createTime != null"><![CDATA[create_time = #{createTime},]]></if>
-			<if test="brandName != null"><![CDATA[brand_name = #{brandName},]]></if>
-			<if test="ingredientPerson != null"><![CDATA[ingredient_person = #{ingredientPerson},]]></if>
-			<if test="reviewer != null"><![CDATA[reviewer = #{reviewer},]]></if>
+			<if test="serial != null"><![CDATA[serial = #{serial},]]></if>
+			<if test="ingredientOperator != null"><![CDATA[ingredient_operator = #{ingredientOperator},]]></if>
+			<if test="compositeOperator != null"><![CDATA[composite_operator = #{compositeOperator},]]></if>
 		</set>
 	</sql>
 
@@ -62,26 +62,26 @@
 			INSERT INTO spare_parts
 				(
                 id, 
-                component, 
-                requirement, 
-                dosage, 
-                remarks, 
+                composition, 
+                requirement_weight, 
+                ingredients_weigth, 
+                note, 
                 create_time, 
-                brand_name, 
-                ingredient_person, 
-                reviewer 
+                serial, 
+                ingredient_operator, 
+                composite_operator 
 				)
 			VALUES
 				(
                 #{id}, 
-                #{component}, 
-                #{requirement}, 
-                #{dosage}, 
-                #{remarks}, 
+                #{composition}, 
+                #{requirementWeight}, 
+                #{ingredientsWeigth}, 
+                #{note}, 
                 #{createTime}, 
-                #{brandName}, 
-                #{ingredientPerson}, 
-                #{reviewer} 
+                #{serial}, 
+                #{ingredientOperator}, 
+                #{compositeOperator} 
 				)
 		]]>
 	</insert>

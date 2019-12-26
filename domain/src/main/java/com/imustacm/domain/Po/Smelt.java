@@ -8,11 +8,11 @@ import com.imustacm.domain.base.BaseDomain;
 /**
  * 
  * @author Lenovo
- * @since 2019-11-10 20:45:57
+ * @since 2019-12-25 10:45:24
  */
 public class Smelt extends BaseDomain {
 
-	private static final long serialVersionUID = 15237060383L;
+	private static final long serialVersionUID = 11093169371L;
 
 	public Smelt() {
 		//默认无参构造方法
@@ -22,19 +22,14 @@ public class Smelt extends BaseDomain {
 	// max length: 80
 	private String createTime;
 
-	private String number;
+	private String serial;
 
-	private String fristTare;
+	// max length: 100
+	private String bucketsInfo;
 
-	private String fristNetWeight;
+	private String outWeigth;
 
-	private String secondTare;
-
-	private String secondNetWeight;
-
-	private String discharge;
-
-	private String feeding;
+	private String feedWeigth;
 
 	private String yield;
 
@@ -55,53 +50,32 @@ public class Smelt extends BaseDomain {
 		this.createTime = createTime;
 	}
 	
-	public String getNumber() {
-		return this.number;
+	public String getSerial() {
+		return this.serial;
 	}
-    public void setNumber(String number) {
-		this.number = number;
-	}
-	
-	public String getFristTare() {
-		return this.fristTare;
-	}
-    public void setFristTare(String fristTare) {
-		this.fristTare = fristTare;
+    public void setSerial(String serial) {
+		this.serial = serial;
 	}
 	
-	public String getFristNetWeight() {
-		return this.fristNetWeight;
+	public String getBucketsInfo() {
+		return this.bucketsInfo;
 	}
-    public void setFristNetWeight(String fristNetWeight) {
-		this.fristNetWeight = fristNetWeight;
-	}
-	
-	public String getSecondTare() {
-		return this.secondTare;
-	}
-    public void setSecondTare(String secondTare) {
-		this.secondTare = secondTare;
+    public void setBucketsInfo(String bucketsInfo) {
+		this.bucketsInfo = bucketsInfo;
 	}
 	
-	public String getSecondNetWeight() {
-		return this.secondNetWeight;
+	public String getOutWeigth() {
+		return this.outWeigth;
 	}
-    public void setSecondNetWeight(String secondNetWeight) {
-		this.secondNetWeight = secondNetWeight;
-	}
-	
-	public String getDischarge() {
-		return this.discharge;
-	}
-    public void setDischarge(String discharge) {
-		this.discharge = discharge;
+    public void setOutWeigth(String outWeigth) {
+		this.outWeigth = outWeigth;
 	}
 	
-	public String getFeeding() {
-		return this.feeding;
+	public String getFeedWeigth() {
+		return this.feedWeigth;
 	}
-    public void setFeeding(String feeding) {
-		this.feeding = feeding;
+    public void setFeedWeigth(String feedWeigth) {
+		this.feedWeigth = feedWeigth;
 	}
 	
 	public String getYield() {

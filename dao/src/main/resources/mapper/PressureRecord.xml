@@ -7,26 +7,18 @@
 	<sql id="QUERY_COLUMN_LIST">
 		<![CDATA[
             id,
-            number,
-            press_number AS pressNumber,
+            serial,
+            machine_serial AS machineSerial,
             create_time AS createTime,
-            roughcast_number AS roughcastNumber,
-            picking,
+            billet_amount AS billetAmount,
+            picking_weight AS pickingWeight,
             single_product AS singleProduct,
-            tools_number AS toolsNumber,
-            tools_size AS toolsSize,
-            suppress_pressure AS suppressPressure,
-            suppress_time AS suppressTime,
-            magnetizing_current AS magnetizingCurrent,
-            magentizing_time AS magentizingTime,
-            demagnetization_current AS demagnetizationCurrent,
-            demagnetizatio_time AS demagnetizatioTime,
-            oxygen_weighing_room AS oxygenWeighingRoom,
-            oxygen_packing_room AS oxygenPackingRoom,
+            tools_info AS toolsInfo,
             star_nitrogen AS starNitrogen,
             end_nitrogen AS endNitrogen,
             operator,
-            remarks 
+            note,
+            billet_sizes AS billetSizes 
 		]]>
 	</sql>
 
@@ -37,26 +29,18 @@
 	<sql id="QUERY_WHERE_CLAUSE">
 		<where>
             <if test="id != null and id != ''"><![CDATA[AND id = #{id}]]></if>
-            <if test="number != null and number != ''"><![CDATA[AND number = #{number}]]></if>
-            <if test="pressNumber != null and pressNumber != ''"><![CDATA[AND press_number = #{pressNumber}]]></if>
+            <if test="serial != null and serial != ''"><![CDATA[AND serial = #{serial}]]></if>
+            <if test="machineSerial != null and machineSerial != ''"><![CDATA[AND machine_serial = #{machineSerial}]]></if>
             <if test="createTime != null and createTime != ''"><![CDATA[AND create_time = #{createTime}]]></if>
-            <if test="roughcastNumber != null and roughcastNumber != ''"><![CDATA[AND roughcast_number = #{roughcastNumber}]]></if>
-            <if test="picking != null and picking != ''"><![CDATA[AND picking = #{picking}]]></if>
+            <if test="billetAmount != null and billetAmount != ''"><![CDATA[AND billet_amount = #{billetAmount}]]></if>
+            <if test="pickingWeight != null and pickingWeight != ''"><![CDATA[AND picking_weight = #{pickingWeight}]]></if>
             <if test="singleProduct != null and singleProduct != ''"><![CDATA[AND single_product = #{singleProduct}]]></if>
-            <if test="toolsNumber != null and toolsNumber != ''"><![CDATA[AND tools_number = #{toolsNumber}]]></if>
-            <if test="toolsSize != null and toolsSize != ''"><![CDATA[AND tools_size = #{toolsSize}]]></if>
-            <if test="suppressPressure != null and suppressPressure != ''"><![CDATA[AND suppress_pressure = #{suppressPressure}]]></if>
-            <if test="suppressTime != null and suppressTime != ''"><![CDATA[AND suppress_time = #{suppressTime}]]></if>
-            <if test="magnetizingCurrent != null and magnetizingCurrent != ''"><![CDATA[AND magnetizing_current = #{magnetizingCurrent}]]></if>
-            <if test="magentizingTime != null and magentizingTime != ''"><![CDATA[AND magentizing_time = #{magentizingTime}]]></if>
-            <if test="demagnetizationCurrent != null and demagnetizationCurrent != ''"><![CDATA[AND demagnetization_current = #{demagnetizationCurrent}]]></if>
-            <if test="demagnetizatioTime != null and demagnetizatioTime != ''"><![CDATA[AND demagnetizatio_time = #{demagnetizatioTime}]]></if>
-            <if test="oxygenWeighingRoom != null and oxygenWeighingRoom != ''"><![CDATA[AND oxygen_weighing_room = #{oxygenWeighingRoom}]]></if>
-            <if test="oxygenPackingRoom != null and oxygenPackingRoom != ''"><![CDATA[AND oxygen_packing_room = #{oxygenPackingRoom}]]></if>
+            <if test="toolsInfo != null and toolsInfo != ''"><![CDATA[AND tools_info = #{toolsInfo}]]></if>
             <if test="starNitrogen != null and starNitrogen != ''"><![CDATA[AND star_nitrogen = #{starNitrogen}]]></if>
             <if test="endNitrogen != null and endNitrogen != ''"><![CDATA[AND end_nitrogen = #{endNitrogen}]]></if>
             <if test="operator != null and operator != ''"><![CDATA[AND operator = #{operator}]]></if>
-            <if test="remarks != null and remarks != ''"><![CDATA[AND remarks = #{remarks}]]></if> 
+            <if test="note != null and note != ''"><![CDATA[AND note = #{note}]]></if>
+            <if test="billetSizes != null and billetSizes != ''"><![CDATA[AND billet_sizes = #{billetSizes}]]></if> 
 		</where>
 	</sql>
 	
@@ -69,26 +53,18 @@
 	<!-- 更新列字段,只要不为NULL则更新,除开主键列 -->
 	<sql id="UPDATE_COLUMN_SET">
 		<set>
-			<if test="number != null"><![CDATA[number = #{number},]]></if>
-			<if test="pressNumber != null"><![CDATA[press_number = #{pressNumber},]]></if>
+			<if test="serial != null"><![CDATA[serial = #{serial},]]></if>
+			<if test="machineSerial != null"><![CDATA[machine_serial = #{machineSerial},]]></if>
 			<if test="createTime != null"><![CDATA[create_time = #{createTime},]]></if>
-			<if test="roughcastNumber != null"><![CDATA[roughcast_number = #{roughcastNumber},]]></if>
-			<if test="picking != null"><![CDATA[picking = #{picking},]]></if>
+			<if test="billetAmount != null"><![CDATA[billet_amount = #{billetAmount},]]></if>
+			<if test="pickingWeight != null"><![CDATA[picking_weight = #{pickingWeight},]]></if>
 			<if test="singleProduct != null"><![CDATA[single_product = #{singleProduct},]]></if>
-			<if test="toolsNumber != null"><![CDATA[tools_number = #{toolsNumber},]]></if>
-			<if test="toolsSize != null"><![CDATA[tools_size = #{toolsSize},]]></if>
-			<if test="suppressPressure != null"><![CDATA[suppress_pressure = #{suppressPressure},]]></if>
-			<if test="suppressTime != null"><![CDATA[suppress_time = #{suppressTime},]]></if>
-			<if test="magnetizingCurrent != null"><![CDATA[magnetizing_current = #{magnetizingCurrent},]]></if>
-			<if test="magentizingTime != null"><![CDATA[magentizing_time = #{magentizingTime},]]></if>
-			<if test="demagnetizationCurrent != null"><![CDATA[demagnetization_current = #{demagnetizationCurrent},]]></if>
-			<if test="demagnetizatioTime != null"><![CDATA[demagnetizatio_time = #{demagnetizatioTime},]]></if>
-			<if test="oxygenWeighingRoom != null"><![CDATA[oxygen_weighing_room = #{oxygenWeighingRoom},]]></if>
-			<if test="oxygenPackingRoom != null"><![CDATA[oxygen_packing_room = #{oxygenPackingRoom},]]></if>
+			<if test="toolsInfo != null"><![CDATA[tools_info = #{toolsInfo},]]></if>
 			<if test="starNitrogen != null"><![CDATA[star_nitrogen = #{starNitrogen},]]></if>
 			<if test="endNitrogen != null"><![CDATA[end_nitrogen = #{endNitrogen},]]></if>
 			<if test="operator != null"><![CDATA[operator = #{operator},]]></if>
-			<if test="remarks != null"><![CDATA[remarks = #{remarks},]]></if>
+			<if test="note != null"><![CDATA[note = #{note},]]></if>
+			<if test="billetSizes != null"><![CDATA[billet_sizes = #{billetSizes},]]></if>
 		</set>
 	</sql>
 
@@ -98,50 +74,34 @@
 			INSERT INTO pressure_record
 				(
                 id, 
-                number, 
-                press_number, 
+                serial, 
+                machine_serial, 
                 create_time, 
-                roughcast_number, 
-                picking, 
+                billet_amount, 
+                picking_weight, 
                 single_product, 
-                tools_number, 
-                tools_size, 
-                suppress_pressure, 
-                suppress_time, 
-                magnetizing_current, 
-                magentizing_time, 
-                demagnetization_current, 
-                demagnetizatio_time, 
-                oxygen_weighing_room, 
-                oxygen_packing_room, 
+                tools_info, 
                 star_nitrogen, 
                 end_nitrogen, 
                 operator, 
-                remarks 
+                note, 
+                billet_sizes 
 				)
 			VALUES
 				(
                 #{id}, 
-                #{number}, 
-                #{pressNumber}, 
+                #{serial}, 
+                #{machineSerial}, 
                 #{createTime}, 
-                #{roughcastNumber}, 
-                #{picking}, 
+                #{billetAmount}, 
+                #{pickingWeight}, 
                 #{singleProduct}, 
-                #{toolsNumber}, 
-                #{toolsSize}, 
-                #{suppressPressure}, 
-                #{suppressTime}, 
-                #{magnetizingCurrent}, 
-                #{magentizingTime}, 
-                #{demagnetizationCurrent}, 
-                #{demagnetizatioTime}, 
-                #{oxygenWeighingRoom}, 
-                #{oxygenPackingRoom}, 
+                #{toolsInfo}, 
                 #{starNitrogen}, 
                 #{endNitrogen}, 
                 #{operator}, 
-                #{remarks} 
+                #{note}, 
+                #{billetSizes} 
 				)
 		]]>
 	</insert>

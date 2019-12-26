@@ -1,69 +1,57 @@
+/*
+ * Copyright (c) 2019 www.jd.com All rights reserved.
+ * 本软件源代码版权归京东成都研究院所有
+ */
 package com.imustacm.domain.Vo;
-
+import com.imustacm.domain.base.BaseDomain;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
-import io.swagger.annotations.ApiOperation;
 import lombok.Data;
 
-import java.util.Date;
-
-@ApiModel("冶炼操作记录信息")
+/**
+ * 
+ * @author Lenovo
+ * @since 2019-12-23 17:41:03
+ */
+@ApiModel("冶炼操作记录")
 @Data
-public class SmeltingRecordVo {
+public class SmeltingRecordVo extends BaseDomain {
 
-    @ApiModelProperty(value = "冶炼操作记录id", example = "1")
-    private Integer id;
+	private static final long serialVersionUID = 16080274113L;
 
-    // max length: 100
-    @ApiModelProperty(value = "编号", example = "335")
-    private String number;
+	public SmeltingRecordVo() {
+		//默认无参构造方法
+	}
+	@ApiModelProperty(value = "记录ID",example = "1")
+	private Integer id;
 
-    @ApiModelProperty(value = "创建时间,无需前端输入")
-    private String createTime;
+	// max length: 100
+	@ApiModelProperty(value = "编号",example = "#635")
+	private String serial;
 
-    // max length: 100
-    @ApiModelProperty(value = "操作人员", example = "张三")
-    private String operator;
+	@ApiModelProperty(value = "记录日期",example = "2016-5-9")
+	private String createTime;
 
-    @ApiModelProperty(value = "料包总重", example = "53.9")
-    private String rawMaterialAllUp;
+	// max length: 100
 
-    @ApiModelProperty(value = "中间料包重", example = "65.3")
-    private String tundishMaterial;
+	@ApiModelProperty(value = "操作人员",example = "张三")
+	private String operator;
 
-    @ApiModelProperty(value = "该坩埚使用炉次", example = "6")
-    private Integer crucibleCount;
+	@ApiModelProperty(value = "原料总重",example = "36.2")
+	private String feedWeight;
 
-    // max length: 100
-    @ApiModelProperty(value = "操作步骤",example = "烘料")
-    private String operationSteps;
+	@ApiModelProperty(value = "中间包料",example = "63.2")
+	private String midWeight;
 
-    @ApiModelProperty(value = "时间", example = "")
-    private String operationTime;
+	@ApiModelProperty(value = "坩埚使用次数",example = "33")
+	private Integer crucibleCount;
 
-    @ApiModelProperty(value = "真空度", example = "69.6")
-    private String vacuum;
+	@ApiModelProperty(value = "备注",example = "正常")
+	// max length: 400
+	private String note;
 
-    @ApiModelProperty(value = "加热功率", example = "73.5")
-    private String heatPower;
+	@ApiModelProperty(value = "冶炼细节",example = "冶炼相关操作")
+	private String smeltingDetails;
 
-    @ApiModelProperty(value = "温度", example = "35.6")
-    private String temperature;
 
-    @ApiModelProperty(value = "水流量", example = "36.5")
-    private String discharge;
-
-    @ApiModelProperty(value = "水温", example = "27.6")
-    private String waterTemperature;
-
-    // max length: 400
-    @ApiModelProperty(value = "备注", example = "成功")
-    private String remarks;
-
-    @ApiModelProperty(value = "第几行", example = "1")
-    private Integer row;
-
-    public SmeltingRecordVo() {
-        // 设置无参构造函数
-    }
 }

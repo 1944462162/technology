@@ -8,11 +8,11 @@ import com.imustacm.domain.base.BaseDomain;
 /**
  * 
  * @author Lenovo
- * @since 2019-11-12 17:44:48
+ * @since 2019-12-25 10:45:23
  */
 public class AgglomerationProcessRecord extends BaseDomain {
 
-	private static final long serialVersionUID = 24307409922L;
+	private static final long serialVersionUID = 17737313815L;
 
 	public AgglomerationProcessRecord() {
 		//默认无参构造方法
@@ -22,34 +22,29 @@ public class AgglomerationProcessRecord extends BaseDomain {
 	// max length: 80
 	private String createTime;
 
-	private String number;
+	private String serial;
 
-	private Integer blockNumber;
+	private Integer furnaceNumber;
 
 	private String furnaceWeight;
 
-	private String singleRoomWeight;
+	private String singleWeight;
 
-	private String mononuclearWeight;
+	private String boxCapacity;
 
 	private String startPower;
 
 	private String endPower;
 
-	private String sharePower;
+	private String totalPower;
 
 	// max length: 100
-	private String fristOperatorDay;
+	private String operatorInfo;
 
-	private String fristOperatorNight;
+	private String note;
 
-	// max length: 100
-	private String secondOperatorDay;
-
-	private String secondOperatorNight;
-
-	// max length: 100
-	private String remark;
+	// max length: 20000
+	private String sinterRecord;
 
 	public Integer getId() {
 		return this.id;
@@ -65,18 +60,18 @@ public class AgglomerationProcessRecord extends BaseDomain {
 		this.createTime = createTime;
 	}
 	
-	public String getNumber() {
-		return this.number;
+	public String getSerial() {
+		return this.serial;
 	}
-    public void setNumber(String number) {
-		this.number = number;
+    public void setSerial(String serial) {
+		this.serial = serial;
 	}
 	
-	public Integer getBlockNumber() {
-		return this.blockNumber;
+	public Integer getFurnaceNumber() {
+		return this.furnaceNumber;
 	}
-    public void setBlockNumber(Integer blockNumber) {
-		this.blockNumber = blockNumber;
+    public void setFurnaceNumber(Integer furnaceNumber) {
+		this.furnaceNumber = furnaceNumber;
 	}
 	
 	public String getFurnaceWeight() {
@@ -86,18 +81,18 @@ public class AgglomerationProcessRecord extends BaseDomain {
 		this.furnaceWeight = furnaceWeight;
 	}
 	
-	public String getSingleRoomWeight() {
-		return this.singleRoomWeight;
+	public String getSingleWeight() {
+		return this.singleWeight;
 	}
-    public void setSingleRoomWeight(String singleRoomWeight) {
-		this.singleRoomWeight = singleRoomWeight;
+    public void setSingleWeight(String singleWeight) {
+		this.singleWeight = singleWeight;
 	}
 	
-	public String getMononuclearWeight() {
-		return this.mononuclearWeight;
+	public String getBoxCapacity() {
+		return this.boxCapacity;
 	}
-    public void setMononuclearWeight(String mononuclearWeight) {
-		this.mononuclearWeight = mononuclearWeight;
+    public void setBoxCapacity(String boxCapacity) {
+		this.boxCapacity = boxCapacity;
 	}
 	
 	public String getStartPower() {
@@ -114,46 +109,32 @@ public class AgglomerationProcessRecord extends BaseDomain {
 		this.endPower = endPower;
 	}
 	
-	public String getSharePower() {
-		return this.sharePower;
+	public String getTotalPower() {
+		return this.totalPower;
 	}
-    public void setSharePower(String sharePower) {
-		this.sharePower = sharePower;
-	}
-	
-	public String getFristOperatorDay() {
-		return this.fristOperatorDay;
-	}
-    public void setFristOperatorDay(String fristOperatorDay) {
-		this.fristOperatorDay = fristOperatorDay;
+    public void setTotalPower(String totalPower) {
+		this.totalPower = totalPower;
 	}
 	
-	public String getFristOperatorNight() {
-		return this.fristOperatorNight;
+	public String getOperatorInfo() {
+		return this.operatorInfo;
 	}
-    public void setFristOperatorNight(String fristOperatorNight) {
-		this.fristOperatorNight = fristOperatorNight;
-	}
-	
-	public String getSecondOperatorDay() {
-		return this.secondOperatorDay;
-	}
-    public void setSecondOperatorDay(String secondOperatorDay) {
-		this.secondOperatorDay = secondOperatorDay;
+    public void setOperatorInfo(String operatorInfo) {
+		this.operatorInfo = operatorInfo;
 	}
 	
-	public String getSecondOperatorNight() {
-		return this.secondOperatorNight;
+	public String getNote() {
+		return this.note;
 	}
-    public void setSecondOperatorNight(String secondOperatorNight) {
-		this.secondOperatorNight = secondOperatorNight;
+    public void setNote(String note) {
+		this.note = note;
 	}
 	
-	public String getRemark() {
-		return this.remark;
+	public String getSinterRecord() {
+		return this.sinterRecord;
 	}
-    public void setRemark(String remark) {
-		this.remark = remark;
+    public void setSinterRecord(String sinterRecord) {
+		this.sinterRecord = sinterRecord;
 	}
 	 
 }

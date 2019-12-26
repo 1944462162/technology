@@ -1,42 +1,37 @@
+/*
+ * Copyright (c) 2019 www.jd.com All rights reserved.
+ * 本软件源代码版权归京东成都研究院所有
+ */
 package com.imustacm.domain.Vo;
-
+import com.imustacm.domain.base.BaseDomain;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 
-import java.util.Date;
-
-
-@ApiModel("原料库存基本信息")
+/**
+ * 
+ * @author Lenovo
+ * @since 2019-12-23 17:41:03
+ */
+@ApiModel("原料库存")
 @Data
-public class StockVo {
+public class StockVo extends BaseDomain {
 
-    public StockVo() {
-        //设置无参构造函数
-    }
 
-    @ApiModelProperty(value = "原料库存id",example = "1")
-    private Integer id;
+	public StockVo() {
+		//默认无参构造方法
+	}
+	@ApiModelProperty(value = "原料库存ID",example = "1")
+	private Integer id;
 
-    // max length: 80
-    @ApiModelProperty(value = "原料名称",example = "铁")
-    private String stockName;
+	// max length: 80
+	@ApiModelProperty(value = "名称",example = "Fe")
+	private String stockName;
 
-    @ApiModelProperty(value = "单位", example = "kg")
-    private String company;
+	@ApiModelProperty(value = "单位",example = "kg")
+	private String unit;
 
-    @ApiModelProperty(value = "初期", example = "91.569")
-    private String initialStage;
-
-    @ApiModelProperty(value = "增加", example = "3274.65")
-    private String increase;
-
-    @ApiModelProperty(value = "减少", example = "200.64")
-    private String reduce;
-
-    @ApiModelProperty(value = "重量,计算得出前端无需插入")
-    private String weight;
-
-    @ApiModelProperty(value = "更新时间，前端无需写此操作")
-    private String createTime;
+	@ApiModelProperty(value = "重量",example = "36.5")
+	private String weight;
+	 
 }

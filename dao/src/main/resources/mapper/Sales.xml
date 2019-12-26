@@ -1,30 +1,30 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.imustacm.dao.BlankSizeDao">
+<mapper namespace="com.imustacm.dao.SalesDao">
 
-	<!-- blank_size 所有查询列 -->
+	<!-- sales 所有查询列 -->
 	<sql id="QUERY_COLUMN_LIST">
 		<![CDATA[
             id,
-            number,
-            suppress,
-            mode_width AS modeWidth,
-            orientation 
+            serial,
+            amount,
+            create_date AS createDate,
+            note 
 		]]>
 	</sql>
 
-	<!-- blank_size 查询列来源表-->
-	<sql id="QUERY_FROM_TABLE"><![CDATA[FROM blank_size]]></sql>
+	<!-- sales 查询列来源表-->
+	<sql id="QUERY_FROM_TABLE"><![CDATA[FROM sales]]></sql>
 	
 	<!-- 全部条件(更多功能可以通过queryData扩展实现)  -->
 	<sql id="QUERY_WHERE_CLAUSE">
 		<where>
             <if test="id != null and id != ''"><![CDATA[AND id = #{id}]]></if>
-            <if test="number != null and number != ''"><![CDATA[AND number = #{number}]]></if>
-            <if test="suppress != null and suppress != ''"><![CDATA[AND suppress = #{suppress}]]></if>
-            <if test="modeWidth != null and modeWidth != ''"><![CDATA[AND mode_width = #{modeWidth}]]></if>
-            <if test="orientation != null and orientation != ''"><![CDATA[AND orientation = #{orientation}]]></if> 
+            <if test="serial != null and serial != ''"><![CDATA[AND serial = #{serial}]]></if>
+            <if test="amount != null and amount != ''"><![CDATA[AND amount = #{amount}]]></if>
+            <if test="createDate != null and createDate != ''"><![CDATA[AND create_date = #{createDate}]]></if>
+            <if test="note != null and note != ''"><![CDATA[AND note = #{note}]]></if> 
 		</where>
 	</sql>
 	
@@ -37,31 +37,31 @@
 	<!-- 更新列字段,只要不为NULL则更新,除开主键列 -->
 	<sql id="UPDATE_COLUMN_SET">
 		<set>
-			<if test="number != null"><![CDATA[number = #{number},]]></if>
-			<if test="suppress != null"><![CDATA[suppress = #{suppress},]]></if>
-			<if test="modeWidth != null"><![CDATA[mode_width = #{modeWidth},]]></if>
-			<if test="orientation != null"><![CDATA[orientation = #{orientation},]]></if>
+			<if test="serial != null"><![CDATA[serial = #{serial},]]></if>
+			<if test="amount != null"><![CDATA[amount = #{amount},]]></if>
+			<if test="createDate != null"><![CDATA[create_date = #{createDate},]]></if>
+			<if test="note != null"><![CDATA[note = #{note},]]></if>
 		</set>
 	</sql>
 
 	<!-- 插入app记录 -->
-	<insert id="insertEntry" parameterType="blankSize" >
+	<insert id="insertEntry" parameterType="sales" >
 		<![CDATA[
-			INSERT INTO blank_size
+			INSERT INTO sales
 				(
                 id, 
-                number, 
-                suppress, 
-                mode_width, 
-                orientation 
+                serial, 
+                amount, 
+                create_date, 
+                note 
 				)
 			VALUES
 				(
                 #{id}, 
-                #{number}, 
-                #{suppress}, 
-                #{modeWidth}, 
-                #{orientation} 
+                #{serial}, 
+                #{amount}, 
+                #{createDate}, 
+                #{note} 
 				)
 		]]>
 	</insert>
@@ -71,27 +71,27 @@
 
 	<!-- 删除记录,主键IN(array) -->
 	<delete id="deleteByArrayKey" parameterType="java.lang.reflect.Array" >
-		<![CDATA[DELETE FROM blank_size WHERE id IN]]>
+		<![CDATA[DELETE FROM sales WHERE id IN]]>
 		<foreach collection="array" item="id" open="(" separator="," close=")">
 			<![CDATA[#{id}]]>
 		</foreach>
 	</delete>
 
 	<!-- 删除,通过条件 -->
-	<delete id="deleteByCondtion" parameterType="blankSize" >
-		<![CDATA[DELETE FROM blank_size]]>
+	<delete id="deleteByCondtion" parameterType="sales" >
+		<![CDATA[DELETE FROM sales]]>
 		<include refid="QUERY_WHERE_CLAUSE"/>
 	</delete>
 
 	<!-- 修改记录通过主键 -->
-	<update id="updateByKey" parameterType="blankSize" >
-		<![CDATA[UPDATE blank_size]]>
+	<update id="updateByKey" parameterType="sales" >
+		<![CDATA[UPDATE sales]]>
 		<include refid="UPDATE_COLUMN_SET"/>
 		<![CDATA[WHERE id = #{id}]]>
 	</update>
 
 	<!-- 查询,通过主键IN(array) -->
-	<select id="selectEntryArray" parameterType="java.lang.reflect.Array" resultType="blankSize">
+	<select id="selectEntryArray" parameterType="java.lang.reflect.Array" resultType="sales">
 		<![CDATA[SELECT]]>
 		<include refid="QUERY_COLUMN_LIST"/>
 		<include refid="QUERY_FROM_TABLE"/>
@@ -102,7 +102,7 @@
 	</select>
 
 	<!-- 查询,通过条件 -->
-	<select id="selectEntryList" parameterType="blankSize" resultType="blankSize">
+	<select id="selectEntryList" parameterType="sales" resultType="sales">
 		<![CDATA[SELECT]]>
 		<include refid="QUERY_COLUMN_LIST"/>
 		<include refid="QUERY_FROM_TABLE"/>
@@ -111,7 +111,7 @@
 	</select>
 
 	<!-- 总数查询,通过条件 -->
-	<select id="selectEntryListCount" parameterType="blankSize" resultType="int">
+	<select id="selectEntryListCount" parameterType="sales" resultType="int">
 		<![CDATA[SELECT COUNT(id) AS dataCount]]>
 		<include refid="QUERY_FROM_TABLE"/>
 		<include refid="QUERY_WHERE_CLAUSE"/>

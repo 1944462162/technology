@@ -67,22 +67,6 @@ public class testService {
         System.out.println(allFlourMillingProcessRecord);
     }
 
-    @Test
-    public void BlankSize_test() throws Exception {
-        ApplicationContext ap =new ClassPathXmlApplicationContext("spring-service.xml");
-        BlankSizeService service= (BlankSizeService) ap.getBean("blankSizeService");
-        System.out.println(service);
-        service.getAllBlankSize();
-
-    }
-
-    @Test
-    public void AgglomerationProcess_test() throws Exception {
-        ApplicationContext ap =new ClassPathXmlApplicationContext("spring-service.xml");
-        AgglomerationProcessService service= (AgglomerationProcessService) ap.getBean("agglomerationProcessService");
-        System.out.println(service);
-        System.out.println(service.getAllAgglomerationProcess());
-    }
 
     @Test
     public void AgglomerationProcessRecord_test() throws Exception {

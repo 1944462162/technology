@@ -8,61 +8,42 @@ import com.imustacm.domain.base.BaseDomain;
 /**
  * 
  * @author Lenovo
- * @since 2019-11-10 20:45:57
+ * @since 2019-12-25 10:45:23
  */
 public class FlourMillingProcessRecord extends BaseDomain {
 
-	private static final long serialVersionUID = 29401824817L;
+	private static final long serialVersionUID = 16702185387L;
 
 	public FlourMillingProcessRecord() {
 		//默认无参构造方法
 	}
 	private Integer id;
 
-	// max length: 80
-	private String number;
+	// max length: 100
+	private String serial;
 
 	private String operator;
 
 	// max length: 80
 	private String createTime;
 
-	private String operationOfEquipment;
+	private String machineStatus;
 
 	private String feedWeight;
 
 	// max length: 400
-	private String feedInstructions;
-
-	private String millingStarTime;
-
-	// max length: 80
-	private String millingEndTime;
-
-	private String millingTime;
-
-	private String starOxygenContent;
-
-	private String processOxygenContent;
-
-	private String endOxygenContent;
-
-	private String speed;
-
-	private String grindPressure;
-
-	private String millingStarFlow;
-
-	private String millingEndFlow;
+	private String feedNote;
 
 	private String materialWeight;
 
-	private String spitting;
+	private String spittingWeight;
 
 	private String yield;
 
 	// max length: 400
-	private String remarks;
+	private String note;
+
+	private String flourDetails;
 
 	public Integer getId() {
 		return this.id;
@@ -71,11 +52,11 @@ public class FlourMillingProcessRecord extends BaseDomain {
 		this.id = id;
 	}
 	
-	public String getNumber() {
-		return this.number;
+	public String getSerial() {
+		return this.serial;
 	}
-    public void setNumber(String number) {
-		this.number = number;
+    public void setSerial(String serial) {
+		this.serial = serial;
 	}
 	
 	public String getOperator() {
@@ -92,11 +73,11 @@ public class FlourMillingProcessRecord extends BaseDomain {
 		this.createTime = createTime;
 	}
 	
-	public String getOperationOfEquipment() {
-		return this.operationOfEquipment;
+	public String getMachineStatus() {
+		return this.machineStatus;
 	}
-    public void setOperationOfEquipment(String operationOfEquipment) {
-		this.operationOfEquipment = operationOfEquipment;
+    public void setMachineStatus(String machineStatus) {
+		this.machineStatus = machineStatus;
 	}
 	
 	public String getFeedWeight() {
@@ -106,81 +87,11 @@ public class FlourMillingProcessRecord extends BaseDomain {
 		this.feedWeight = feedWeight;
 	}
 	
-	public String getFeedInstructions() {
-		return this.feedInstructions;
+	public String getFeedNote() {
+		return this.feedNote;
 	}
-    public void setFeedInstructions(String feedInstructions) {
-		this.feedInstructions = feedInstructions;
-	}
-	
-	public String getMillingStarTime() {
-		return this.millingStarTime;
-	}
-    public void setMillingStarTime(String millingStarTime) {
-		this.millingStarTime = millingStarTime;
-	}
-	
-	public String getMillingEndTime() {
-		return this.millingEndTime;
-	}
-    public void setMillingEndTime(String millingEndTime) {
-		this.millingEndTime = millingEndTime;
-	}
-	
-	public String getMillingTime() {
-		return this.millingTime;
-	}
-    public void setMillingTime(String millingTime) {
-		this.millingTime = millingTime;
-	}
-	
-	public String getStarOxygenContent() {
-		return this.starOxygenContent;
-	}
-    public void setStarOxygenContent(String starOxygenContent) {
-		this.starOxygenContent = starOxygenContent;
-	}
-	
-	public String getProcessOxygenContent() {
-		return this.processOxygenContent;
-	}
-    public void setProcessOxygenContent(String processOxygenContent) {
-		this.processOxygenContent = processOxygenContent;
-	}
-	
-	public String getEndOxygenContent() {
-		return this.endOxygenContent;
-	}
-    public void setEndOxygenContent(String endOxygenContent) {
-		this.endOxygenContent = endOxygenContent;
-	}
-	
-	public String getSpeed() {
-		return this.speed;
-	}
-    public void setSpeed(String speed) {
-		this.speed = speed;
-	}
-	
-	public String getGrindPressure() {
-		return this.grindPressure;
-	}
-    public void setGrindPressure(String grindPressure) {
-		this.grindPressure = grindPressure;
-	}
-	
-	public String getMillingStarFlow() {
-		return this.millingStarFlow;
-	}
-    public void setMillingStarFlow(String millingStarFlow) {
-		this.millingStarFlow = millingStarFlow;
-	}
-	
-	public String getMillingEndFlow() {
-		return this.millingEndFlow;
-	}
-    public void setMillingEndFlow(String millingEndFlow) {
-		this.millingEndFlow = millingEndFlow;
+    public void setFeedNote(String feedNote) {
+		this.feedNote = feedNote;
 	}
 	
 	public String getMaterialWeight() {
@@ -190,11 +101,11 @@ public class FlourMillingProcessRecord extends BaseDomain {
 		this.materialWeight = materialWeight;
 	}
 	
-	public String getSpitting() {
-		return this.spitting;
+	public String getSpittingWeight() {
+		return this.spittingWeight;
 	}
-    public void setSpitting(String spitting) {
-		this.spitting = spitting;
+    public void setSpittingWeight(String spittingWeight) {
+		this.spittingWeight = spittingWeight;
 	}
 	
 	public String getYield() {
@@ -204,11 +115,18 @@ public class FlourMillingProcessRecord extends BaseDomain {
 		this.yield = yield;
 	}
 	
-	public String getRemarks() {
-		return this.remarks;
+	public String getNote() {
+		return this.note;
 	}
-    public void setRemarks(String remarks) {
-		this.remarks = remarks;
+    public void setNote(String note) {
+		this.note = note;
+	}
+	
+	public String getFlourDetails() {
+		return this.flourDetails;
+	}
+    public void setFlourDetails(String flourDetails) {
+		this.flourDetails = flourDetails;
 	}
 	 
 }

@@ -7,26 +7,17 @@
 	<sql id="QUERY_COLUMN_LIST">
 		<![CDATA[
             id,
-            number,
+            serial,
             operator,
             create_time AS createTime,
-            operation_of_equipment AS operationOfEquipment,
+            machine_status AS machineStatus,
             feed_weight AS feedWeight,
-            feed_instructions AS feedInstructions,
-            milling_star_time AS millingStarTime,
-            milling_end_time AS millingEndTime,
-            milling_time AS millingTime,
-            star_oxygen_content AS starOxygenContent,
-            process_oxygen_content AS processOxygenContent,
-            end_oxygen_content AS endOxygenContent,
-            speed,
-            grind_pressure AS grindPressure,
-            milling_star_flow AS millingStarFlow,
-            milling_end_flow AS millingEndFlow,
+            feed_note AS feedNote,
             material_weight AS materialWeight,
-            spitting,
+            spitting_weight AS spittingWeight,
             yield,
-            remarks 
+            note,
+            flour_details AS flourDetails 
 		]]>
 	</sql>
 
@@ -37,26 +28,17 @@
 	<sql id="QUERY_WHERE_CLAUSE">
 		<where>
             <if test="id != null and id != ''"><![CDATA[AND id = #{id}]]></if>
-            <if test="number != null and number != ''"><![CDATA[AND number = #{number}]]></if>
+            <if test="serial != null and serial != ''"><![CDATA[AND serial = #{serial}]]></if>
             <if test="operator != null and operator != ''"><![CDATA[AND operator = #{operator}]]></if>
             <if test="createTime != null and createTime != ''"><![CDATA[AND create_time = #{createTime}]]></if>
-            <if test="operationOfEquipment != null and operationOfEquipment != ''"><![CDATA[AND operation_of_equipment = #{operationOfEquipment}]]></if>
+            <if test="machineStatus != null and machineStatus != ''"><![CDATA[AND machine_status = #{machineStatus}]]></if>
             <if test="feedWeight != null and feedWeight != ''"><![CDATA[AND feed_weight = #{feedWeight}]]></if>
-            <if test="feedInstructions != null and feedInstructions != ''"><![CDATA[AND feed_instructions = #{feedInstructions}]]></if>
-            <if test="millingStarTime != null and millingStarTime != ''"><![CDATA[AND milling_star_time = #{millingStarTime}]]></if>
-            <if test="millingEndTime != null and millingEndTime != ''"><![CDATA[AND milling_end_time = #{millingEndTime}]]></if>
-            <if test="millingTime != null and millingTime != ''"><![CDATA[AND milling_time = #{millingTime}]]></if>
-            <if test="starOxygenContent != null and starOxygenContent != ''"><![CDATA[AND star_oxygen_content = #{starOxygenContent}]]></if>
-            <if test="processOxygenContent != null and processOxygenContent != ''"><![CDATA[AND process_oxygen_content = #{processOxygenContent}]]></if>
-            <if test="endOxygenContent != null and endOxygenContent != ''"><![CDATA[AND end_oxygen_content = #{endOxygenContent}]]></if>
-            <if test="speed != null and speed != ''"><![CDATA[AND speed = #{speed}]]></if>
-            <if test="grindPressure != null and grindPressure != ''"><![CDATA[AND grind_pressure = #{grindPressure}]]></if>
-            <if test="millingStarFlow != null and millingStarFlow != ''"><![CDATA[AND milling_star_flow = #{millingStarFlow}]]></if>
-            <if test="millingEndFlow != null and millingEndFlow != ''"><![CDATA[AND milling_end_flow = #{millingEndFlow}]]></if>
+            <if test="feedNote != null and feedNote != ''"><![CDATA[AND feed_note = #{feedNote}]]></if>
             <if test="materialWeight != null and materialWeight != ''"><![CDATA[AND material_weight = #{materialWeight}]]></if>
-            <if test="spitting != null and spitting != ''"><![CDATA[AND spitting = #{spitting}]]></if>
+            <if test="spittingWeight != null and spittingWeight != ''"><![CDATA[AND spitting_weight = #{spittingWeight}]]></if>
             <if test="yield != null and yield != ''"><![CDATA[AND yield = #{yield}]]></if>
-            <if test="remarks != null and remarks != ''"><![CDATA[AND remarks = #{remarks}]]></if> 
+            <if test="note != null and note != ''"><![CDATA[AND note = #{note}]]></if>
+            <if test="flourDetails != null and flourDetails != ''"><![CDATA[AND flour_details = #{flourDetails}]]></if> 
 		</where>
 	</sql>
 	
@@ -69,26 +51,17 @@
 	<!-- 更新列字段,只要不为NULL则更新,除开主键列 -->
 	<sql id="UPDATE_COLUMN_SET">
 		<set>
-			<if test="number != null"><![CDATA[number = #{number},]]></if>
+			<if test="serial != null"><![CDATA[serial = #{serial},]]></if>
 			<if test="operator != null"><![CDATA[operator = #{operator},]]></if>
 			<if test="createTime != null"><![CDATA[create_time = #{createTime},]]></if>
-			<if test="operationOfEquipment != null"><![CDATA[operation_of_equipment = #{operationOfEquipment},]]></if>
+			<if test="machineStatus != null"><![CDATA[machine_status = #{machineStatus},]]></if>
 			<if test="feedWeight != null"><![CDATA[feed_weight = #{feedWeight},]]></if>
-			<if test="feedInstructions != null"><![CDATA[feed_instructions = #{feedInstructions},]]></if>
-			<if test="millingStarTime != null"><![CDATA[milling_star_time = #{millingStarTime},]]></if>
-			<if test="millingEndTime != null"><![CDATA[milling_end_time = #{millingEndTime},]]></if>
-			<if test="millingTime != null"><![CDATA[milling_time = #{millingTime},]]></if>
-			<if test="starOxygenContent != null"><![CDATA[star_oxygen_content = #{starOxygenContent},]]></if>
-			<if test="processOxygenContent != null"><![CDATA[process_oxygen_content = #{processOxygenContent},]]></if>
-			<if test="endOxygenContent != null"><![CDATA[end_oxygen_content = #{endOxygenContent},]]></if>
-			<if test="speed != null"><![CDATA[speed = #{speed},]]></if>
-			<if test="grindPressure != null"><![CDATA[grind_pressure = #{grindPressure},]]></if>
-			<if test="millingStarFlow != null"><![CDATA[milling_star_flow = #{millingStarFlow},]]></if>
-			<if test="millingEndFlow != null"><![CDATA[milling_end_flow = #{millingEndFlow},]]></if>
+			<if test="feedNote != null"><![CDATA[feed_note = #{feedNote},]]></if>
 			<if test="materialWeight != null"><![CDATA[material_weight = #{materialWeight},]]></if>
-			<if test="spitting != null"><![CDATA[spitting = #{spitting},]]></if>
+			<if test="spittingWeight != null"><![CDATA[spitting_weight = #{spittingWeight},]]></if>
 			<if test="yield != null"><![CDATA[yield = #{yield},]]></if>
-			<if test="remarks != null"><![CDATA[remarks = #{remarks},]]></if>
+			<if test="note != null"><![CDATA[note = #{note},]]></if>
+			<if test="flourDetails != null"><![CDATA[flour_details = #{flourDetails},]]></if>
 		</set>
 	</sql>
 
@@ -98,50 +71,32 @@
 			INSERT INTO flour_milling_process_record
 				(
                 id, 
-                number, 
+                serial, 
                 operator, 
                 create_time, 
-                operation_of_equipment, 
+                machine_status, 
                 feed_weight, 
-                feed_instructions, 
-                milling_star_time, 
-                milling_end_time, 
-                milling_time, 
-                star_oxygen_content, 
-                process_oxygen_content, 
-                end_oxygen_content, 
-                speed, 
-                grind_pressure, 
-                milling_star_flow, 
-                milling_end_flow, 
+                feed_note, 
                 material_weight, 
-                spitting, 
+                spitting_weight, 
                 yield, 
-                remarks 
+                note, 
+                flour_details 
 				)
 			VALUES
 				(
                 #{id}, 
-                #{number}, 
+                #{serial}, 
                 #{operator}, 
                 #{createTime}, 
-                #{operationOfEquipment}, 
+                #{machineStatus}, 
                 #{feedWeight}, 
-                #{feedInstructions}, 
-                #{millingStarTime}, 
-                #{millingEndTime}, 
-                #{millingTime}, 
-                #{starOxygenContent}, 
-                #{processOxygenContent}, 
-                #{endOxygenContent}, 
-                #{speed}, 
-                #{grindPressure}, 
-                #{millingStarFlow}, 
-                #{millingEndFlow}, 
+                #{feedNote}, 
                 #{materialWeight}, 
-                #{spitting}, 
+                #{spittingWeight}, 
                 #{yield}, 
-                #{remarks} 
+                #{note}, 
+                #{flourDetails} 
 				)
 		]]>
 	</insert>

@@ -8,11 +8,11 @@ import com.imustacm.domain.base.BaseDomain;
 /**
  * 
  * @author Lenovo
- * @since 2019-11-10 21:27:38
+ * @since 2019-12-25 10:45:24
  */
 public class Stock extends BaseDomain {
 
-	private static final long serialVersionUID = 9974843060L;
+	private static final long serialVersionUID = 4518665436L;
 
 	public Stock() {
 		//默认无参构造方法
@@ -22,18 +22,9 @@ public class Stock extends BaseDomain {
 	// max length: 80
 	private String stockName;
 
-	private String company;
-
-	private String initialStage;
-
-	private String increase;
-
-	private String reduce;
+	private String unit;
 
 	private String weight;
-
-	// max length: 80
-	private String createTime;
 
 	public Integer getId() {
 		return this.id;
@@ -49,32 +40,11 @@ public class Stock extends BaseDomain {
 		this.stockName = stockName;
 	}
 	
-	public String getCompany() {
-		return this.company;
+	public String getUnit() {
+		return this.unit;
 	}
-    public void setCompany(String company) {
-		this.company = company;
-	}
-	
-	public String getInitialStage() {
-		return this.initialStage;
-	}
-    public void setInitialStage(String initialStage) {
-		this.initialStage = initialStage;
-	}
-	
-	public String getIncrease() {
-		return this.increase;
-	}
-    public void setIncrease(String increase) {
-		this.increase = increase;
-	}
-	
-	public String getReduce() {
-		return this.reduce;
-	}
-    public void setReduce(String reduce) {
-		this.reduce = reduce;
+    public void setUnit(String unit) {
+		this.unit = unit;
 	}
 	
 	public String getWeight() {
@@ -82,13 +52,6 @@ public class Stock extends BaseDomain {
 	}
     public void setWeight(String weight) {
 		this.weight = weight;
-	}
-	
-	public String getCreateTime() {
-		return this.createTime;
-	}
-    public void setCreateTime(String createTime) {
-		this.createTime = createTime;
 	}
 	 
 }

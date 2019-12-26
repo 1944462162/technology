@@ -5,16 +5,14 @@ import com.imustacm.domain.Vo.AgglomerationProcessRecordVo;
 import com.imustacm.service.AgglomerationProcessRecordService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
-import io.swagger.models.auth.In;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
 @RestController
-@RequestMapping("/application")
+@RequestMapping("/api")
 @Api(tags = "烧结工艺记录")
 public class AgglomerationProcessRecordController {
     @Autowired
@@ -22,20 +20,14 @@ public class AgglomerationProcessRecordController {
 
 
     @ApiOperation(value = "获取所有的烧结工艺记录")
-    @GetMapping("/getAllAgglomerationProcessRecord")
+    @GetMapping("/getSinter")
     public DefaultResponseVo getAllAgglomerationProcessRecord(){
 
-        List<AgglomerationProcessRecordVo> agglomerationProcessRecordVos = new ArrayList<>();
-        try {
-            agglomerationProcessRecordVos = service.getAllAgglomerationProcessRecord();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-
+        List<AgglomerationProcessRecordVo> agglomerationProcessRecordVos = service.getAllAgglomerationProcessRecord();
         DefaultResponseVo defaultResponseVo = new DefaultResponseVo();
         if(agglomerationProcessRecordVos != null && agglomerationProcessRecordVos.size() != 0){
             HashMap<String, Object> data = new HashMap<String, Object>();
-            data.put("AgglomerationProcessRecord",agglomerationProcessRecordVos);
+            data.put("AgglomerationProcessRecordVo",agglomerationProcessRecordVos);
             defaultResponseVo.setData(data);
             defaultResponseVo.setCode(200);
             defaultResponseVo.setMsg("ok");
@@ -47,33 +39,31 @@ public class AgglomerationProcessRecordController {
         return defaultResponseVo;
     }
     @ApiOperation(value = "增加烧结工艺记录")
-    @PostMapping("/insertAgglomerationProcessRecord")
+    @PostMapping("/insertSinter")
     public DefaultResponseVo insertAgglomerationProcessRecord(@RequestBody AgglomerationProcessRecordVo agglomerationProcessRecordVo) {
         DefaultResponseVo defaultResponseVo = new DefaultResponseVo();
-        try {
-            Integer code = service.insertAgglomerationProcessRecord(agglomerationProcessRecordVo);
-            Integer number = service.getNewInsertagglomerationProcessRecords();
-            if (code == 1){
-                HashMap map = new HashMap();
-                map.put("insertAgglomerationProcessRecord",number);
-                defaultResponseVo = new DefaultResponseVo(200,"ok");
-                defaultResponseVo.setData(map);
-            }
-            else{
-                defaultResponseVo = new DefaultResponseVo(500,"无法增加压坯记录");
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
+
+        int code = service.insertAgglomerationProcessRecord(agglomerationProcessRecordVo);
+        Integer number = service.getNewInsertagglomerationProcessRecords();
+        if (code == 1){
+            HashMap<String,Object> map = new HashMap<>();
+            map.put("insertAgglomerationProcessRecord",number);
+            defaultResponseVo = new DefaultResponseVo(200,"ok");
+            defaultResponseVo.setData(map);
         }
+        else{
+            defaultResponseVo = new DefaultResponseVo(500,"无法增加压坯记录");
+        }
+
         return  defaultResponseVo;
     }
 
     @ApiOperation(value = "删除烧结工艺记录", notes = "根据id")
-    @DeleteMapping("/deleteAgglomerationProcessRecord/{index}")
+    @DeleteMapping("/deleteSinter/{index}")
     public DefaultResponseVo deleteAgglomerationProcessRecord(@PathVariable("index") int index){
         DefaultResponseVo defaultResponseVo = new DefaultResponseVo();
         try {
-            Integer code = service.deleteAgglomerationProcessRecordById(index);
+            int code = service.deleteAgglomerationProcessRecordById(index);
             if (code == 1){
                 defaultResponseVo = new DefaultResponseVo(200,"ok");
             }
@@ -87,33 +77,31 @@ public class AgglomerationProcessRecordController {
     }
 
     @ApiOperation(value = "更改烧结工艺记录", notes = "根据id更改")
-    @PutMapping("/updateAgglomerationProcessRecord")
+    @PutMapping("/updateSinter")
     public DefaultResponseVo updateAgglomerationProcessRecord(@RequestBody AgglomerationProcessRecordVo agglomerationProcessRecordVo){
         DefaultResponseVo defaultResponseVo = new DefaultResponseVo();
-        try {
-            Integer code = service.updateAgglomerationProcessRecord(agglomerationProcessRecordVo);
-            if(code == 1){
-                defaultResponseVo = new DefaultResponseVo(200,"ok");
-            }
-            else{
-                defaultResponseVo = new DefaultResponseVo(500,"更新压坯记录失败");
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
+
+        int code = service.updateAgglomerationProcessRecord(agglomerationProcessRecordVo);
+        if(code == 1){
+            defaultResponseVo = new DefaultResponseVo(200,"ok");
         }
+        else{
+            defaultResponseVo = new DefaultResponseVo(500,"更新压坯记录失败");
+        }
+
         return defaultResponseVo;
     }
 
 
     @ApiOperation(value = "获取单个烧结工艺记录",notes = "根据id查找")
-    @GetMapping("/getAgglomerationProcessRecordById/{index}")
+    @GetMapping("/getSinterBySerial/{index}")
     public DefaultResponseVo getAgglomerationProcessRecordById(@PathVariable("index") int index) throws Exception {
         DefaultResponseVo defaultResponseVo = new DefaultResponseVo();
         AgglomerationProcessRecordVo agglomerationProcessRecordVo = service.getOneAgglomerationProcessRecord(index);
         defaultResponseVo.setCode(200);
         defaultResponseVo.setMsg("ok");
         HashMap<String,Object> map = new HashMap<>();
-        map.put("AgglomerationProcessRecord",agglomerationProcessRecordVo);
+        map.put("AgglomerationProcessRecordVo",agglomerationProcessRecordVo);
         defaultResponseVo.setData(map);
         return defaultResponseVo;
     }

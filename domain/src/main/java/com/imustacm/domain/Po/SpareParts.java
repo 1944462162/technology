@@ -8,11 +8,11 @@ import com.imustacm.domain.base.BaseDomain;
 /**
  * 
  * @author Lenovo
- * @since 2019-11-10 20:45:57
+ * @since 2019-12-25 10:45:24
  */
 public class SpareParts extends BaseDomain {
 
-	private static final long serialVersionUID = 15311465875L;
+	private static final long serialVersionUID = 15063070240L;
 
 	public SpareParts() {
 		//默认无参构造方法
@@ -20,23 +20,24 @@ public class SpareParts extends BaseDomain {
 	private Integer id;
 
 	// max length: 100
-	private String component;
+	private String composition;
 
-	private String requirement;
+	private String requirementWeight;
 
-	private String dosage;
+	private String ingredientsWeigth;
 
 	// max length: 400
-	private String remarks;
+	private String note;
 
 	private String createTime;
 
-	private Integer brandName;
+	// max length: 100
+	private String serial;
+
+	private String ingredientOperator;
 
 	// max length: 100
-	private String ingredientPerson;
-
-	private String reviewer;
+	private String compositeOperator;
 
 	public Integer getId() {
 		return this.id;
@@ -45,32 +46,32 @@ public class SpareParts extends BaseDomain {
 		this.id = id;
 	}
 	
-	public String getComponent() {
-		return this.component;
+	public String getComposition() {
+		return this.composition;
 	}
-    public void setComponent(String component) {
-		this.component = component;
-	}
-	
-	public String getRequirement() {
-		return this.requirement;
-	}
-    public void setRequirement(String requirement) {
-		this.requirement = requirement;
+    public void setComposition(String composition) {
+		this.composition = composition;
 	}
 	
-	public String getDosage() {
-		return this.dosage;
+	public String getRequirementWeight() {
+		return this.requirementWeight;
 	}
-    public void setDosage(String dosage) {
-		this.dosage = dosage;
+    public void setRequirementWeight(String requirementWeight) {
+		this.requirementWeight = requirementWeight;
 	}
 	
-	public String getRemarks() {
-		return this.remarks;
+	public String getIngredientsWeigth() {
+		return this.ingredientsWeigth;
 	}
-    public void setRemarks(String remarks) {
-		this.remarks = remarks;
+    public void setIngredientsWeigth(String ingredientsWeigth) {
+		this.ingredientsWeigth = ingredientsWeigth;
+	}
+	
+	public String getNote() {
+		return this.note;
+	}
+    public void setNote(String note) {
+		this.note = note;
 	}
 	
 	public String getCreateTime() {
@@ -80,25 +81,25 @@ public class SpareParts extends BaseDomain {
 		this.createTime = createTime;
 	}
 	
-	public Integer getBrandName() {
-		return this.brandName;
+	public String getSerial() {
+		return this.serial;
 	}
-    public void setBrandName(Integer brandName) {
-		this.brandName = brandName;
-	}
-	
-	public String getIngredientPerson() {
-		return this.ingredientPerson;
-	}
-    public void setIngredientPerson(String ingredientPerson) {
-		this.ingredientPerson = ingredientPerson;
+    public void setSerial(String serial) {
+		this.serial = serial;
 	}
 	
-	public String getReviewer() {
-		return this.reviewer;
+	public String getIngredientOperator() {
+		return this.ingredientOperator;
 	}
-    public void setReviewer(String reviewer) {
-		this.reviewer = reviewer;
+    public void setIngredientOperator(String ingredientOperator) {
+		this.ingredientOperator = ingredientOperator;
+	}
+	
+	public String getCompositeOperator() {
+		return this.compositeOperator;
+	}
+    public void setCompositeOperator(String compositeOperator) {
+		this.compositeOperator = compositeOperator;
 	}
 	 
 }

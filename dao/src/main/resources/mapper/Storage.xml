@@ -1,24 +1,30 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.imustacm.dao.RelationshipDieAndBlankDao">
+<mapper namespace="com.imustacm.dao.StorageDao">
 
-	<!-- relationship_die_and_blank 所有查询列 -->
+	<!-- storage 所有查询列 -->
 	<sql id="QUERY_COLUMN_LIST">
 		<![CDATA[
-            pressure_record_id AS pressureRecordId,
-            blank_size_id AS blankSizeId 
+            id,
+            name,
+            numbers,
+            create_date AS createDate,
+            note 
 		]]>
 	</sql>
 
-	<!-- relationship_die_and_blank 查询列来源表-->
-	<sql id="QUERY_FROM_TABLE"><![CDATA[FROM relationship_die_and_blank]]></sql>
+	<!-- storage 查询列来源表-->
+	<sql id="QUERY_FROM_TABLE"><![CDATA[FROM storage]]></sql>
 	
 	<!-- 全部条件(更多功能可以通过queryData扩展实现)  -->
 	<sql id="QUERY_WHERE_CLAUSE">
 		<where>
-            <if test="pressureRecordId != null and pressureRecordId != ''"><![CDATA[AND pressure_record_id = #{pressureRecordId}]]></if>
-            <if test="blankSizeId != null and blankSizeId != ''"><![CDATA[AND blank_size_id = #{blankSizeId}]]></if> 
+            <if test="id != null and id != ''"><![CDATA[AND id = #{id}]]></if>
+            <if test="name != null and name != ''"><![CDATA[AND name = #{name}]]></if>
+            <if test="numbers != null and numbers != ''"><![CDATA[AND numbers = #{numbers}]]></if>
+            <if test="createDate != null and createDate != ''"><![CDATA[AND create_date = #{createDate}]]></if>
+            <if test="note != null and note != ''"><![CDATA[AND note = #{note}]]></if> 
 		</where>
 	</sql>
 	
@@ -31,23 +37,31 @@
 	<!-- 更新列字段,只要不为NULL则更新,除开主键列 -->
 	<sql id="UPDATE_COLUMN_SET">
 		<set>
-			<if test="pressureRecordId != null"><![CDATA[pressure_record_id = #{pressureRecordId},]]></if>
-			<if test="blankSizeId != null"><![CDATA[blank_size_id = #{blankSizeId},]]></if>
+			<if test="name != null"><![CDATA[name = #{name},]]></if>
+			<if test="numbers != null"><![CDATA[numbers = #{numbers},]]></if>
+			<if test="createDate != null"><![CDATA[create_date = #{createDate},]]></if>
+			<if test="note != null"><![CDATA[note = #{note},]]></if>
 		</set>
 	</sql>
 
 	<!-- 插入app记录 -->
-	<insert id="insertEntry" parameterType="relationshipDieAndBlank" >
+	<insert id="insertEntry" parameterType="storage" >
 		<![CDATA[
-			INSERT INTO relationship_die_and_blank
+			INSERT INTO storage
 				(
-                pressure_record_id, 
-                blank_size_id 
+                id, 
+                name, 
+                numbers, 
+                create_date, 
+                note 
 				)
 			VALUES
 				(
-                #{pressureRecordId}, 
-                #{blankSizeId} 
+                #{id}, 
+                #{name}, 
+                #{numbers}, 
+                #{createDate}, 
+                #{note} 
 				)
 		]]>
 	</insert>
@@ -57,27 +71,27 @@
 
 	<!-- 删除记录,主键IN(array) -->
 	<delete id="deleteByArrayKey" parameterType="java.lang.reflect.Array" >
-		<![CDATA[DELETE FROM relationship_die_and_blank WHERE id IN]]>
+		<![CDATA[DELETE FROM storage WHERE id IN]]>
 		<foreach collection="array" item="id" open="(" separator="," close=")">
 			<![CDATA[#{id}]]>
 		</foreach>
 	</delete>
 
 	<!-- 删除,通过条件 -->
-	<delete id="deleteByCondtion" parameterType="relationshipDieAndBlank" >
-		<![CDATA[DELETE FROM relationship_die_and_blank]]>
+	<delete id="deleteByCondtion" parameterType="storage" >
+		<![CDATA[DELETE FROM storage]]>
 		<include refid="QUERY_WHERE_CLAUSE"/>
 	</delete>
 
 	<!-- 修改记录通过主键 -->
-	<update id="updateByKey" parameterType="relationshipDieAndBlank" >
-		<![CDATA[UPDATE relationship_die_and_blank]]>
+	<update id="updateByKey" parameterType="storage" >
+		<![CDATA[UPDATE storage]]>
 		<include refid="UPDATE_COLUMN_SET"/>
 		<![CDATA[WHERE id = #{id}]]>
 	</update>
 
 	<!-- 查询,通过主键IN(array) -->
-	<select id="selectEntryArray" parameterType="java.lang.reflect.Array" resultType="relationshipDieAndBlank">
+	<select id="selectEntryArray" parameterType="java.lang.reflect.Array" resultType="storage">
 		<![CDATA[SELECT]]>
 		<include refid="QUERY_COLUMN_LIST"/>
 		<include refid="QUERY_FROM_TABLE"/>
@@ -88,7 +102,7 @@
 	</select>
 
 	<!-- 查询,通过条件 -->
-	<select id="selectEntryList" parameterType="relationshipDieAndBlank" resultType="relationshipDieAndBlank">
+	<select id="selectEntryList" parameterType="storage" resultType="storage">
 		<![CDATA[SELECT]]>
 		<include refid="QUERY_COLUMN_LIST"/>
 		<include refid="QUERY_FROM_TABLE"/>
@@ -97,7 +111,7 @@
 	</select>
 
 	<!-- 总数查询,通过条件 -->
-	<select id="selectEntryListCount" parameterType="relationshipDieAndBlank" resultType="int">
+	<select id="selectEntryListCount" parameterType="storage" resultType="int">
 		<![CDATA[SELECT COUNT(id) AS dataCount]]>
 		<include refid="QUERY_FROM_TABLE"/>
 		<include refid="QUERY_WHERE_CLAUSE"/>

@@ -1,24 +1,30 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.imustacm.dao.RelationshipAgglomerationProcessDao">
+<mapper namespace="com.imustacm.dao.ProductDao">
 
-	<!-- relationship_agglomeration_process 所有查询列 -->
+	<!-- product 所有查询列 -->
 	<sql id="QUERY_COLUMN_LIST">
 		<![CDATA[
-            record_id AS recordId,
-            agglomeration_id AS agglomerationId 
+            id,
+            serial,
+            amount,
+            details,
+            detection_info AS detectionInfo 
 		]]>
 	</sql>
 
-	<!-- relationship_agglomeration_process 查询列来源表-->
-	<sql id="QUERY_FROM_TABLE"><![CDATA[FROM relationship_agglomeration_process]]></sql>
+	<!-- product 查询列来源表-->
+	<sql id="QUERY_FROM_TABLE"><![CDATA[FROM product]]></sql>
 	
 	<!-- 全部条件(更多功能可以通过queryData扩展实现)  -->
 	<sql id="QUERY_WHERE_CLAUSE">
 		<where>
-            <if test="recordId != null and recordId != ''"><![CDATA[AND record_id = #{recordId}]]></if>
-            <if test="agglomerationId != null and agglomerationId != ''"><![CDATA[AND agglomeration_id = #{agglomerationId}]]></if> 
+            <if test="id != null and id != ''"><![CDATA[AND id = #{id}]]></if>
+            <if test="serial != null and serial != ''"><![CDATA[AND serial = #{serial}]]></if>
+            <if test="amount != null and amount != ''"><![CDATA[AND amount = #{amount}]]></if>
+            <if test="details != null and details != ''"><![CDATA[AND details = #{details}]]></if>
+            <if test="detectionInfo != null and detectionInfo != ''"><![CDATA[AND detection_info = #{detectionInfo}]]></if> 
 		</where>
 	</sql>
 	
@@ -31,23 +37,31 @@
 	<!-- 更新列字段,只要不为NULL则更新,除开主键列 -->
 	<sql id="UPDATE_COLUMN_SET">
 		<set>
-			<if test="recordId != null"><![CDATA[record_id = #{recordId},]]></if>
-			<if test="agglomerationId != null"><![CDATA[agglomeration_id = #{agglomerationId},]]></if>
+			<if test="serial != null"><![CDATA[serial = #{serial},]]></if>
+			<if test="amount != null"><![CDATA[amount = #{amount},]]></if>
+			<if test="details != null"><![CDATA[details = #{details},]]></if>
+			<if test="detectionInfo != null"><![CDATA[detection_info = #{detectionInfo},]]></if>
 		</set>
 	</sql>
 
 	<!-- 插入app记录 -->
-	<insert id="insertEntry" parameterType="relationshipAgglomerationProcess" >
+	<insert id="insertEntry" parameterType="product" >
 		<![CDATA[
-			INSERT INTO relationship_agglomeration_process
+			INSERT INTO product
 				(
-                record_id, 
-                agglomeration_id 
+                id, 
+                serial, 
+                amount, 
+                details, 
+                detection_info 
 				)
 			VALUES
 				(
-                #{recordId}, 
-                #{agglomerationId} 
+                #{id}, 
+                #{serial}, 
+                #{amount}, 
+                #{details}, 
+                #{detectionInfo} 
 				)
 		]]>
 	</insert>
@@ -57,27 +71,27 @@
 
 	<!-- 删除记录,主键IN(array) -->
 	<delete id="deleteByArrayKey" parameterType="java.lang.reflect.Array" >
-		<![CDATA[DELETE FROM relationship_agglomeration_process WHERE id IN]]>
+		<![CDATA[DELETE FROM product WHERE id IN]]>
 		<foreach collection="array" item="id" open="(" separator="," close=")">
 			<![CDATA[#{id}]]>
 		</foreach>
 	</delete>
 
 	<!-- 删除,通过条件 -->
-	<delete id="deleteByCondtion" parameterType="relationshipAgglomerationProcess" >
-		<![CDATA[DELETE FROM relationship_agglomeration_process]]>
+	<delete id="deleteByCondtion" parameterType="product" >
+		<![CDATA[DELETE FROM product]]>
 		<include refid="QUERY_WHERE_CLAUSE"/>
 	</delete>
 
 	<!-- 修改记录通过主键 -->
-	<update id="updateByKey" parameterType="relationshipAgglomerationProcess" >
-		<![CDATA[UPDATE relationship_agglomeration_process]]>
+	<update id="updateByKey" parameterType="product" >
+		<![CDATA[UPDATE product]]>
 		<include refid="UPDATE_COLUMN_SET"/>
 		<![CDATA[WHERE id = #{id}]]>
 	</update>
 
 	<!-- 查询,通过主键IN(array) -->
-	<select id="selectEntryArray" parameterType="java.lang.reflect.Array" resultType="relationshipAgglomerationProcess">
+	<select id="selectEntryArray" parameterType="java.lang.reflect.Array" resultType="product">
 		<![CDATA[SELECT]]>
 		<include refid="QUERY_COLUMN_LIST"/>
 		<include refid="QUERY_FROM_TABLE"/>
@@ -88,7 +102,7 @@
 	</select>
 
 	<!-- 查询,通过条件 -->
-	<select id="selectEntryList" parameterType="relationshipAgglomerationProcess" resultType="relationshipAgglomerationProcess">
+	<select id="selectEntryList" parameterType="product" resultType="product">
 		<![CDATA[SELECT]]>
 		<include refid="QUERY_COLUMN_LIST"/>
 		<include refid="QUERY_FROM_TABLE"/>
@@ -97,7 +111,7 @@
 	</select>
 
 	<!-- 总数查询,通过条件 -->
-	<select id="selectEntryListCount" parameterType="relationshipAgglomerationProcess" resultType="int">
+	<select id="selectEntryListCount" parameterType="product" resultType="int">
 		<![CDATA[SELECT COUNT(id) AS dataCount]]>
 		<include refid="QUERY_FROM_TABLE"/>
 		<include refid="QUERY_WHERE_CLAUSE"/>

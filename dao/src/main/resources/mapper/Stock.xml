@@ -8,12 +8,8 @@
 		<![CDATA[
             ID AS id,
             stock_name AS stockName,
-            company,
-            initial_stage AS initialStage,
-            increase,
-            reduce,
-            weight,
-            create_time AS createTime 
+            unit,
+            weight 
 		]]>
 	</sql>
 
@@ -25,12 +21,8 @@
 		<where>
             <if test="id != null and id != ''"><![CDATA[AND ID = #{id}]]></if>
             <if test="stockName != null and stockName != ''"><![CDATA[AND stock_name = #{stockName}]]></if>
-            <if test="company != null and company != ''"><![CDATA[AND company = #{company}]]></if>
-            <if test="initialStage != null and initialStage != ''"><![CDATA[AND initial_stage = #{initialStage}]]></if>
-            <if test="increase != null and increase != ''"><![CDATA[AND increase = #{increase}]]></if>
-            <if test="reduce != null and reduce != ''"><![CDATA[AND reduce = #{reduce}]]></if>
-            <if test="weight != null and weight != ''"><![CDATA[AND weight = #{weight}]]></if>
-            <if test="createTime != null and createTime != ''"><![CDATA[AND create_time = #{createTime}]]></if> 
+            <if test="unit != null and unit != ''"><![CDATA[AND unit = #{unit}]]></if>
+            <if test="weight != null and weight != ''"><![CDATA[AND weight = #{weight}]]></if> 
 		</where>
 	</sql>
 	
@@ -45,12 +37,8 @@
 		<set>
 			<if test="id != null"><![CDATA[ID = #{id},]]></if>
 			<if test="stockName != null"><![CDATA[stock_name = #{stockName},]]></if>
-			<if test="company != null"><![CDATA[company = #{company},]]></if>
-			<if test="initialStage != null"><![CDATA[initial_stage = #{initialStage},]]></if>
-			<if test="increase != null"><![CDATA[increase = #{increase},]]></if>
-			<if test="reduce != null"><![CDATA[reduce = #{reduce},]]></if>
+			<if test="unit != null"><![CDATA[unit = #{unit},]]></if>
 			<if test="weight != null"><![CDATA[weight = #{weight},]]></if>
-			<if test="createTime != null"><![CDATA[create_time = #{createTime},]]></if>
 		</set>
 	</sql>
 
@@ -61,23 +49,15 @@
 				(
                 ID, 
                 stock_name, 
-                company, 
-                initial_stage, 
-                increase, 
-                reduce, 
-                weight, 
-                create_time 
+                unit, 
+                weight 
 				)
 			VALUES
 				(
                 #{id}, 
                 #{stockName}, 
-                #{company}, 
-                #{initialStage}, 
-                #{increase}, 
-                #{reduce}, 
-                #{weight}, 
-                #{createTime} 
+                #{unit}, 
+                #{weight} 
 				)
 		]]>
 	</insert>

@@ -1,63 +1,65 @@
+/*
+ * Copyright (c) 2019 www.jd.com All rights reserved.
+ * 本软件源代码版权归京东成都研究院所有
+ */
 package com.imustacm.domain.Vo;
-
+import com.imustacm.domain.base.BaseDomain;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 
-import java.util.Date;
-
-
-@ApiModel("烧结工艺记录")
+/**
+ * 
+ * @author Lenovo
+ * @since 2019-12-23 17:41:03
+ */
 @Data
-public class AgglomerationProcessRecordVo {
-    public AgglomerationProcessRecordVo() {
-        //默认无参构造方法
-    }
-    @ApiModelProperty(value = "烧结工艺的id", example = "1")
-    private Integer id;
+@ApiModel("烧结工艺记录")
+public class AgglomerationProcessRecordVo extends BaseDomain {
 
-    @ApiModelProperty(value = "创建的时间，无需从前端传入")
-    private String createTime;
+	public AgglomerationProcessRecordVo() {
+		//默认无参构造方法
+	}
+	@ApiModelProperty(value = "烧结工艺记录ID", example = "1")
+	private Integer id;
 
-    // max length: 100
-    @ApiModelProperty(value = "编号", example = "235")
-    private String number;
+	// max length: 80
+	@ApiModelProperty(value = "日期",example = "2016-9-6")
+	private String createTime;
 
-    @ApiModelProperty(value = "装炉块数",example = "3")
-    private Integer blockNumber;
+	@ApiModelProperty(value = "编号",example = "192")
+	private String serial;
 
-    @ApiModelProperty(value = "装炉重量", example = "53.6")
-    private String furnaceWeight;
+	@ApiModelProperty(value = "装炉块数",example = "12")
+	private Integer furnaceNumber;
 
-    @ApiModelProperty(value = "单件重量", example = "63.2")
-    private String singleRoomWeight;
+	@ApiModelProperty(value = "装炉重量",example = "23.5")
+	private String furnaceWeight;
 
-    @ApiModelProperty(value = "单盒容量", example = "36.2")
-    private String mononuclearWeight;
+	@ApiModelProperty(value = "单间重量",example = "26")
+	private String singleWeight;
 
-    @ApiModelProperty(value = "开始电量", example = "36.9")
-    private String startPower;
+	@ApiModelProperty(value = "单盒重量",example = "27")
+	private String boxCapacity;
 
-    @ApiModelProperty(value = "结束电量", example = "34.2")
-    private String endPower;
+	@ApiModelProperty(value = "开始电量",example = "56")
+	private String startPower;
 
-    @ApiModelProperty(value = "和用电量", example = "25.3")
-    private String sharePower;
+	@ApiModelProperty(value = "结束电量",example = "96")
+	private String endPower;
 
-    // max length: 100
-    @ApiModelProperty(value = "第一个白班姓名", example = "张三")
-    private String fristOperatorDay;
+	@ApiModelProperty(value = "合计电量",example = "46")
+	private String totalPower;
 
-    @ApiModelProperty(value = "第一个夜班姓名", example = "李四")
-    private String fristOperatorNight;
+	@ApiModelProperty(value = "操作人信息",example = "白班 张三 夜班 李四")
+	// max length: 100
+	private String operatorInfo;
 
-    // max length: 100
-    @ApiModelProperty(value = "第二个白班的姓名", example = "王五")
-    private String secondOperatorDay;
+	@ApiModelProperty(value = "备注",example = "正常")
+	private String note;
 
-    @ApiModelProperty(value = "第二个夜班的姓名", example = "韩六")
-    private String secondOperatorNight;
-
-    @ApiModelProperty(value = "记录",example = "正常")
-    private String remark;
+	@ApiModelProperty(value = "烧结工艺",example = "烧结工艺信息")
+	// max length: 20000
+	private String sinterRecord;
+	 
 }

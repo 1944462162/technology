@@ -21,88 +21,124 @@ public class PressureRecordServiceImpl implements PressureRecordService {
 
 
     @Override
-    public List<PressureRecordVo> getAllPressureRecord() throws Exception {
+    public List<PressureRecordVo> getAllPressureRecord() {
         List<PressureRecordVo> result= new ArrayList<>();
-        List<PressureRecord> pressureRecords = pressureRecordDao.selectEntryList(null);
-        if(pressureRecords!=null  && pressureRecords.size()!=0)
-        {
-            for (PressureRecord pressureRecords1:pressureRecords){
-                PressureRecordVo pressureRecordVo = new PressureRecordVo();
-                BeanUtils.copyProperties(pressureRecords1,pressureRecordVo);
-                result.add(pressureRecordVo);
+        List<PressureRecord> pressureRecords = null;
+        try {
+            pressureRecords = pressureRecordDao.selectEntryList(null);
+            if(pressureRecords!=null  && pressureRecords.size()!=0)
+            {
+                for (PressureRecord pressureRecords1:pressureRecords){
+                    PressureRecordVo pressureRecordVo = new PressureRecordVo();
+                    BeanUtils.copyProperties(pressureRecords1,pressureRecordVo);
+                    result.add(pressureRecordVo);
+                }
             }
+            return result;
+        } catch (Exception e) {
+            throw new RuntimeException("获取所有压型记录信息出现异常");
         }
-        return result;
+
     }
 
     @Override
-    public int insertPressureRecord(PressureRecordVo pressureRecordVo) throws Exception {
+    public int insertPressureRecord(PressureRecordVo pressureRecordVo) {
         PressureRecord pressureRecord = new PressureRecord();
         BeanUtils.copyProperties(pressureRecordVo,pressureRecord);
-        int isExist = pressureRecordDao.selectEntryListCount(pressureRecord);
-        if (isExist == 1){
-            return 0;
+        int isExist = 0;
+        try {
+            isExist = pressureRecordDao.selectEntryListCount(pressureRecord);
+            if (isExist == 1){
+                return 0;
+            }
+
+            return  pressureRecordDao.insertEntry(pressureRecord);
+        } catch (Exception e) {
+            throw new RuntimeException("插入压型信息出现异常");
         }
 
-        return  pressureRecordDao.insertEntry(pressureRecord);
     }
 
     @Override
-    public int deletePressureRecordById(int index) throws Exception {
+    public int deletePressureRecordById(int index) {
         PressureRecord pressureRecord = new PressureRecord();
         pressureRecord.setId(index);
-        Integer isExist = pressureRecordDao.selectEntryListCount(pressureRecord);
-        if(isExist == 1){
-            return  pressureRecordDao.deleteByKey(pressureRecord);
+        Integer isExist = null;
+        try {
+            isExist = pressureRecordDao.selectEntryListCount(pressureRecord);
+            if(isExist == 1){
+                return  pressureRecordDao.deleteByKey(pressureRecord);
+            }
+            return 0;
+        } catch (Exception e) {
+            throw new RuntimeException("删除压型记录表信息失败");
         }
-        return 0;
+
     }
 
     @Override
-    public int updatePressureRecord(PressureRecordVo pressureRecordVo) throws Exception {
+    public int updatePressureRecord(PressureRecordVo pressureRecordVo) {
         PressureRecord pressureRecord = new PressureRecord();
         pressureRecord.setId(pressureRecordVo.getId());
-        Integer isExist = pressureRecordDao.selectEntryListCount(pressureRecord);
-        //如果不存在返回0
-        if(isExist == 0)
-        {
-            return 0;
+        Integer isExist = null;
+        try {
+            isExist = pressureRecordDao.selectEntryListCount(pressureRecord);
+            //如果不存在返回0
+            if(isExist == 0)
+            {
+                return 0;
+            }
+            BeanUtils.copyProperties(pressureRecordVo,pressureRecord);
+            // 如果存在就进行跟新
+            return pressureRecordDao.updateByKey(pressureRecord);
+        } catch (Exception e) {
+            throw new RuntimeException("跟新压型记录表信息失败");
         }
-        BeanUtils.copyProperties(pressureRecordVo,pressureRecord);
-        // 如果存在就进行跟新
-        return pressureRecordDao.updateByKey(pressureRecord);
+
     }
 
 
     //根据ID获取信息
     @Override
-    public PressureRecordVo getOnePressureRecord(int index) throws Exception {
+    public PressureRecordVo getOnePressureRecord(int index) {
         PressureRecord pressureRecord = new PressureRecord();
         PressureRecordVo pressureRecordVo = new PressureRecordVo();
         pressureRecord.setId(index);
-        List<PressureRecord> pressureRecordList = pressureRecordDao.selectEntryList(pressureRecord);
-        if (pressureRecordList.size() != 0){
-            pressureRecord = pressureRecordList.get(0);
-            BeanUtils.copyProperties(pressureRecord,pressureRecordVo);
+        List<PressureRecord> pressureRecordList = null;
+        try {
+            pressureRecordList = pressureRecordDao.selectEntryList(pressureRecord);
+            if (pressureRecordList.size() != 0){
+                pressureRecord = pressureRecordList.get(0);
+                BeanUtils.copyProperties(pressureRecord,pressureRecordVo);
+            }
+            return pressureRecordVo;
+        } catch (Exception e) {
+            throw new RuntimeException("获取单个信息失败");
         }
-        return pressureRecordVo;
+
     }
 
     //根据编码获取信息
-    public List<PressureRecordVo> getPressureRecordByCode(String number) throws Exception {
+    public List<PressureRecordVo> getPressureRecordByCode(String number) {
         List<PressureRecordVo> result = new ArrayList<>();
         PressureRecord pressureRecord = new PressureRecord();
-        pressureRecord.setNumber(number);
-        List<PressureRecord> pressureRecords = pressureRecordDao.selectEntryList(pressureRecord);
-        if(pressureRecords!=null  && pressureRecords.size()!=0)
-        {
-            for (PressureRecord pressureRecords1:pressureRecords){
-                PressureRecordVo pressureRecordVo = new PressureRecordVo();
-                BeanUtils.copyProperties(pressureRecords1,pressureRecordVo);
-                result.add(pressureRecordVo);
+        pressureRecord.setSerial(number);
+        List<PressureRecord> pressureRecords = null;
+        try {
+            pressureRecords = pressureRecordDao.selectEntryList(pressureRecord);
+            if(pressureRecords!=null  && pressureRecords.size()!=0)
+            {
+                for (PressureRecord pressureRecords1:pressureRecords){
+                    PressureRecordVo pressureRecordVo = new PressureRecordVo();
+                    BeanUtils.copyProperties(pressureRecords1,pressureRecordVo);
+                    result.add(pressureRecordVo);
+                }
             }
+            return result;
+        } catch (Exception e) {
+            throw new RuntimeException("根据编码获取信息出现异常");
         }
-        return result;
+
     }
 
     @Override
@@ -118,6 +154,5 @@ public class PressureRecordServiceImpl implements PressureRecordService {
         }
         return k;
     }
-
 
 }

@@ -4,7 +4,6 @@ import com.imustacm.domain.RelationVo.DefaultResponseVo;
 import com.imustacm.domain.Vo.SmeltVo;
 import com.imustacm.service.SmeltService;
 import io.swagger.annotations.Api;
-import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -15,7 +14,7 @@ import java.util.List;
 
 
 @RestController
-@RequestMapping("/application")
+@RequestMapping("/api")
 @Api(tags = "冶炼相关信息")
 public class SmeltController {
 
@@ -24,7 +23,7 @@ public class SmeltController {
 
     @ApiOperation(value = "获取所有的冶炼信息")
     @GetMapping("/getAllSmelt")
-    public DefaultResponseVo getAllSmelt() throws Exception {
+    public DefaultResponseVo getAllSmelt() {
         List<SmeltVo> smeltVos = smeltService.getAllSmelt();
         DefaultResponseVo defaultResponseVo = new DefaultResponseVo();
         if (smeltVos != null && smeltVos.size() != 0){
@@ -43,7 +42,7 @@ public class SmeltController {
 
     @ApiOperation("增加冶炼信息")
     @PostMapping("/insertSmelt")
-    public DefaultResponseVo insertSmelt(@RequestBody SmeltVo smeltVo) throws Exception {
+    public DefaultResponseVo insertSmelt(@RequestBody SmeltVo smeltVo) {
         DefaultResponseVo defaultResponseVo = new DefaultResponseVo();
         Integer code = smeltService.insertSmelt(smeltVo);
         if (code == 1){
@@ -59,7 +58,7 @@ public class SmeltController {
 
     @ApiOperation("删除冶炼信息根据id")
     @DeleteMapping("/deleteSmeltById/{index}")
-    public DefaultResponseVo deleteSmeltById(@PathVariable("index") int index) throws Exception {
+    public DefaultResponseVo deleteSmeltById(@PathVariable("index") int index) {
         DefaultResponseVo defaultResponseVo = new DefaultResponseVo();
         Integer code = smeltService.deleteSmeltById(index);
         if (code == 1){
@@ -74,7 +73,7 @@ public class SmeltController {
     }
     @ApiOperation("更新冶炼信息")
     @PutMapping("/updateSmelt")
-    public DefaultResponseVo updateSmelt(@RequestBody SmeltVo smeltVo) throws Exception {
+    public DefaultResponseVo updateSmelt(@RequestBody SmeltVo smeltVo) {
         DefaultResponseVo defaultResponseVo = new DefaultResponseVo();
         Integer code = smeltService.updateSmelt(smeltVo);
         if (code == 1){
@@ -90,7 +89,7 @@ public class SmeltController {
 
     @ApiOperation("根据id获取冶炼信息")
     @GetMapping("/getOneSmeltById/{index}")
-    public DefaultResponseVo getOneSmeltById(@PathVariable int index) throws Exception {
+    public DefaultResponseVo getOneSmeltById(@PathVariable int index) {
         DefaultResponseVo defaultResponseVo = new DefaultResponseVo();
         SmeltVo smeltVo = smeltService.getOneSmelt(index);
         defaultResponseVo.setCode(200);

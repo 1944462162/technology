@@ -1,6 +1,5 @@
 package com.imustacm.controller;
 
-import com.imustacm.domain.Po.FlourMillingProcessRecord;
 import com.imustacm.domain.RelationVo.DefaultResponseVo;
 import com.imustacm.domain.Vo.FlourMillingProcessRecordVo;
 import com.imustacm.service.FlourMillingProcessRecordService;
@@ -13,7 +12,7 @@ import java.util.HashMap;
 import java.util.List;
 
 @RestController
-@RequestMapping("/application")
+@RequestMapping("/api")
 @Api(tags = "制粉操作记录相关请求")
 public class FlourMillingProcessRecordController {
 
@@ -22,14 +21,14 @@ public class FlourMillingProcessRecordController {
 
     @ApiOperation(value = "获取所有的制粉库存")
     @GetMapping("/getAllFlourMillingProcessRecord")
-    public DefaultResponseVo getAllFlourMillingProcessRecord() throws Exception {
+    public DefaultResponseVo getAllFlourMillingProcessRecord()  {
 
         List<FlourMillingProcessRecordVo> flourMillingProcessRecordsVo = flourMillingProcessRecordService.getAllFlourMillingProcessRecord();
 
         DefaultResponseVo defaultResponseVo = new DefaultResponseVo();
         if(flourMillingProcessRecordsVo != null && flourMillingProcessRecordsVo.size() != 0){
             HashMap<String, Object> data = new HashMap<String, Object>();
-            data.put("FlourMillingProcessRecord",flourMillingProcessRecordsVo);
+            data.put("FlourMillingProcessRecordVo",flourMillingProcessRecordsVo);
             defaultResponseVo.setData(data);
             defaultResponseVo.setCode(200);
             defaultResponseVo.setMsg("ok");
@@ -45,35 +44,31 @@ public class FlourMillingProcessRecordController {
     @PostMapping("/insertFlourMillingProcessRecords")
     public DefaultResponseVo insertFlourMillingProcessRecords(@RequestBody FlourMillingProcessRecordVo flourMillingProcessRecordsVo) {
         DefaultResponseVo defaultResponseVo = null;
-        try {
-            Integer code = flourMillingProcessRecordService.insertFlourMillingProcessRecord(flourMillingProcessRecordsVo);
 
-            if (code == 1){
-                defaultResponseVo = new DefaultResponseVo(200,"ok");
-            }
-            else{
-                defaultResponseVo = new DefaultResponseVo(500,"无法增加制粉记录");
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
+        int code = flourMillingProcessRecordService.insertFlourMillingProcessRecord(flourMillingProcessRecordsVo);
+
+        if (code == 1){
+            defaultResponseVo = new DefaultResponseVo(200,"ok");
         }
+        else{
+            defaultResponseVo = new DefaultResponseVo(500,"无法增加制粉记录");
+        }
+
         return  defaultResponseVo;
     }
     @ApiOperation(value = "删除原料库存", notes = "根据id")
     @DeleteMapping("/deleteFlourMillingProcessRecords/{index}")
     public DefaultResponseVo deleteFlourMillingProcessRecords(@PathVariable("index") int index){
         DefaultResponseVo defaultResponseVo = null;
-        try {
-            Integer code = flourMillingProcessRecordService.deleteFlourMillingProcessRecordById(index);
-            if (code == 1){
-                defaultResponseVo = new DefaultResponseVo(200,"ok");
-            }
-            else{
-                defaultResponseVo = new DefaultResponseVo(500,"删除压型记录失败");
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
+
+        int code = flourMillingProcessRecordService.deleteFlourMillingProcessRecordById(index);
+        if (code == 1){
+            defaultResponseVo = new DefaultResponseVo(200,"ok");
         }
+        else{
+            defaultResponseVo = new DefaultResponseVo(500,"删除压型记录失败");
+        }
+
         return defaultResponseVo;
     }
 
@@ -81,17 +76,15 @@ public class FlourMillingProcessRecordController {
     @PutMapping("/updateFlourMillingProcessRecord")
     public DefaultResponseVo updateFlourMillingProcessRecord(@RequestBody FlourMillingProcessRecordVo pressureRecordVo){
         DefaultResponseVo defaultResponseVo = null;
-        try {
-            Integer code = flourMillingProcessRecordService.updateFlourMillingProcessRecord(pressureRecordVo);
-            if(code == 1){
-                defaultResponseVo = new DefaultResponseVo(200,"ok");
-            }
-            else{
-                defaultResponseVo = new DefaultResponseVo(500,"更新制粉记录失败");
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
+
+        int code = flourMillingProcessRecordService.updateFlourMillingProcessRecord(pressureRecordVo);
+        if(code == 1){
+            defaultResponseVo = new DefaultResponseVo(200,"ok");
         }
+        else{
+            defaultResponseVo = new DefaultResponseVo(500,"更新制粉记录失败");
+            }
+
         return defaultResponseVo;
     }
     @ApiOperation(value = "获取单备料",notes = "根据id查找")

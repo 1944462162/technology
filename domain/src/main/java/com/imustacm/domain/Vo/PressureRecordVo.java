@@ -1,84 +1,69 @@
+/*
+ * Copyright (c) 2019 www.jd.com All rights reserved.
+ * 本软件源代码版权归京东成都研究院所有
+ */
 package com.imustacm.domain.Vo;
-
+import com.imustacm.domain.base.BaseDomain;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+import io.swagger.annotations.ApiParam;
 import lombok.Data;
-import lombok.Value;
 
-import java.util.Date;
-
-
-
+/**
+ * 
+ * @author Lenovo
+ * @since 2019-12-23 17:41:03
+ */
 @ApiModel("压型记录表")
 @Data
-public class PressureRecordVo {
-    public PressureRecordVo() {
-        //默认无参构造方法
-    }
-    @ApiModelProperty(value = "压型记录表的id",example = "1")
-    private Integer id;
+public class PressureRecordVo extends BaseDomain {
 
-    // max length: 100
-    @ApiModelProperty(value = "编号", example = "234")
-    private String number;
+	public PressureRecordVo() {
+		//默认无参构造方法
+	}
+	@ApiModelProperty(value = "压型记录表ID",example = "1")
+	private Integer id;
 
-    @ApiModelProperty(value = "压机编号", example = "663")
-    private String pressNumber;
+	@ApiModelProperty(value = "编号",example = "693")
+	// max length: 100
+	private String serial;
 
-    @ApiModelProperty(value = "日期，无需从前端传入")
-    private String createTime;
+	@ApiModelProperty(value = "压机编号",example = "#336")
+	private String machineSerial;
 
-    @ApiModelProperty(value = "毛坯数量", example = "3")
-    private Integer roughcastNumber;
+	@ApiModelProperty(value = "创建时间",example = "2016-3-5")
+	// max length: 80
+	private String createTime;
 
-    @ApiModelProperty(value = "领料", example = "33.6")
-    private String picking;
+	@ApiModelProperty(value = "毛坯数量",example = "32")
+	private Integer billetAmount;
 
-    @ApiModelProperty(value = "产品单重", example = "6.3")
-    private String singleProduct;
+	@ApiModelProperty(value = "领料",example = "56")
+	private String pickingWeight;
 
-    // max length: 100
-    @ApiModelProperty(value = "磨具编号", example = "A336")
-    private String toolsNumber;
+	@ApiModelProperty(value = "产品单重",example = "36.5")
+	private String singleProduct;
 
-    @ApiModelProperty(value = "磨具尺寸", example = "336.2")
-    private String toolsSize;
+	// max length: 100
+	@ApiModelProperty(value = "磨具编号和尺寸",example = "36.5")
+	private String toolsInfo;
 
-    @ApiModelProperty(value = "压制压力", example = "66.2")
-    private String suppressPressure;
+	@ApiModelProperty(value = "开始氧气量",example = "35.5")
+	private String starNitrogen;
 
-    @ApiModelProperty(value = "压制时间, 先不用从前端传入")
-    private String suppressTime;
+	@ApiModelProperty(value = "结束氧气量",example = "786.3")
+	private String endNitrogen;
 
-    @ApiModelProperty(value = "充磁电流", example = "223")
-    private String magnetizingCurrent;
+	// max length: 100
+	@ApiModelProperty(value = "操作人",example = "张三")
+	private String operator;
 
-    @ApiModelProperty(value = "充磁时间，先不用从前端传入")
-    private String magentizingTime;
+	@ApiModelProperty(value = "备注",example = "正常")
+	private String note;
 
-    @ApiModelProperty(value = "退磁电流", example = "336")
-    private String demagnetizationCurrent;
+	@ApiModelProperty(value = "设计压坯尺寸",example = "尺寸信息")
+	// max length: 10000
+	private String billetSizes;
 
-    @ApiModelProperty(value = "退磁时间, 先不用从前端传入")
-    private String demagnetizatioTime;
-
-    // max length: 100
-    @ApiModelProperty(value = "含氧量，称料室", example = "233")
-    private String oxygenWeighingRoom;
-
-    @ApiModelProperty(value = "含氧量，包装室", example = "366")
-    private String oxygenPackingRoom;
-
-    @ApiModelProperty(value = "开始氧气量", example = "663")
-    private String starNitrogen;
-
-    @ApiModelProperty(value = "结束氧气量", example = "426")
-    private String endNitrogen;
-
-    // max length: 100
-    @ApiModelProperty(value = "操作人", example = "李四")
-    private String operator;
-
-    @ApiModelProperty(value = "备注", example = "记录完成")
-    private String remarks;
+	 
 }

@@ -1,25 +1,24 @@
 package com.imustacm.service;
 
-import com.imustacm.domain.Po.SmeltingRecord;
 import com.imustacm.domain.Vo.SmeltingRecordVo;
 
 import java.util.List;
 
 public interface SmeltingRecordService {
-    List<SmeltingRecordVo> getAllSmeltingRecord() throws Exception;
+    List<SmeltingRecordVo> getAllSmeltingRecord();
 
     //增加原料库存
-    int insertSmeltingRecord(SmeltingRecordVo smeltingRecordVo) throws Exception;
+    int insertSmeltingRecord(SmeltingRecordVo smeltingRecordVo);
 
     //根据ID删除原料库存
-    int deleteSmeltingRecordById(int index) throws Exception;
+    int deleteSmeltingRecordById(int index);
 
     //更新原料库存
-    int updateSmeltingRecord(SmeltingRecordVo smeltingRecordVo) throws Exception;
+    int updateSmeltingRecord(SmeltingRecordVo smeltingRecordVo);
 
     //根据ID获取原料库存
-    SmeltingRecordVo getOneSmeltingRecord(int index) throws Exception;
+    SmeltingRecordVo getOneSmeltingRecord(int index);
 
-    List<SmeltingRecordVo> getSmeltingRecordByCode(String index) throws Exception;
+    List<SmeltingRecordVo> getSmeltingRecordByCode(String index);
 
 }

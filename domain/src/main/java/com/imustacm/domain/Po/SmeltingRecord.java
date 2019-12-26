@@ -8,11 +8,11 @@ import com.imustacm.domain.base.BaseDomain;
 /**
  * 
  * @author Lenovo
- * @since 2019-11-12 17:32:07
+ * @since 2019-12-25 10:45:24
  */
 public class SmeltingRecord extends BaseDomain {
 
-	private static final long serialVersionUID = 25937166869L;
+	private static final long serialVersionUID = 16080274113L;
 
 	public SmeltingRecord() {
 		//默认无参构造方法
@@ -20,38 +20,23 @@ public class SmeltingRecord extends BaseDomain {
 	private Integer id;
 
 	// max length: 100
-	private String number;
+	private String serial;
 
 	private String createTime;
 
 	// max length: 100
 	private String operator;
 
-	private String rawMaterialAllUp;
+	private String feedWeight;
 
-	private String tundishMaterial;
+	private String midWeight;
 
 	private Integer crucibleCount;
 
-	// max length: 100
-	private String operationSteps;
-
-	private String operationTime;
-
-	private String vacuum;
-
-	private String heatPower;
-
-	private String temperature;
-
-	private String discharge;
-
-	private String waterTemperature;
-
 	// max length: 400
-	private String remarks;
+	private String note;
 
-	private Integer row;
+	private String smeltingDetails;
 
 	public Integer getId() {
 		return this.id;
@@ -60,11 +45,11 @@ public class SmeltingRecord extends BaseDomain {
 		this.id = id;
 	}
 	
-	public String getNumber() {
-		return this.number;
+	public String getSerial() {
+		return this.serial;
 	}
-    public void setNumber(String number) {
-		this.number = number;
+    public void setSerial(String serial) {
+		this.serial = serial;
 	}
 	
 	public String getCreateTime() {
@@ -81,18 +66,18 @@ public class SmeltingRecord extends BaseDomain {
 		this.operator = operator;
 	}
 	
-	public String getRawMaterialAllUp() {
-		return this.rawMaterialAllUp;
+	public String getFeedWeight() {
+		return this.feedWeight;
 	}
-    public void setRawMaterialAllUp(String rawMaterialAllUp) {
-		this.rawMaterialAllUp = rawMaterialAllUp;
+    public void setFeedWeight(String feedWeight) {
+		this.feedWeight = feedWeight;
 	}
 	
-	public String getTundishMaterial() {
-		return this.tundishMaterial;
+	public String getMidWeight() {
+		return this.midWeight;
 	}
-    public void setTundishMaterial(String tundishMaterial) {
-		this.tundishMaterial = tundishMaterial;
+    public void setMidWeight(String midWeight) {
+		this.midWeight = midWeight;
 	}
 	
 	public Integer getCrucibleCount() {
@@ -102,67 +87,18 @@ public class SmeltingRecord extends BaseDomain {
 		this.crucibleCount = crucibleCount;
 	}
 	
-	public String getOperationSteps() {
-		return this.operationSteps;
+	public String getNote() {
+		return this.note;
 	}
-    public void setOperationSteps(String operationSteps) {
-		this.operationSteps = operationSteps;
-	}
-	
-	public String getOperationTime() {
-		return this.operationTime;
-	}
-    public void setOperationTime(String operationTime) {
-		this.operationTime = operationTime;
+    public void setNote(String note) {
+		this.note = note;
 	}
 	
-	public String getVacuum() {
-		return this.vacuum;
+	public String getSmeltingDetails() {
+		return this.smeltingDetails;
 	}
-    public void setVacuum(String vacuum) {
-		this.vacuum = vacuum;
-	}
-	
-	public String getHeatPower() {
-		return this.heatPower;
-	}
-    public void setHeatPower(String heatPower) {
-		this.heatPower = heatPower;
-	}
-	
-	public String getTemperature() {
-		return this.temperature;
-	}
-    public void setTemperature(String temperature) {
-		this.temperature = temperature;
-	}
-	
-	public String getDischarge() {
-		return this.discharge;
-	}
-    public void setDischarge(String discharge) {
-		this.discharge = discharge;
-	}
-	
-	public String getWaterTemperature() {
-		return this.waterTemperature;
-	}
-    public void setWaterTemperature(String waterTemperature) {
-		this.waterTemperature = waterTemperature;
-	}
-	
-	public String getRemarks() {
-		return this.remarks;
-	}
-    public void setRemarks(String remarks) {
-		this.remarks = remarks;
-	}
-	
-	public Integer getRow() {
-		return this.row;
-	}
-    public void setRow(Integer row) {
-		this.row = row;
+    public void setSmeltingDetails(String smeltingDetails) {
+		this.smeltingDetails = smeltingDetails;
 	}
 	 
 }

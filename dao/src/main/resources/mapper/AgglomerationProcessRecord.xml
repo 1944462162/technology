@@ -8,19 +8,17 @@
 		<![CDATA[
             id,
             create_time AS createTime,
-            number,
-            block_number AS blockNumber,
+            serial,
+            furnace_number AS furnaceNumber,
             furnace_weight AS furnaceWeight,
-            single_room_weight AS singleRoomWeight,
-            mononuclear_weight AS mononuclearWeight,
+            single_weight AS singleWeight,
+            box_capacity AS boxCapacity,
             start_power AS startPower,
             end_power AS endPower,
-            share_power AS sharePower,
-            frist_operator_day AS fristOperatorDay,
-            frist_operator_night AS fristOperatorNight,
-            second_operator_day AS secondOperatorDay,
-            second_operator_night AS secondOperatorNight,
-            remark 
+            total_power AS totalPower,
+            operator_info AS operatorInfo,
+            note,
+            sinter_record AS sinterRecord 
 		]]>
 	</sql>
 
@@ -32,19 +30,17 @@
 		<where>
             <if test="id != null and id != ''"><![CDATA[AND id = #{id}]]></if>
             <if test="createTime != null and createTime != ''"><![CDATA[AND create_time = #{createTime}]]></if>
-            <if test="number != null and number != ''"><![CDATA[AND number = #{number}]]></if>
-            <if test="blockNumber != null and blockNumber != ''"><![CDATA[AND block_number = #{blockNumber}]]></if>
+            <if test="serial != null and serial != ''"><![CDATA[AND serial = #{serial}]]></if>
+            <if test="furnaceNumber != null and furnaceNumber != ''"><![CDATA[AND furnace_number = #{furnaceNumber}]]></if>
             <if test="furnaceWeight != null and furnaceWeight != ''"><![CDATA[AND furnace_weight = #{furnaceWeight}]]></if>
-            <if test="singleRoomWeight != null and singleRoomWeight != ''"><![CDATA[AND single_room_weight = #{singleRoomWeight}]]></if>
-            <if test="mononuclearWeight != null and mononuclearWeight != ''"><![CDATA[AND mononuclear_weight = #{mononuclearWeight}]]></if>
+            <if test="singleWeight != null and singleWeight != ''"><![CDATA[AND single_weight = #{singleWeight}]]></if>
+            <if test="boxCapacity != null and boxCapacity != ''"><![CDATA[AND box_capacity = #{boxCapacity}]]></if>
             <if test="startPower != null and startPower != ''"><![CDATA[AND start_power = #{startPower}]]></if>
             <if test="endPower != null and endPower != ''"><![CDATA[AND end_power = #{endPower}]]></if>
-            <if test="sharePower != null and sharePower != ''"><![CDATA[AND share_power = #{sharePower}]]></if>
-            <if test="fristOperatorDay != null and fristOperatorDay != ''"><![CDATA[AND frist_operator_day = #{fristOperatorDay}]]></if>
-            <if test="fristOperatorNight != null and fristOperatorNight != ''"><![CDATA[AND frist_operator_night = #{fristOperatorNight}]]></if>
-            <if test="secondOperatorDay != null and secondOperatorDay != ''"><![CDATA[AND second_operator_day = #{secondOperatorDay}]]></if>
-            <if test="secondOperatorNight != null and secondOperatorNight != ''"><![CDATA[AND second_operator_night = #{secondOperatorNight}]]></if>
-            <if test="remark != null and remark != ''"><![CDATA[AND remark = #{remark}]]></if> 
+            <if test="totalPower != null and totalPower != ''"><![CDATA[AND total_power = #{totalPower}]]></if>
+            <if test="operatorInfo != null and operatorInfo != ''"><![CDATA[AND operator_info = #{operatorInfo}]]></if>
+            <if test="note != null and note != ''"><![CDATA[AND note = #{note}]]></if>
+            <if test="sinterRecord != null and sinterRecord != ''"><![CDATA[AND sinter_record = #{sinterRecord}]]></if> 
 		</where>
 	</sql>
 	
@@ -58,19 +54,17 @@
 	<sql id="UPDATE_COLUMN_SET">
 		<set>
 			<if test="createTime != null"><![CDATA[create_time = #{createTime},]]></if>
-			<if test="number != null"><![CDATA[number = #{number},]]></if>
-			<if test="blockNumber != null"><![CDATA[block_number = #{blockNumber},]]></if>
+			<if test="serial != null"><![CDATA[serial = #{serial},]]></if>
+			<if test="furnaceNumber != null"><![CDATA[furnace_number = #{furnaceNumber},]]></if>
 			<if test="furnaceWeight != null"><![CDATA[furnace_weight = #{furnaceWeight},]]></if>
-			<if test="singleRoomWeight != null"><![CDATA[single_room_weight = #{singleRoomWeight},]]></if>
-			<if test="mononuclearWeight != null"><![CDATA[mononuclear_weight = #{mononuclearWeight},]]></if>
+			<if test="singleWeight != null"><![CDATA[single_weight = #{singleWeight},]]></if>
+			<if test="boxCapacity != null"><![CDATA[box_capacity = #{boxCapacity},]]></if>
 			<if test="startPower != null"><![CDATA[start_power = #{startPower},]]></if>
 			<if test="endPower != null"><![CDATA[end_power = #{endPower},]]></if>
-			<if test="sharePower != null"><![CDATA[share_power = #{sharePower},]]></if>
-			<if test="fristOperatorDay != null"><![CDATA[frist_operator_day = #{fristOperatorDay},]]></if>
-			<if test="fristOperatorNight != null"><![CDATA[frist_operator_night = #{fristOperatorNight},]]></if>
-			<if test="secondOperatorDay != null"><![CDATA[second_operator_day = #{secondOperatorDay},]]></if>
-			<if test="secondOperatorNight != null"><![CDATA[second_operator_night = #{secondOperatorNight},]]></if>
-			<if test="remark != null"><![CDATA[remark = #{remark},]]></if>
+			<if test="totalPower != null"><![CDATA[total_power = #{totalPower},]]></if>
+			<if test="operatorInfo != null"><![CDATA[operator_info = #{operatorInfo},]]></if>
+			<if test="note != null"><![CDATA[note = #{note},]]></if>
+			<if test="sinterRecord != null"><![CDATA[sinter_record = #{sinterRecord},]]></if>
 		</set>
 	</sql>
 
@@ -81,37 +75,33 @@
 				(
                 id, 
                 create_time, 
-                number, 
-                block_number, 
+                serial, 
+                furnace_number, 
                 furnace_weight, 
-                single_room_weight, 
-                mononuclear_weight, 
+                single_weight, 
+                box_capacity, 
                 start_power, 
                 end_power, 
-                share_power, 
-                frist_operator_day, 
-                frist_operator_night, 
-                second_operator_day, 
-                second_operator_night, 
-                remark 
+                total_power, 
+                operator_info, 
+                note, 
+                sinter_record 
 				)
 			VALUES
 				(
                 #{id}, 
                 #{createTime}, 
-                #{number}, 
-                #{blockNumber}, 
+                #{serial}, 
+                #{furnaceNumber}, 
                 #{furnaceWeight}, 
-                #{singleRoomWeight}, 
-                #{mononuclearWeight}, 
+                #{singleWeight}, 
+                #{boxCapacity}, 
                 #{startPower}, 
                 #{endPower}, 
-                #{sharePower}, 
-                #{fristOperatorDay}, 
-                #{fristOperatorNight}, 
-                #{secondOperatorDay}, 
-                #{secondOperatorNight}, 
-                #{remark} 
+                #{totalPower}, 
+                #{operatorInfo}, 
+                #{note}, 
+                #{sinterRecord} 
 				)
 		]]>
 	</insert>

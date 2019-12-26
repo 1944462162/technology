@@ -4,37 +4,24 @@
 
 <configuration>
     <typeAliases>
-        <!--这里给实体类取别名，方便在mapper配置文件中使用-->
-        <typeAlias type="com.imustacm.domain.Po.Stock" alias="stock"/>
-        <typeAlias type="com.imustacm.domain.Po.AgglomerationProcess" alias="agglomerationProcess"/>
+        <!--这里给实体类取别名，方便在mapper配置文件使用-->
         <typeAlias type="com.imustacm.domain.Po.AgglomerationProcessRecord" alias="agglomerationProcessRecord"/>
-        <typeAlias type="com.imustacm.domain.Po.Users" alias="users"/>
-        <typeAlias type="com.imustacm.domain.Po.RolesPermission" alias="rolesPermission"/>
-        <typeAlias type="com.imustacm.domain.Po.BlankSize" alias="blankSize"/>
         <typeAlias type="com.imustacm.domain.Po.FlourMillingProcessRecord" alias="flourMillingProcessRecord"/>
         <typeAlias type="com.imustacm.domain.Po.PressureRecord" alias="pressureRecord"/>
+        <typeAlias type="com.imustacm.domain.Po.Product" alias="product"/>
         <typeAlias type="com.imustacm.domain.Po.Roles" alias="roles"/>
+        <typeAlias type="com.imustacm.domain.Po.RolesPermission" alias="rolesPermission"/>
         <typeAlias type="com.imustacm.domain.Po.Smelt" alias="smelt"/>
-        <typeAlias type="com.imustacm.domain.Po.SpareParts" alias="spareParts"/>
         <typeAlias type="com.imustacm.domain.Po.SmeltingRecord" alias="smeltingRecord"/>
-        <typeAlias type="com.imustacm.domain.Po.RelationshipAgglomerationProcess" alias="relationshipAgglomerationProcess"/>
-        <typeAlias type="com.imustacm.domain.Po.RelationshipDieAndBlank" alias="relationshipDieAndBlank"/>
+        <typeAlias type="com.imustacm.domain.Po.SpareParts" alias="spareParts"/>
+        <typeAlias type="com.imustacm.domain.Po.Stock" alias="stock"/>
+        <typeAlias type="com.imustacm.domain.Po.Storage" alias="storage"/>
+        <typeAlias type="com.imustacm.domain.Po.Sales" alias="sales"/>
+        <typeAlias type="com.imustacm.domain.Po.Users" alias="users"/>
     </typeAliases>
 
     <!--映射文件路径-->
     <mappers>
         <package name="com.imustacm.mapper"/>
-        <!--<mapper resource="mapper/AgglomerationProcess.xml"/>-->
-        <!--<mapper resource="mapper/AgglomerationProcessRecord.xml"/>-->
-        <!--<mapper resource="mapper/BlankSize.xml"/>-->
-        <!--<mapper resource="mapper/FlourMillingProcessRecord.xml"/>-->
-        <!--<mapper resource="mapper/PressureRecord.xml"/>-->
-        <!--<mapper resource="mapper/Roles.xml"/>-->
-        <!--<mapper resource="mapper/RolesPermission.xml"/>-->
-        <!--<mapper resource="mapper/Smelt.xml"/>-->
-        <!--<mapper resource="mapper/SmeltingRecord.xml"/>-->
-        <!--<mapper resource="mapper/SpareParts.xml"/>-->
-        <!--<mapper resource="mapper/Stock.xml"/>-->
-        <!--<mapper resource="mapper/UsersVo.xml"/>-->
     </mappers>
 </configuration>

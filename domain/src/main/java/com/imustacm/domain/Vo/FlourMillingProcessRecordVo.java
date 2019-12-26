@@ -1,85 +1,65 @@
+/*
+ * Copyright (c) 2019 www.jd.com All rights reserved.
+ * 本软件源代码版权归京东成都研究院所有
+ */
 package com.imustacm.domain.Vo;
-
+import com.imustacm.domain.base.BaseDomain;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 
-import java.util.Date;
-
-
-@ApiModel("制粉工艺记录相关信息")
+/**
+ * 
+ * @author Lenovo
+ * @since 2019-12-23 17:41:03
+ */
+@ApiModel("制粉工艺记录")
 @Data
-public class FlourMillingProcessRecordVo {
+public class FlourMillingProcessRecordVo extends BaseDomain {
 
-    public FlourMillingProcessRecordVo() {
-        //默认无参构造方法
-    }
 
-    @ApiModelProperty(value = "制粉工艺记录表id", example = "1")
-    private Integer id;
+	public FlourMillingProcessRecordVo() {
+		//默认无参构造方法
+	}
+	@ApiModelProperty(value = "制粉工艺记录ID",example = "1")
+	private Integer id;
 
-    // max length: 80
-    @ApiModelProperty(value = "编号", example = "568")
-    private String number;
+	// max length: 100
+	@ApiModelProperty(value = "编号",example = "#199")
+	private String serial;
 
-    @ApiModelProperty(value = "操作人", example = "张三")
-    private String operator;
+	@ApiModelProperty("操作人")
+	private String operator;
 
-    @ApiModelProperty(value = "创建时间，无需从前端传入")
-    private String createTime;
+	// max length: 80
+	@ApiModelProperty(value = "创建时间",example = "2019-6-5")
+	private String createTime;
 
-    // max length: 400
-    @ApiModelProperty(value = "设备运行情况", example = "良好")
-    private String operationOfEquipment;
+	@ApiModelProperty(value = "设备运行情况",example = "正常")
+	private String machineStatus;
 
-    @ApiModelProperty(value = "投料料重", example = "53.7")
-    private String feedWeight;
+	@ApiModelProperty(value = "投料料量",example = "63.2")
+	private String feedWeight;
 
-    // max length: 400
-    @ApiModelProperty(value = "投料说明", example = "投入50.3kg铁")
-    private String feedInstructions;
+	// max length: 400
+	@ApiModelProperty(value = "投料说明",example = "全部投入")
+	private String feedNote;
 
-    @ApiModelProperty(value = "制粉起始时间", example = "")
-    private String millingStarTime;
+	@ApiModelProperty(value = "料重",example = "69.3")
+	private String materialWeight;
 
-    @ApiModelProperty(value = "制粉结束时间", example = "")
-    private String millingEndTime;
+	@ApiModelProperty(value = "吐料",example = "65.3")
+	private String spittingWeight;
 
-    @ApiModelProperty(value = "制粉耗时", example = "")
-    private String millingTime;
+	@ApiModelProperty(value = "收率",example = "0.69")
+	private String yield;
 
-    @ApiModelProperty(value = "制粉起始氧含量", example = "1000")
-    private String starOxygenContent;
+	@ApiModelProperty(value = "备注",example = "正常")
+	// max length: 400
+	private String note;
 
-    @ApiModelProperty(value = "制粉过程中氧气含量", example = "500")
-    private String processOxygenContent;
+	@ApiModelProperty(value = "制粉细节",example = "制粉相关的信息")
+	private String flourDetails;
 
-    @ApiModelProperty(value = "制粉终了氧含量", example = "500")
-    private String endOxygenContent;
-
-    @ApiModelProperty(value = "分选机转速", example = "5000.56")
-    private String speed;
-
-    @ApiModelProperty(value = "研磨压力", example = "600.4")
-    private String grindPressure;
-
-    @ApiModelProperty(value = "制粉起始流量", example = "5000.5")
-    private String millingStarFlow;
-
-    @ApiModelProperty(value = "制粉终了流量", example = "6000.6")
-    private String millingEndFlow;
-
-    @ApiModelProperty(value = "出料料重", example = "3000.7")
-    private String materialWeight;
-
-    @ApiModelProperty(value = "吐料", example = "4000.5")
-    private String spitting;
-
-    @ApiModelProperty(value = "收率", example = "2000.4")
-    private String yield;
-
-    // max length: 400
-    @ApiModelProperty(value = "备注", example = "正常")
-    private String remarks;
 
 }

@@ -8,11 +8,11 @@ import com.imustacm.domain.base.BaseDomain;
 /**
  * 
  * @author Lenovo
- * @since 2019-11-10 20:45:57
+ * @since 2019-12-25 10:45:23
  */
 public class PressureRecord extends BaseDomain {
 
-	private static final long serialVersionUID = 30832376088L;
+	private static final long serialVersionUID = 19752893159L;
 
 	public PressureRecord() {
 		//默认无参构造方法
@@ -20,43 +20,21 @@ public class PressureRecord extends BaseDomain {
 	private Integer id;
 
 	// max length: 100
-	private String number;
+	private String serial;
 
-	private String pressNumber;
+	private String machineSerial;
 
 	// max length: 80
 	private String createTime;
 
-	private Integer roughcastNumber;
+	private Integer billetAmount;
 
-	private String picking;
+	private String pickingWeight;
 
 	private String singleProduct;
 
 	// max length: 100
-	private String toolsNumber;
-
-	private String toolsSize;
-
-	private String suppressPressure;
-
-	// max length: 80
-	private String suppressTime;
-
-	private String magnetizingCurrent;
-
-	// max length: 80
-	private String magentizingTime;
-
-	private String demagnetizationCurrent;
-
-	// max length: 80
-	private String demagnetizatioTime;
-
-	private String oxygenWeighingRoom;
-
-	// max length: 100
-	private String oxygenPackingRoom;
+	private String toolsInfo;
 
 	private String starNitrogen;
 
@@ -65,7 +43,10 @@ public class PressureRecord extends BaseDomain {
 	// max length: 100
 	private String operator;
 
-	private String remarks;
+	private String note;
+
+	// max length: 10000
+	private String billetSizes;
 
 	public Integer getId() {
 		return this.id;
@@ -74,18 +55,18 @@ public class PressureRecord extends BaseDomain {
 		this.id = id;
 	}
 	
-	public String getNumber() {
-		return this.number;
+	public String getSerial() {
+		return this.serial;
 	}
-    public void setNumber(String number) {
-		this.number = number;
+    public void setSerial(String serial) {
+		this.serial = serial;
 	}
 	
-	public String getPressNumber() {
-		return this.pressNumber;
+	public String getMachineSerial() {
+		return this.machineSerial;
 	}
-    public void setPressNumber(String pressNumber) {
-		this.pressNumber = pressNumber;
+    public void setMachineSerial(String machineSerial) {
+		this.machineSerial = machineSerial;
 	}
 	
 	public String getCreateTime() {
@@ -95,18 +76,18 @@ public class PressureRecord extends BaseDomain {
 		this.createTime = createTime;
 	}
 	
-	public Integer getRoughcastNumber() {
-		return this.roughcastNumber;
+	public Integer getBilletAmount() {
+		return this.billetAmount;
 	}
-    public void setRoughcastNumber(Integer roughcastNumber) {
-		this.roughcastNumber = roughcastNumber;
+    public void setBilletAmount(Integer billetAmount) {
+		this.billetAmount = billetAmount;
 	}
 	
-	public String getPicking() {
-		return this.picking;
+	public String getPickingWeight() {
+		return this.pickingWeight;
 	}
-    public void setPicking(String picking) {
-		this.picking = picking;
+    public void setPickingWeight(String pickingWeight) {
+		this.pickingWeight = pickingWeight;
 	}
 	
 	public String getSingleProduct() {
@@ -116,74 +97,11 @@ public class PressureRecord extends BaseDomain {
 		this.singleProduct = singleProduct;
 	}
 	
-	public String getToolsNumber() {
-		return this.toolsNumber;
+	public String getToolsInfo() {
+		return this.toolsInfo;
 	}
-    public void setToolsNumber(String toolsNumber) {
-		this.toolsNumber = toolsNumber;
-	}
-	
-	public String getToolsSize() {
-		return this.toolsSize;
-	}
-    public void setToolsSize(String toolsSize) {
-		this.toolsSize = toolsSize;
-	}
-	
-	public String getSuppressPressure() {
-		return this.suppressPressure;
-	}
-    public void setSuppressPressure(String suppressPressure) {
-		this.suppressPressure = suppressPressure;
-	}
-	
-	public String getSuppressTime() {
-		return this.suppressTime;
-	}
-    public void setSuppressTime(String suppressTime) {
-		this.suppressTime = suppressTime;
-	}
-	
-	public String getMagnetizingCurrent() {
-		return this.magnetizingCurrent;
-	}
-    public void setMagnetizingCurrent(String magnetizingCurrent) {
-		this.magnetizingCurrent = magnetizingCurrent;
-	}
-	
-	public String getMagentizingTime() {
-		return this.magentizingTime;
-	}
-    public void setMagentizingTime(String magentizingTime) {
-		this.magentizingTime = magentizingTime;
-	}
-	
-	public String getDemagnetizationCurrent() {
-		return this.demagnetizationCurrent;
-	}
-    public void setDemagnetizationCurrent(String demagnetizationCurrent) {
-		this.demagnetizationCurrent = demagnetizationCurrent;
-	}
-	
-	public String getDemagnetizatioTime() {
-		return this.demagnetizatioTime;
-	}
-    public void setDemagnetizatioTime(String demagnetizatioTime) {
-		this.demagnetizatioTime = demagnetizatioTime;
-	}
-	
-	public String getOxygenWeighingRoom() {
-		return this.oxygenWeighingRoom;
-	}
-    public void setOxygenWeighingRoom(String oxygenWeighingRoom) {
-		this.oxygenWeighingRoom = oxygenWeighingRoom;
-	}
-	
-	public String getOxygenPackingRoom() {
-		return this.oxygenPackingRoom;
-	}
-    public void setOxygenPackingRoom(String oxygenPackingRoom) {
-		this.oxygenPackingRoom = oxygenPackingRoom;
+    public void setToolsInfo(String toolsInfo) {
+		this.toolsInfo = toolsInfo;
 	}
 	
 	public String getStarNitrogen() {
@@ -207,11 +125,18 @@ public class PressureRecord extends BaseDomain {
 		this.operator = operator;
 	}
 	
-	public String getRemarks() {
-		return this.remarks;
+	public String getNote() {
+		return this.note;
 	}
-    public void setRemarks(String remarks) {
-		this.remarks = remarks;
+    public void setNote(String note) {
+		this.note = note;
+	}
+	
+	public String getBilletSizes() {
+		return this.billetSizes;
+	}
+    public void setBilletSizes(String billetSizes) {
+		this.billetSizes = billetSizes;
 	}
 	 
 }

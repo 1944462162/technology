@@ -1,47 +1,54 @@
+/*
+ * Copyright (c) 2019 www.jd.com All rights reserved.
+ * 本软件源代码版权归京东成都研究院所有
+ */
 package com.imustacm.domain.Vo;
-
+import com.imustacm.domain.base.BaseDomain;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
-import lombok.Value;
 
-import java.util.Date;
-
-
-@ApiModel("备料基本信息")
+/**
+ * 
+ * @author Lenovo
+ * @since 2019-12-23 17:41:03
+ */
+@ApiModel("备料")
 @Data
-public class SparePartsVo {
+public class SparePartsVo extends BaseDomain {
 
-    public SparePartsVo() {
-        //默认无参构造方法
-    }
-    @ApiModelProperty(value = "配料id", example = "1")
-    private Integer id;
+	public SparePartsVo() {
+		//默认无参构造方法
+	}
+	@ApiModelProperty(value = "配料信息ID",example = "1")
+	private Integer id;
 
-    // max length: 100
-    @ApiModelProperty(value = "成分",example = "铁")
-    private String component;
+	@ApiModelProperty(value = "成分",example = "Fe")
+	// max length: 100
+	private String composition;
 
-    @ApiModelProperty(value = "需求量", example = "216.3")
-    private String requirement;
+	@ApiModelProperty(value = "需求量",example = "23.6")
+	private String requirementWeight;
 
-    @ApiModelProperty(value = "配料量", example = "56.4")
-    private String dosage;
+	@ApiModelProperty(value = "配料量",example = "56.3")
+	private String ingredientsWeigth;
 
-    // max length: 400
-    @ApiModelProperty(value = "重要的标注", example = "成功配料")
-    private String remarks;
+	@ApiModelProperty(value = "备注",example = "正常")
+	// max length: 400
+	private String note;
 
-    @ApiModelProperty(value = "创建时间，无需从前端传入")
-    private String createTime;
+	@ApiModelProperty(value = "创建时间",example = "2016-9-3")
+	private String createTime;
 
-    @ApiModelProperty(value = "牌号", example = "234")
-    private Integer brandName;
+	@ApiModelProperty(value = "牌号",example = "#563")
+	// max length: 100
+	private String serial;
 
-    // max length: 100
-    @ApiModelProperty(value = "配料人", example = "张三")
-    private String ingredientPerson;
+	@ApiModelProperty(value = "配料人",example = "张三")
+	private String ingredientOperator;
 
-    @ApiModelProperty(value = "复合人", example = "李四")
-    private String reviewer;
+	// max length: 100
+	@ApiModelProperty(value = "复合人",example = "李四")
+	private String compositeOperator;
+
 }
