@@ -19,6 +19,12 @@
     </bean>
 
 
+    <!--配置文件解析器-->
+    <bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+        <!--设置文件上传的最大大小-->
+        <property name="maxUploadSize" value="10485760"/>
+    </bean>
+
     <!--开启注解扫描-->
     <context:component-scan base-package="com.imustacm">
         <context:include-filter type="annotation" expression="org.springframework.stereotype.Controller"/>

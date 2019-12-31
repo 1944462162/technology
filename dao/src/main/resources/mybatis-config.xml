@@ -18,6 +18,7 @@
         <typeAlias type="com.imustacm.domain.Po.Storage" alias="storage"/>
         <typeAlias type="com.imustacm.domain.Po.Sales" alias="sales"/>
         <typeAlias type="com.imustacm.domain.Po.Users" alias="users"/>
+        <typeAlias type="com.imustacm.domain.Po.Image" alias="image"/>
     </typeAliases>
 
     <!--映射文件路径-->
