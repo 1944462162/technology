@@ -5,7 +5,6 @@ import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 
 /**
- * Author: wangJianBo
  * Date: 2019/9/30 19:38
  * Content: 创建一对多的关系
  */

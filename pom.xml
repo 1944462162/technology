@@ -31,29 +31,6 @@
 
     <dependencies>
 
-      <!--配置shiro-->
-
-
-        <dependency>
-          <groupId>org.apache.shiro</groupId>
-          <artifactId>shiro-core</artifactId>
-          <version>1.4.0</version>
-        </dependency>
-        <dependency>
-          <groupId>org.apache.shiro</groupId>
-          <artifactId>shiro-web</artifactId>
-          <version>1.4.0</version>
-        </dependency>
-        <dependency>
-          <groupId>org.apache.shiro</groupId>
-          <artifactId>shiro-spring</artifactId>
-          <version>1.4.0</version>
-        </dependency>
-      <dependency>
-        <groupId>org.aspectj</groupId>
-        <artifactId>aspectjweaver</artifactId>
-        <version>1.8.9</version>
-      </dependency>
 
       <!-- 引入swagger -->
       <dependency>

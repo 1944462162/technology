@@ -6,7 +6,9 @@ import com.imustacm.dao.UsersDao;
 import com.imustacm.domain.Po.Roles;
 import com.imustacm.domain.Po.RolesPermission;
 import com.imustacm.domain.Po.Users;
+import com.imustacm.domain.Vo.UsersVo;
 import com.imustacm.service.UserService;
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.CollectionUtils;
@@ -81,4 +83,5 @@ public class UserServiceImpl implements UserService {
         }
         return permission;
     }
+
 }

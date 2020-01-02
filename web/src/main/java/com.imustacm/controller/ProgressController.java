@@ -13,7 +13,6 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.HashMap;
 
 /**
- * Author: wangJianBo
  * Date: 2019/12/30 10:26
  * Content:
  */

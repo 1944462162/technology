@@ -6,14 +6,15 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpServletRequest;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.util.List;
 
 /**
- * Author: wangJianBo
  * Date: 2019/12/31 12:51
  * Content:
  */
 public interface FileuploadService {
-    int fileFileupload(HttpServletRequest request, @RequestParam MultipartFile upload);
 
-    ImageVo getFile(String fileName);
+    String fileFileupload(HttpServletRequest request, @RequestParam MultipartFile upload) throws IOException;
 }

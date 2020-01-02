@@ -5,7 +5,7 @@
 <web-app>
   <display-name>Archetype Created Web Application</display-name>
 
-  <!--&lt;!&ndash;shiro&ndash;&gt;-->
+  <!--shiro-->
   <!--<filter>-->
     <!--<filter-name>shiroFilter</filter-name>-->
     <!--<filter-class>org.springframework.web.filter.DelegatingFilterProxy</filter-class>-->
@@ -37,10 +37,13 @@
   </listener>
   <!--设置配置文件路径-->
   <context-param>
-    <param-name>contextConfigLocation</param-name>
-    <param-value>classpath:spring.xml</param-value>
-  </context-param>
+  <param-name>contextConfigLocation</param-name>
+  <param-value>classpath:spring.xml</param-value>
+</context-param>
 
+
+
+  <!--实现跨域访问-->
   <filter>
     <filter-name>CORS</filter-name>
     <filter-class>com.thetransactioncompany.cors.CORSFilter</filter-class>

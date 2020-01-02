@@ -13,7 +13,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Author: wangJianBo
  * Date: 2019/12/25 19:51
  * Content:
  */
@@ -46,13 +45,12 @@ public class SalesServiceImpl implements SalesService {
     @Override
     public int insertSales(SalesVo salesVo) {
         Sales sales = new Sales();
-        sales.setId(salesVo.getId());
+        BeanUtils.copyProperties(salesVo,sales);
         try {
             Integer isExist = salesDao.selectEntryListCount(sales);
             if (isExist == 1){
                 return 0;
             }
-            BeanUtils.copyProperties(salesVo,sales);
             return salesDao.insertEntry(sales);
         } catch (Exception e) {
             throw new RuntimeException("查入销售库信息出现异常");

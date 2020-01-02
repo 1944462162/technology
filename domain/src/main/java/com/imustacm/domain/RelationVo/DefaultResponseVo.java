@@ -5,7 +5,6 @@ import lombok.Data;
 import java.util.HashMap;
 
 /**
- * Author: wangJianBo
  * Date: 2019/9/30 19:33
  * Content: 创建返回前端的类
  */

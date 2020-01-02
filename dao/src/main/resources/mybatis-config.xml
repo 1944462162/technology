@@ -19,6 +19,7 @@
         <typeAlias type="com.imustacm.domain.Po.Sales" alias="sales"/>
         <typeAlias type="com.imustacm.domain.Po.Users" alias="users"/>
         <typeAlias type="com.imustacm.domain.Po.Image" alias="image"/>
+        <typeAlias type="com.imustacm.domain.Po.PressedProcessRecord" alias="pressedProcessRecord"/>
     </typeAliases>
 
     <!--映射文件路径-->

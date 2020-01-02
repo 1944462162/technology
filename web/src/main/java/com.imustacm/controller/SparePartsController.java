@@ -12,7 +12,6 @@ import java.util.HashMap;
 import java.util.List;
 
 /**
- * Author: wangJianBo
  * Date: 2019/12/25 15:01
  * Content: 备料信息
  */

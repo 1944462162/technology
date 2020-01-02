@@ -11,9 +11,6 @@ import org.springframework.stereotype.Service;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * ye==
- */
 @Service("smeltService")
 public class SmeltServiceImpl implements SmeltService {
 

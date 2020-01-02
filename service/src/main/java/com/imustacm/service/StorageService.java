@@ -6,7 +6,6 @@ import com.imustacm.domain.Vo.StorageVo;
 import java.util.List;
 
 /**
- * Author: wangJianBo
  * Date: 2019/12/23 21:06
  * Content: 入库表
  */

@@ -31,6 +31,13 @@
     <packaging>war</packaging>
 
     <name>shiro</name>
+    <dependencies>
+        <dependency>
+            <groupId>org.apache.shiro</groupId>
+            <artifactId>shiro-core</artifactId>
+            <version>1.4.1</version>
+        </dependency>
+    </dependencies>
     <artifactId>shiro</artifactId>
 
     <build>

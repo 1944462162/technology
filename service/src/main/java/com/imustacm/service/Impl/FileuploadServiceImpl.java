@@ -10,13 +10,12 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpServletRequest;
-import java.io.File;
-import java.io.IOException;
+import java.io.*;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
 /**
- * Author: wangJianBo
  * Date: 2019/12/31 12:52
  * Content:
  */
@@ -27,8 +26,8 @@ public class FileuploadServiceImpl implements FileuploadService {
     private ImageDao imageDao;
 
     @Override
-    public int fileFileupload(HttpServletRequest request, MultipartFile upload) {
-        System.out.println("Spring 文件上传");
+    public String fileFileupload(HttpServletRequest request, MultipartFile upload) throws IOException {
+
         //上传文件的位置
         String path = request.getSession().getServletContext().getRealPath("/uploads");
 
@@ -42,9 +41,9 @@ public class FileuploadServiceImpl implements FileuploadService {
 
         String filename = upload.getOriginalFilename();
 
-//        // 将文件设置成为唯一值
-//        String uuid = UUID.randomUUID().toString().replace("-","");
-//        filename = uuid + "_" + filename;
+        // 将文件设置成为唯一值
+        String uuid = UUID.randomUUID().toString().replace("-","");
+        filename = uuid + "_" + filename;
 
         try {
             upload.transferTo(new File(path,filename));
@@ -52,38 +51,31 @@ public class FileuploadServiceImpl implements FileuploadService {
             throw new RuntimeException("文件上传失败");
         }
 
-        Image image = new Image();
-        image.setImagename(filename);
-        image.setPath(path);
+//        Image image = new Image();
+//        image.setImagename(filename);
+//        image.setPath(path);
         try {
-            return imageDao.insertEntry(image);
+            return filename;
         } catch (Exception e) {
             e.printStackTrace();
         }
-        return 0;
+        return null;
     }
 
-    @Override
-    public ImageVo getFile(String fileName) {
 
-        Image image = new Image();
-        image.setImagename(fileName);
-        ImageVo imageVo = new ImageVo();
-        try {
-          List<Image> images = imageDao.selectEntryList(image);
-
-          if (images != null && images.size() != 0){
-              image = images.get(0);
-
-              BeanUtils.copyProperties(image,imageVo);
-          }
-          else{
-              return null;
-          }
-        } catch (Exception e) {
-            e.printStackTrace();
+    public String bytesToHexString(byte[] src) {
+        StringBuilder stringBuilder = new StringBuilder();
+        if (src == null || src.length <= 0) {
+            return null;
         }
-
-        return imageVo;
+        for (int i = 0; i < src.length; i++) {
+            int v = src[i] & 0xFF;
+            String hv = Integer.toHexString(v);
+            if (hv.length() < 2) {
+                stringBuilder.append(0);
+            }
+            stringBuilder.append(hv);
+        }
+        return stringBuilder.toString();
     }
 }
