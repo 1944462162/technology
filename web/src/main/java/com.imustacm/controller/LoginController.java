@@ -70,4 +70,19 @@ public class LoginController {
         }
         return defaultResponseVo;
     }
+
+    @PostMapping("/insertUser")
+    public DefaultResponseVo insertUser(@RequestBody UsersVo usersVo){
+        DefaultResponseVo defaultResponseVo = new DefaultResponseVo();
+        int code = loginService.insertUser(usersVo);
+        if (code == 1){
+            defaultResponseVo.setCode(200);
+            defaultResponseVo.setMsg("ok");
+        }
+        else{
+            defaultResponseVo.setCode(500);
+            defaultResponseVo.setMsg("增加用户信息失败");
+        }
+        return defaultResponseVo;
+    }
 }

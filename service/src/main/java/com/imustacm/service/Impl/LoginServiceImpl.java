@@ -6,6 +6,7 @@ import com.imustacm.domain.Vo.UsersVo;
 import com.imustacm.service.LoginService;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -46,14 +47,17 @@ public class LoginServiceImpl implements LoginService {
     @Override
     public int UpdateUserByCode(UsersVo usersVo) {
         Users users = new Users();
-        users.setUsercode(users.getUsercode());
+        users.setId(usersVo.getId());
         try {
             Integer isExist = usersDao.selectEntryListCount(users);
             if (isExist == 1){
                 BeanUtils.copyProperties(usersVo,users);
                 return usersDao.updateByKey(users);
             }
-            return 0;
+            else{
+                return 0;
+            }
+
         } catch (Exception e) {
             throw new RuntimeException("更改用户信息出现异常");
         }
@@ -72,6 +76,22 @@ public class LoginServiceImpl implements LoginService {
         } catch (Exception e) {
             throw new RuntimeException("删除用户信息失败");
         }
+    }
+
+    @Override
+    public int insertUser(UsersVo usersVo) {
+        Users users = new Users();
+        BeanUtils.copyProperties(usersVo,users);
+        try {
+            Integer isExsit = usersDao.selectEntryListCount(users);
+            if (isExsit == 1){
+                return 0;
+            }
+            return usersDao.insertEntry(users);
+        } catch (Exception e) {
+            throw new RuntimeException("增加用户信息失败");
+        }
+
     }
 
 }

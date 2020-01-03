@@ -16,4 +16,6 @@ public interface LoginService {
 
     int DeleteUserByCode(String code);
 
+    int insertUser(UsersVo usersVo);
+
 }

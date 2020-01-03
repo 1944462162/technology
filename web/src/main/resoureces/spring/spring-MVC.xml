@@ -7,6 +7,9 @@
         http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd
         http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd">
 
+
+    <!-- 解决静态资源访问 -->
+    <mvc:default-servlet-handler />
     <!--添加swagger配置-->
     <bean class="springfox.documentation.swagger2.configuration.Swagger2DocumentationConfiguration" id="swagger2Config"/>
 
@@ -31,6 +34,16 @@
     </context:component-scan>
 
     <!--开启swagger-->
+
+    <!--<mvc:resources mapping="/lib/**" location="/lib/"/>-->
+    <!--<mvc:resources mapping="/images/**" location="/images/"/>-->
+    <mvc:resources mapping="/WEB-INF/css/**" location="/css/**"/>
+    <mvc:resources mapping="/WEB-INF/js/**" location="/js/**"/>
+    <mvc:resources mapping="/WEB-INF/fonts/**" location="/fonts/**"/>
+
+    <!--<mvc:resources mapping="/layui/**" location="/layui/"/>-->
+    <!--<mvc:resources mapping="/less/**" location="/less/"/>-->
+    <!--<mvc:resources mapping="/download/**" location="/download/"/>-->
 
     <!--过滤静态资源-->
 
