@@ -20,6 +20,7 @@
         <typeAlias type="com.imust.domain.Po.Users" alias="users"/>
         <typeAlias type="com.imust.domain.Po.Image" alias="image"/>
         <typeAlias type="com.imust.domain.Po.PressedProcessRecord" alias="pressedProcessRecord"/>
+        <typeAlias type="com.imust.domain.Po.Powder" alias="powder"/>
     </typeAliases>
 
     <!--映射文件路径-->
