@@ -14,7 +14,7 @@ public interface LoginService {
 
     int UpdateUserByCode(UsersVo usersVo);
 
-    int DeleteUserByCode(String code);
+    int DeleteUserByCode(int id);
 
     int insertUser(UsersVo usersVo);
 

@@ -41,7 +41,7 @@ public class LoginController {
     }
 
     @DeleteMapping("/deleteUser/{index}")
-    public DefaultResponseVo deleteUser(@PathVariable("index") String index){
+    public DefaultResponseVo deleteUser(@PathVariable("index") int index){
         DefaultResponseVo defaultResponseVo = new DefaultResponseVo();
         int code = loginService.DeleteUserByCode(index);
         if (code == 1){

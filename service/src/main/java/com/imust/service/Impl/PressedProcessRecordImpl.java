@@ -44,12 +44,12 @@ public class PressedProcessRecordImpl implements PressedProcessRecordService {
     public int insertPressedProcessRecord(PressedProcessRecordVo pressedProcessRecordVo) {
 
         PressedProcessRecord pressedProcessRecord = new PressedProcessRecord();
-        pressedProcessRecord.setId(pressedProcessRecordVo.getId());
+        BeanUtils.copyProperties(pressedProcessRecordVo,pressedProcessRecord);
         try {
             Integer isExist = pressedProcessRecordDao.selectEntryListCount(pressedProcessRecord);
 
             if (isExist == 0){
-                BeanUtils.copyProperties(pressedProcessRecordVo,pressedProcessRecord);
+
                 return pressedProcessRecordDao.insertEntry(pressedProcessRecord);
             }
             else {

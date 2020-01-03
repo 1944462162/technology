@@ -63,9 +63,9 @@ public class LoginServiceImpl implements LoginService {
     }
 
     @Override
-    public int DeleteUserByCode(String code) {
+    public int DeleteUserByCode(int id) {
         Users users = new Users();
-        users.setUsercode(code);
+        users.setId(id);
         try {
             Integer isExist = usersDao.selectEntryListCount(users);
             if (isExist == 0){
