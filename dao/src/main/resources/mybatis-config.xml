@@ -24,6 +24,6 @@
 
     <!--映射文件路径-->
     <mappers>
-        <package name="com.com.imust.mapper"/>
+        <package name="com.imust.mapper"/>
     </mappers>
 </configuration>
