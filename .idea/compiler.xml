@@ -16,6 +16,8 @@
     <bytecodeTargetLevel>
       <module name="controller" target="1.7" />
       <module name="shrio" target="1.7" />
+      <module name="technologyapplication" target="8" />
+      <module name="technologyauth" target="1.5" />
     </bytecodeTargetLevel>
   </component>
 </project>

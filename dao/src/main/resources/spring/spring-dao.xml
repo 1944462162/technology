@@ -6,7 +6,7 @@
 
 
     <!--扫描注解-->
-    <context:component-scan base-package="com.imustacm.dao" />
+    <context:component-scan base-package="com.imust.dao" />
 
     <!--配置数据源-->
     <bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource" destroy-method="close" scope="singleton">

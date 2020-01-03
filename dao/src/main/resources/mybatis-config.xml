@@ -5,25 +5,25 @@
 <configuration>
     <typeAliases>
         <!--这里给实体类取别名，方便在mapper配置文件使用-->
-        <typeAlias type="com.imustacm.domain.Po.AgglomerationProcessRecord" alias="agglomerationProcessRecord"/>
-        <typeAlias type="com.imustacm.domain.Po.FlourMillingProcessRecord" alias="flourMillingProcessRecord"/>
-        <typeAlias type="com.imustacm.domain.Po.PressureRecord" alias="pressureRecord"/>
-        <typeAlias type="com.imustacm.domain.Po.Product" alias="product"/>
-        <typeAlias type="com.imustacm.domain.Po.Roles" alias="roles"/>
-        <typeAlias type="com.imustacm.domain.Po.RolesPermission" alias="rolesPermission"/>
-        <typeAlias type="com.imustacm.domain.Po.Smelt" alias="smelt"/>
-        <typeAlias type="com.imustacm.domain.Po.SmeltingRecord" alias="smeltingRecord"/>
-        <typeAlias type="com.imustacm.domain.Po.SpareParts" alias="spareParts"/>
-        <typeAlias type="com.imustacm.domain.Po.Stock" alias="stock"/>
-        <typeAlias type="com.imustacm.domain.Po.Storage" alias="storage"/>
-        <typeAlias type="com.imustacm.domain.Po.Sales" alias="sales"/>
-        <typeAlias type="com.imustacm.domain.Po.Users" alias="users"/>
-        <typeAlias type="com.imustacm.domain.Po.Image" alias="image"/>
-        <typeAlias type="com.imustacm.domain.Po.PressedProcessRecord" alias="pressedProcessRecord"/>
+        <typeAlias type="com.imust.domain.Po.AgglomerationProcessRecord" alias="agglomerationProcessRecord"/>
+        <typeAlias type="com.imust.domain.Po.FlourMillingProcessRecord" alias="flourMillingProcessRecord"/>
+        <typeAlias type="com.imust.domain.Po.PressureRecord" alias="pressureRecord"/>
+        <typeAlias type="com.imust.domain.Po.Product" alias="product"/>
+        <typeAlias type="com.imust.domain.Po.Roles" alias="roles"/>
+        <typeAlias type="com.imust.domain.Po.RolesPermission" alias="rolesPermission"/>
+        <typeAlias type="com.imust.domain.Po.Smelt" alias="smelt"/>
+        <typeAlias type="com.imust.domain.Po.SmeltingRecord" alias="smeltingRecord"/>
+        <typeAlias type="com.imust.domain.Po.SpareParts" alias="spareParts"/>
+        <typeAlias type="com.imust.domain.Po.Stock" alias="stock"/>
+        <typeAlias type="com.imust.domain.Po.Storage" alias="storage"/>
+        <typeAlias type="com.imust.domain.Po.Sales" alias="sales"/>
+        <typeAlias type="com.imust.domain.Po.Users" alias="users"/>
+        <typeAlias type="com.imust.domain.Po.Image" alias="image"/>
+        <typeAlias type="com.imust.domain.Po.PressedProcessRecord" alias="pressedProcessRecord"/>
     </typeAliases>
 
     <!--映射文件路径-->
     <mappers>
-        <package name="com.imustacm.mapper"/>
+        <package name="com.com.imust.mapper"/>
     </mappers>
 </configuration>

@@ -11,12 +11,12 @@
     <!--<import resource="classpath*:spring-shiro.xml"/>-->
 
     <!--开启注解扫描-->
-    <context:component-scan base-package="com.imustacm">
+    <context:component-scan base-package="com.imust">
         <context:exclude-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
     </context:component-scan>
 
     <!--swagger-->
-    <bean class="com.imustacm.config.SwaggerConfig"/>
+    <bean class="com.imust.config.SwaggerConfig"/>
     <mvc:resources mapping="swagger-ui.html" location="classpath:/META-INF/resources/" />
     <mvc:resources mapping="/webjars/**" location="classpath:/META-INF/resources/webjars/" />
 

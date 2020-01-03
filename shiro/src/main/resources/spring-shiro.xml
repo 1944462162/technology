@@ -23,7 +23,7 @@
     </bean>
 
     <!--Realm实现-->
-    <bean id="customRealm" class="com.imustacm.shiro.CustomRealm">
+    <bean id="customRealm" class="com.com.imust.shiro.CustomRealm">
         <!--<property name="credentialsMatcher" ref="credentialsMatcher"/>-->
     </bean>
 </beans>
