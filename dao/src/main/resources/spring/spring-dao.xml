@@ -9,10 +9,10 @@
     <context:component-scan base-package="com.imust.dao" />
 
     <!--配置数据源-->
-    <bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource" destroy-method="close" scope="singleton">
+    <bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource" destroy-method="close">
         <property name="driverClass" value="com.mysql.cj.jdbc.Driver"/>
         <property name="jdbcUrl"
-                  value="jdbc:mysql://127.0.0.1/technology?useSSL=false&amp;serverTimezone=GMT&amp;allowPublicKeyRetrieval=true"/>
+                  value="jdbc:mysql://127.0.0.1/technology?serverTimezone=GMT&amp;useUnicode=true&amp;characterEncoding=utf8"/>
         <property name="user" value="root"/>
         <property name="password" value="123456"/>
     </bean>
